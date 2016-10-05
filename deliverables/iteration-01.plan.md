@@ -1,4 +1,4 @@
-# YOUR PRODUCT/TEAM NAME
+# PubCal
 
 ## Iteration XX
 
