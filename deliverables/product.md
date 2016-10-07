@@ -12,8 +12,11 @@ Our app will have the following features:
   * Users can log in and update their personal information and look up other user's profiles.
   * Users can follow people they like.
   * Users can rate and comment on existing calendars, and information generated from these will be processed to improve the search and recommendation system.
+  * Users can import a particular calendar from PubCal to their own Google Calendar account.
+  * When the PubCal calendar gets updated, same update will show up in their Google Calendar
   * Users can keep receiving updates from the publisher from instant notification.
   * Users will be able to set their calendars public or private (to certain individuals).
+  * Owners can give permission of the calendar so that other user can edit the calendar. 
 
 ## Who are our target users
 
