@@ -1,8 +1,8 @@
 # PubCal
 
-## Iteration XX
+## Iteration 01
 
- * Start date: FILL IN THE DATE WHEN YOU HAD YOUR FIRST TEAM PLANNING MEETING
+ * Start date: Fri, Oct 7 3pm - TBD
  * End date: FILL IN THE DATE WHEN YOU ARE PLANNING TO HAVE YOUR REVIEW MEETING
 
 ## Process
@@ -11,14 +11,22 @@
 
 #### Roles & responsibilities
 
-Describe the different roles (e.g. developers, communication facilitator,
-proof-reader, etc.) on the team, and the responsibilities associated with each role.
+Alex:
+
+Barry:
+
+Eddie:
+
+Nathan:
+
+Navie:
 
 #### Events
 
-Please describe the meetings you planning to have:
- * When and where? In-person or online?
- * What's the purpose of each meeting?
+  * Meeting 1
+  * Time and Location: 
+  * Format:
+  * Purpose:
 
 #### Artifacts
 

@@ -17,22 +17,32 @@ Our app will have the following features:
 
 ## Who are our target users
 
-### User 1: Alex
-  * Age: 22
+### User 1: Bogdan
+  * Age: 38
+  * Occupation: special advisor for NGO 
+  * Status: Married
+  * Tech: network and security
+  * Bio: Bogdan graduated with BSc in Computer Science and Master of Public Policy at the University fo Toronto.
+         He worked as an advisor for an European humanitarian organization in Geneva for almost two decades and then joined the Maidan
+         People's Union to support the civil demonstrations in 2013. A part of his duties was to organize and manage the protests.
+
+
+### User 2: Ivan
+  * Age: 21
   * Occupation: Student at UCSD
   * Status: Single
-  * Tech: A bunch 
-  * Bio: Alex is in his senior year with double majors in Computer Science and Mathematics.
-    He is also the president of the history and society club, and he organizes public events regularly.
+  * Tech: VB.NET
+  * Bio: Ivan is in his senior year with double majors in Political Science and Cognitive Science.
+    He is also the president of the history and philosophy club, and he organizes public events regularly.
     He sometimes finds out he's in a situation that he needs to delay the event since the university building management 
     needs the room for another event. He has to email all the club members about the changes in location and time,
     but some members don't read emails regularly and still show up.
   * Goals: He wants to inform club members of the latest time and location for events
 
-### User 2: Cristina
-  * Age: 35
+### User 3: Cristina
+  * Age: 42
   * Occupation: Factory worker
-  * Status: Divorced
+  * Status: Widow
   * Tech: social network
   * Bio: Cristina live in the rural area, Pamplona Alta surrounding the capital Lima of Peru. 
     People build their houses on the hills. She is the leader of this community and she often needs to broadcast some news to people living there. 
@@ -52,4 +62,4 @@ When users sign up for a group trip, they can have their itineraries ready right
 Users don't have to worry about changes in plan any more because they receive real-time notifications from the event organizer.
 
 
-Product decision: 
+Product decision: (internationalization would be key)
