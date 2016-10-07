@@ -4,7 +4,7 @@
 
 We are going to build a responsive web app, where people can share their calendars with the public using both desktops and cellphones.
 A group of people with the same agenda (e.g. students taking the same class, people going to the same social gatherings) may find themselves checking dates all the time or forgetting
-something important. Or they don't realize the time and location for an event have been changed.
+something important. Or they don't realize the time and location for an event have been changed.Or people want to know certain event's date and time. (eg. Users want to know when and where the Olympic events are. They can search for Olympic calendar on PubCal)
 Our app will have the following features:
 
   * Users can publish their calendars by uploading files or writing them up directly.
@@ -12,7 +12,7 @@ Our app will have the following features:
   * Users can log in and update their personal information and look up other user's profiles.
   * Users can follow people they like.
   * Users can rate and comment on existing calendars, and information generated from these will be processed to improve the search and recommendation system.
-  * Users can import a particular calendar from PubCal to their own Google Calendar account.
+  * Users can choose to import a particular calendar from PubCal to their own Google Calendar account.
   * When the PubCal calendar gets updated, same update will show up in their Google Calendar
   * Users can keep receiving updates from the publisher from instant notification.
   * Users will be able to set their calendars public or private (to certain individuals).
@@ -53,6 +53,12 @@ Our app will have the following features:
     It is hard for Cristina to talk to each one of them since she has daytime job and she has to take care of two babies.
   * Goals: She wants to let people immediately news that are not covered in the TV.
 
+### User 4: Alex
+  * Age: 26
+  * Occupation: Office job
+  * Bio: Alex works in an office which he requires to attend meetings very often. It is hard for him to keep track with the meeting times. Even though he can add the meeting times one by one into his agenda, sometimes he is too busy with other things that he forget to add them. Leading to absense to meetings.
+  * Goals: He wants his agenda to show all of the meetings that he needs to attend.
+  * Solution: His coworker, or boss can create a calendar of meeting times on PubCal so that other coworkers can add it into their own calendar.
 
 ## Why users should choose our product
 
