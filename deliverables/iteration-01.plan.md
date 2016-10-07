@@ -24,9 +24,9 @@ Navie:
 #### Events
 
   ##### Meeting 1
-  * Time and Location: 3pm, October 7
-  * Format: in person
-  * Purpose: Finish the product document, start working towards the iteration-1 plan
+    * Time and Location: 3pm, October 7
+    * Format: in person
+    * Purpose: Finish the product document, start working towards the iteration-1 plan
 
   ##### Meeting 2
     * Time and location: 2pm, October 9
