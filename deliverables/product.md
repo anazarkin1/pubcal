@@ -3,8 +3,7 @@
 ## What we are going to build
 
 We are going to build a responsive web app, where people can share their calendars with the public using both desktops and cellphones.
-A group of people with the same agenda (e.g. students taking the same class, people going to the same social gatherings) may find themselves checking dates all the time or forgetting something important. Or they don't realize the time and location for an event have been changed.
-something important. Or they don't realize the time and location for an event have been changed.Or people want to know certain event's date and time. (eg. Users want to know when and where the Olympic events are. They can search for Olympic calendar on PubCal)
+A group of people with the same agenda (e.g. students taking the same class, people going to the same social gatherings) may find themselves checking dates all the time or forgetting something important. Or they don't realize the time and location for an event have been changed.Or people want to know certain event's date and time. (eg. Users want to know when and where the Olympic events are. They can search for Olympic calendar on PubCal)
 
 Our app will have the following features:
 
