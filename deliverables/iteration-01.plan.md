@@ -23,18 +23,22 @@ Navie:
 
 #### Events
 
-  * Meeting 1
-  * Time and Location: 
-  * Format:
-  * Purpose:
+  ##### Meeting 1
+  * Time and Location: 3pm, October 7
+  * Format: in person
+  * Purpose: Finish the product document, start working towards the iteration-1 plan
+
+  ##### Meeting 2
+    * Time and location: 2pm, October 9
+    * Format: in person
+    * Purpose: Finalize all the features for the app
 
 #### Artifacts
 
-Please describe the artifacts that you will produce in order to organize and keep track of your team's progress.       
+Please describe the artifacts that you will produce in order to organize and keep track of your team's progress.
 For example:
- * To-do lists, burndown chart, schedule, etc.
- * If you include charts/diagrams, make sure to explain what they represent.
- * If you're maintaining a to-do list, make sure to mention which tool you're using, how you are prioritizing items and how items get assigned to team members.
+*For to-do list we are going to use Github Projects (similar to Trello), for inner-team discussion we Slack.
+*No charts/artifacts are planned so far
 
 
 ## Product
@@ -45,9 +49,13 @@ Goals and tasks:
  * When listing goals/tasks, order the items from most to least important.
  * Feel free (but not obligated) to specify some/all tasks as user stories.
 
+###Goal for the iteration:
+Come up with user stories, use cases, mock-up.
+Identify features for the app.
+Create any diagram/charts to describe our application.
+
 Artifacts
 
- * Describe the artifacts (diagrams, interactive mock-ups, wireframes, actual code, etc.)
-   that you are planning to produce by the end of (and during) this iteration.
- * Be precise.         
-   For example: "Build the website" is not precise at all, but "Build a static home page and upload it somewhere, so that it is publicly accessible" is much clearer.
+* Drawings of the interface
+* Interactive mockups of the interface for the main pages of the app
+* UML digram of the main classes
