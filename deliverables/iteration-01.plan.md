@@ -21,6 +21,12 @@ Nathan:
 
 Navie:
 
+#### Weekly Schedule ####
+
+    * Our group will meet in person during the tutorial on Mondays (8:00pm-9:00pm) to discuss weekly plans.
+    * Another in-person meeting will occur on Fridays at 3:00pm to discuss and review weekly accomplishments.
+    * On Sundays, there will be an online chatting session where we check each other's progress.
+
 #### Events
 
   #### Meeting 1
