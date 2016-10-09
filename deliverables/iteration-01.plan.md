@@ -11,15 +11,15 @@
 
 #### Roles & responsibilities
 
-Alex:
+Alex: Backend
 
-Barry:
+Barry: Frontend
 
-Eddie:
+Eddie: Backend
 
-Nathan:
+Nathan: Backend
 
-Navie:
+Navie: Frontend
 
 #### Weekly Schedule ####
 
@@ -30,13 +30,13 @@ Navie:
 #### Events
 
   #### Meeting 1
-  
+
     * Time and Location: 3pm, October 7
     * Format: in person
     * Purpose: Finish the product document, start working towards the iteration-1 plan
 
   #### Meeting 2
-  
+
     * Time and location: 2pm, October 9
     * Format: in person
     * Purpose: Finalize all the features for the app

@@ -5,16 +5,18 @@
 We are going to build a responsive web app, where people can share their calendars with the public using both desktops and cellphones.
 A group of people with the same agenda (e.g. students taking the same class, people going to the same social gatherings) may find themselves checking dates all the time or forgetting something important. Or they don't realize the time and location for an event have been changed.Or people want to know certain event's date and time. (eg. Users want to know when and where the Olympic events are. They can search for Olympic calendar on PubCal)
 
+
 Our app will have the following features:
 
-  * Users can publish their calendars by uploading files or writing them up directly.
-  * Users can search for calendars published by other people, and recommend fixes and updates if they believe the existing calendars can be improved.
+  * Users can publish their calendars by uploading files or creating them directly on our web app.
+  * Users can search for calendars published by other people based on dates, calendar name, location.
+  * Users can recommend fixes and updates if they believe the existing calendars can be improved.
   * Users can log in and update their personal information and look up other user's profiles.
   * Users can follow people they like.
   * Users can rate and comment on existing calendars, and information generated from these will be processed to improve the search and recommendation system.
   * Users can choose to import a particular calendar from PubCal to their own Google Calendar account.
-  * When the PubCal calendar gets updated, same update will show up in their Google Calendar
-  * Users can keep receiving updates from the publisher from instant notification.
+  * When the PubCal calendar gets updated, calendars that were imported via URL are going to get new updates too.
+  * Users can keep receiving updates from the publisher via browser-notifications or emails.
   * Users will be able to set their calendars public or private (to certain individuals).
   * Owners can give permission of the calendar so that other user can edit the calendar.
 
