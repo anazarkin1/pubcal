@@ -1,9 +1,9 @@
 # PubCal
 
-## Iteration 01
+## Iteration 01 - Planning
 
- * Start date: Fri, Oct 7 3pm - TBD
- * End date: FILL IN THE DATE WHEN YOU ARE PLANNING TO HAVE YOUR REVIEW MEETING
+ * Start date: Fri, Oct 7, 3pm - 5pm
+ * End date: Sun, Oct 23, 3pm
 
 ## Process
 
@@ -11,42 +11,48 @@
 
 #### Roles & responsibilities
 
-Alex: Backend
+  * Frontend: Barry, Navie
+  * Backend: Alex, Eddie, and Nathan
 
-Barry: Frontend
-
-Eddie: Backend
-
-Nathan: Backend
-
-Navie: Frontend
+  * For this iteration, the frontend group will be responsible for creating the 
+  mockups of our app, and identify fronend frameworks we will use for the next
+  iteration
+  * the backend group will be responsible for identifying major entities of our databse 
+  and choose backend tools for the next iteration
+  
 
 #### Weekly Schedule ####
 
-    * Our group will meet in person during the tutorial on Mondays (8:00pm-9:00pm) to discuss weekly plans.
-    * Another in-person meeting will occur on Fridays at 3:00pm to discuss and review weekly accomplishments.
-    * On Sundays, there will be an online chatting session where we check each other's progress.
+  * Each week we are going to have three meetings:
+  * (1): Monday during the tutorials, we make plans for the following week
+  * (2): Friday 3pm in person meetings, we discuss the progress and make adjustments according to the plan
+  * (3): Sunday online meeting in Slack, we have a review for the past week
+
 
 #### Events
 
-  #### Meeting 1
+  * Meeting 1
 
-    * Time and Location: 3pm, October 7
-    * Format: in person
-    * Purpose: Finish the product document, start working towards the iteration-1 plan
+    Time and location: Fri, Oct 7, 3 - 5pm, BA3200
+    Format: in person
+    Purpose: Finish the product document, start working towards the iteration-1 plan
 
-  #### Meeting 2
+  * Meeting 2
 
-    * Time and location: 2pm, October 9
-    * Format: in person
-    * Purpose: Finalize all the features for the app
+    Time and location: Sun, Oct 9, 2 - 3:30pm, BA3200
+    Format: in person
+    Purpose: Finalize all the features for the app and preliminary role for each member
+
+  * Meeting 3
+
+    Time and location: Tue, Oct 11, 6pm, BA3200
+    format: in person
+    Purpose:
 
 #### Artifacts
-
-Please describe the artifacts that you will produce in order to organize and keep track of your team's progress.
-For example:
-*For to-do list we are going to use Github Projects (similar to Trello), for inner-team discussion we Slack.
-*No charts/artifacts are planned so far
+  * We use Github Projects (similar to Trello) as our to-do lists 
+  * We use Slack for team communications
+  * No charts/artifacts are planned so far
 
 
 ## Product
@@ -57,13 +63,13 @@ Goals and tasks:
  * When listing goals/tasks, order the items from most to least important.
  * Feel free (but not obligated) to specify some/all tasks as user stories.
 
-###Goal for the iteration:
-Come up with user stories, use cases, mock-up.
-Identify features for the app.
-Create any diagram/charts to describe our application.
+###Goals for the iteration:
+  * Come up with user stories, use cases, mock-up.
+  * Identify features for the app.
+  * Create diagram/charts to describe our application.
 
 Artifacts
 
 * Drawings of the interface
 * Interactive mockups of the interface for the main pages of the app
-* UML digram of the main classes
+* UML diagrams of the main classes
