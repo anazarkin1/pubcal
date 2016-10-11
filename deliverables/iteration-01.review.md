@@ -1,6 +1,6 @@
 # PubCal
 
-## Iteration XX - Review & Retrospect
+## Iteration 01 - Review & Retrospect
 
  * When: FILL IN THE DATE WHEN YOU ACTUALLY HAD YOUR REVIEW MEETING
  * Where: PHYSICAL LOCATION AND/OR ONLINE
