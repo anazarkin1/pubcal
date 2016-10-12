@@ -35,26 +35,24 @@
 #### Events
 
   * Meeting 1
-
-    Time and location: Fri, Oct 7, 3 - 5pm, BA3200
-    Format: in person
-    Purpose: Finish the product document, start working towards the iteration-1 plan
+  * Time and location: Fri, Oct 7, 3 - 5pm, BA3200
+  * Format: in person
+  * Purpose: Finish the product document, start working towards the iteration-1 plan
 
   * Meeting 2
-
-    Time and location: Sun, Oct 9, 2 - 3:30pm, BA3200
-    Format: in person
-    Purpose: Finalize all the features for the app and preliminary role for each member
+  * Time and location: Sun, Oct 9, 2 - 3:30pm, BA3200
+  * Format: in person
+  * Purpose: Finalize all the features for the app and preliminary role for each member
 
   * Meeting 3
+  * Time and location: Tue, Oct 11, 6pm, BA3175
+  * format: in person
+  * Purpose: Discussed what technology to use. And what pages are on the app.
 
-    Time and location: Tue, Oct 11, 6pm, BA3200
-    format: in person
-    Purpose: Discussed what technology to use. And what pages are on the app.
   * Meeting 4
-    Time and location: Sat, Oct 15, 2pm, BA
-    format: in person
-    Purpose: 
+  * Time and location: Sat, Oct 15, 2pm, BA
+  * format: in person
+  * Purpose: 
 
 #### Artifacts
   * We use Github Projects (similar to Trello) as our to-do lists 
