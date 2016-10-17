@@ -5,7 +5,7 @@ const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
 
 // Connection URL
-const url = 'mongodb://localhost:27017/mongo_ex';
+const url = process.env.MONGO_URL;
 
 // Use connect method to connect to the server
 MongoClient.connect(url, (err, db) => {
