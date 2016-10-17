@@ -222,11 +222,11 @@ jspm_packages
 ### WebStorm Patch ###
 # Comment Reason: https://github.com/joeblau/gitignore.io/issues/186#issuecomment-215987721
 
-/*.iml
-/modules.xml
-/.idea/misc.xml 
-/*.ipr
-
+pubcal/*.iml
+pubcal/modules.xml
+.idea/misc.xml
+pubcal/*.ipr
+pubcal/.idea/misc.xml
 
 ### Windows ###
 # Windows image file caches
