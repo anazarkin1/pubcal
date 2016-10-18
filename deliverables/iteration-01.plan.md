@@ -53,7 +53,11 @@
   * Time and location: Sat, Oct 15, 2pm, BA3200
   * format: in person
   * Purpose: Set up the AWS server so that every team member can access the server, and the database. Also discussed about wireframes.
-
+  
+  * Meeting 5
+  * Time and location: Mon, Oct 17, 8pm, Tutorial
+  * format: in person
+  * Purpose: Talked about possible MongoDB data model, added a new text file  describing it.
 
 
 #### Artifacts
@@ -80,3 +84,4 @@ Artifacts
 * Drawings of the interface
 * Interactive mockups of the interface for the main pages of the app
 * UML diagrams of the main classes
+* MongoDB data model in text format
