@@ -1,0 +1,21 @@
+Users: {
+    _id: #####,
+    username: ###
+    password: ###
+    email: ###@###.##
+    subscribed_to: [url1,url2,...,urln](reference?)
+
+}
+
+Calendars: {
+    name: ###
+    description: ####
+    tags: [tag1,tag2,...,tagn](reference?)
+    url: #####.####
+    filepath: ####
+    created_by: ####(ref)
+    created_at: ####
+    updated_at: ####
+    users_subscribed:[user1,user2,...,usern]
+    events: [{"name":"","description":"","start-date":"", "end-date":"", "location":""}, {}...]
+}
