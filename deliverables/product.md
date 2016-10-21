@@ -22,15 +22,6 @@ Our app will have the following features:
 
 ## Who are our target users
 
-### User 1: Bogdan
-  * Age: 38
-  * Occupation: special advisor for NGO
-  * Status: Married
-  * Tech: network and security
-  * Bio: Bogdan graduated with BSc in Computer Science and Master of Public Policy at the University of Toronto.
-         He worked as an advisor for an European humanitarian organization in Geneva for almost two decades and then joined the Maidan People's Union to support the civil demonstrations in 2013. A part of his duties was to organize and manage the protests.
-
-
 ### User 2: Ivan
   * Age: 21
   * Occupation: Student at UCSD
@@ -43,25 +34,7 @@ Our app will have the following features:
     but some members don't read emails regularly and still show up.
   * Goals: He wants to inform club members of the latest time and location for events
 
-### User 3: Cristina
-  * Age: 42
-  * Occupation: Factory worker
-  * Status: Widow
-  * Tech: social network
-  * Bio: Cristina live in the rural area, Pamplona Alta surrounding the capital Lima of Peru.
-    People build their houses on the hills. She is the leader of this community and she often needs to broadcast some news to people living there.
-    The living standard is low but almost everyone has a cheap cell phone.
-    Several times a year, some medical teams would come to town and people can receive medical consultation for free.
-    It is hard for Cristina to talk to each one of them since she has daytime job and she has to take care of two babies.
-
-### User 4: Alex
-  * Age: 26
-  * Occupation: Office job
-  * Bio: Alex works in an office which he requires to attend meetings very often. It is hard for him to keep track with the meeting times. Even though he can add the meeting times one by one into his agenda, sometimes he is too busy with other things that he forget to add them. Leading to absense to meetings.
-  * Goals: He wants his agenda to show all of the meetings that he needs to attend.
-  * Solution: His coworker, or boss can create a calendar of meeting times on PubCal so that other coworkers can add it into their own calendar.
-
-### User 5: Amanda
+### User 2: Amanda
   * Age: 22
   * Occupation: Nomad
   * Status: Single
