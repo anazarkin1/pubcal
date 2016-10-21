@@ -6,17 +6,18 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const debug = require('debug')('untitled:server');
 const pmx = require('pmx').init({ // for advanced Keymetrics
-    http          : true, // HTTP routes logging (default: true)
-    ignore_routes : [/socket\.io/, /notFound/], // Ignore http routes with this pattern (Default: [])
-    errors        : true, // Exceptions loggin (default: true)
-    custom_probes : true, // Auto expose JS Loop Latency and HTTP req/s as custom metrics
-    network       : true, // Network monitoring at the application level
-    ports         : true  // Shows which ports your app is listening on (default: false)
+    http: true, // HTTP routes logging (default: true)
+    ignore_routes: [/socket\.io/, /notFound/], // Ignore http routes with this pattern (Default: [])
+    errors: true, // Exceptions loggin (default: true)
+    custom_probes: true, // Auto expose JS Loop Latency and HTTP req/s as custom metrics
+    network: true, // Network monitoring at the application level
+    ports: true  // Shows which ports your app is listening on (default: false)
 });
 const http = require('http');
 
 const routes = require('./routes/index');
 const users = require('./routes/users');
+const calendars = require('./routes/calendars');
 
 const app = express();
 
@@ -28,12 +29,13 @@ app.set('view engine', 'pug');
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/calendars', calendars);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
@@ -48,8 +50,8 @@ if (app.get('env') === 'development') {
     app.use((err, req, res) => {
         res.status(err.status || 500);
         res.render('error', {
-          message: err.message,
-          error: err
+            message: err.message,
+            error: err
         });
     });
 }
@@ -79,15 +81,21 @@ server.on('listening', onListening);
 // Normalize a port into a number, string, or false.
 function normalizePort(val) {
     const port = parseInt(val, 10);
-    if (isNaN(port)) { return val; } // named pipe
-    if (port >= 0) { return port; } // port number
+    if (isNaN(port)) {
+        return val;
+    } // named pipe
+    if (port >= 0) {
+        return port;
+    } // port number
 
     return false;
 }
 
 // Event listener for HTTP server "error" event.
 function onError(error) {
-    if (error.syscall !== 'listen') { throw error; }
+    if (error.syscall !== 'listen') {
+        throw error;
+    }
 
     const bind = typeof port === 'string' ? 'Pipe ' + port : 'Port ' + port;
 
