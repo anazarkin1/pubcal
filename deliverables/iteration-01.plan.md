@@ -59,6 +59,11 @@
   * format: in person
   * Purpose: Talked about possible MongoDB data model, added a new text file  describing it.
 
+  * Meeting 6
+  * Time and location: Fri, Oct 21, 6pm, BA3200
+  * format: in person
+  * Purpose: User story, use case, continue working on wireframes
+
 
 #### Artifacts
   * We use Github Projects (similar to Trello) as our to-do lists 
