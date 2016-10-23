@@ -2,8 +2,8 @@
 
 ## Iteration 01 - Review & Retrospect
 
- * When: FILL IN THE DATE WHEN YOU ACTUALLY HAD YOUR REVIEW MEETING
- * Where: PHYSICAL LOCATION AND/OR ONLINE
+ * When: Sun, OCT 23, 3PM
+ * Where: BA3200
 
 ## Process - Reflection
 
@@ -39,10 +39,13 @@ Goals/tasks that were planned but not met/completed:
  * For each goal/task, explain why it was not met/completed.      
    e.g. Did you change your mind, or did you just not get to it yet?
 
-(Optional) Goals/tasks that were not originally planned, but ended up being not met/completed:
+Goals/tasks that were not originally planned, but ended up being not met/completed:
 
- * List goals/tasks, from most to least important.
- * For each goal/task, explain why you decided to change your plan and add this goal/task.
+ * Task: (code) node + express + mongo set up with basic MVC architecture in an AWS server
+ * The reason to add and complete this task is because we have already chosen the stack we will be
+    working with for the next iteration, next basic environment set up would be change dramatically 
+    even if we change our designs. It is therefore in our best interest to complete this part ahead
+    of time in order to focus on more important task during the next iteration.
 
 
 Going into the next iteration, our main insights are:
