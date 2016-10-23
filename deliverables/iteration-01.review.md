@@ -56,3 +56,9 @@ Going into the next iteration, our main insights are:
 
  * List the few (2-5) high-level concepts that should guide your work for the next few weeks.
  * These concepts should help you prioritize features and decide on where to focus your efforts.
+ - Must implement the following features:
+   * Install and setup React
+   * Log in/log out
+   * Search for calendars
+   * Create/Remove/Edit/Import calendars
+   * Download/import/view calendars
