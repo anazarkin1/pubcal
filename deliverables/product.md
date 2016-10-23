@@ -47,7 +47,13 @@ Our app will have the following features:
     all that in her personal calendar which she also uses for work.
   * Goals: Easy way to find recurring events that are happening at some location and keep track of them.
 
-
+### User 3: Kira (Subscriber)
+  * Age: 22
+  * Occupation: Student
+  * Status: Single
+  * Bio: A big NHL fan, who follows Maple Leafs team.
+  * Goals: An easy way to monitor all the games by Maple Leafs inside her own Google Calendar. Doesn't want to manually update her NHL calendar if some changes in the game schedule occur or get cancelled. 
+  
 ## Why users should choose our product
 In our modern society, people often forget or don’t know what events are happening simply 
 because there are just so much going on around them.  Then people stared to utilize their 
