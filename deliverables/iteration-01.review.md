@@ -32,7 +32,7 @@ We are planning to make the following changes to our process:
  * List the changes you are planning to make, if any, from most to least important.
  * For each change, explain why you are making it by referring to a decision that didn't work well.
  - Instead of having scheduled group meetings for the next few weeks, we agreed to decide on the time and location of the next meetings only. Since everybody has different schedules, it was hard to stick with the scheduled meeting time so it would be more efficient to decide on our next meeting instead of having to moving around scheduled meetings. 
- - As metioned in the previous sectino, we decided not to have any online group meetings because we think it's better to have a face-to-face meeting for a more effient discussion. 
+ - As mentioned in the previous section, we decided not to have any online group meetings because we think it's better to have a face-to-face meeting for a more efficient discussion. 
  - We will be assigning more specific roles and responsibilities.
 
 
