@@ -15,9 +15,9 @@
   * Backend: Alex, Eddie, and Nathan
 
     For this iteration, the frontend group will be responsible for creating the 
-  mockups of our app, and identify fronend frameworks we will use for the next
+  mockups of our app, and choosing frontend frameworks to use for the next
   iteration. The backend group will be responsible for designing "schemas" for our database 
-  and choose backend tools for the next iteration
+  and choosing backend tools for the next iteration.
   
 
 #### Weekly Schedule ####
