@@ -3,7 +3,7 @@
 ## What we are going to build
 
 We are going to build a responsive web app, where people can share their calendars with the public using both desktops and cellphones.
-A group of people with the same agenda (e.g. students taking the same class, people going to the same social gatherings) may find themselves checking dates all the time or forgetting something important. Or they don't realize the time and location for an event have been changed.Or people want to know certain event's date and time. (eg. Users want to know when and where the Olympic events are. They can search for Olympic calendar on PubCal)
+A group of people with the same agenda (e.g. students taking the same class, people going to the same social gatherings) may find themselves checking dates all the time or forgetting something important. Also, peopole quiet frequently don't realize that the time and location for an event have been changed. Finally, people want to know the date and time for a certain event (eg. Users want to know when and where the Olympic events are. They can search for Olympic calendar on our app called PubCal)
 
 
 Our app will have the following features:
@@ -29,10 +29,8 @@ Our app will have the following features:
   * Tech: VB.NET
   * Bio: Ivan is in his senior year with double majors in Political Science and Cognitive Science.
     He is also the president of the history and philosophy club, and he organizes public events regularly.
-    He sometimes finds out he's in a situation that he needs to delay the event since the university building management
-    needs the room for another event. He has to email all the club members about the changes in location and time,
-    but some members don't read emails regularly and still show up.
-  * Goals: He wants to inform club members of the latest time and location for events
+    He sometimes finds himself in a situation where he needs to delay an event because the original location of the event at the university suddenly has become unavailable, or he needs to change the time of the event due to emergency. In such situations, he has to notify all the club members about the location and time changes via email, but some members will miss those email as they do not check their emails regularly and still show up to the wrong location and/or time.
+  * Goals: He wants to inform club members of the latest time and location of events
 
 ### User 2: Amanda (Subscriber)
   * Age: 22
@@ -41,10 +39,10 @@ Our app will have the following features:
   * Tech: Web Design
   * Bio: Amanda made a life-long decision to visit all countries in the world. 
     Usually she changes her place of residence every 6 months. It's important for her to keep track of all public
-    holidays in her new country, last time she had to stay hungry for the whole day because it 
-    was a special holiday in Spain and the shops were closed. Also, it's nice to see different festivals 
-    and art galleries that are happening in her new city of residence. She wants a simple way to organize 
-    all that in her personal calendar which she also uses for work.
+    holidays in her new country. Last time she had to stay hungry for the whole day because it 
+    was a special holiday in Spain and all the shops were closed. Also, it's nice to see different festivals 
+    and art galleries that are happening in the new city of residence. She wants a simple way to organize 
+    all events in her personal calendar which she also uses for work.
   * Goals: Easy way to find recurring events that are happening at some location and keep track of them.
 
 ### User 3: Kira (Subscriber)
@@ -52,7 +50,7 @@ Our app will have the following features:
   * Occupation: Student
   * Status: Single
   * Bio: A big NHL fan, who follows Maple Leafs team.
-  * Goals: An easy way to monitor all the games by Maple Leafs inside her own Google Calendar. Doesn't want to manually update her NHL calendar if some changes in the game schedule occur or get cancelled. 
+  * Goals: An easy way to monitor schedules of all the games by Maple Leafs inside her own Google Calendar. She doesn't want to manually update her NHL calendar if some changes in the game schedule occur such as a certain game being cancelled or moved to another date.  
   
 ## Why users should choose our product
 In our modern society, people often forget or don’t know what events are happening simply 
