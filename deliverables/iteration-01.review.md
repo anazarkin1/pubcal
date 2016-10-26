@@ -69,36 +69,52 @@ Goals/tasks that were met/completed:
 * Wrote up basic MongoDB model:
 
 Users: {
+
     _id: #####,
+    
     username: ###
+    
     password: ###
+    
     email: ###@###.##
+    
     subscribed_to: [url1,url2,...,urln](reference?)
 
 }
 
 Calendars: {
+
     name: ###
+    
     description: ####
+    
     tags: [tag1,tag2,...,tagn](reference?)
+    
     url: #####.####
+    
     filepath: ####
+    
     created_by: ####(ref)
+    
     created_at: ####
+    
     updated_at: ####
+    
     users_subscribed:[user1,user2,...,usern]
+    
     events: [{"name":"","description":"","start-date":"", "end-date":"", "location":""}, {}...]
+    
 }
 
 Goals/tasks that were planned but not met/completed:
 
-   * We were not able to complete UML diagrams. We did not have enough time to do UML diagrams (and to come up with technical detail needed for UML diagrams). 
-   * We did not do the interactive mockups because we believe it is redundant if we already have wireframes.
+ 1. We were not able to complete UML diagrams. We did not have enough time to do UML diagrams (and to come up with technical detail needed for UML diagrams). 
+ 2. We did not do the interactive mockups because we believe it is redundant if we already have wireframes.
    
 Goals/tasks that were not originally planned, but ended up being met/completed:
 
- * Task: (code) node + express + mongo set up with basic MVC architecture in an AWS server at ip addr 52.205.254.60 (see pubcal in root directory)
- * The reason to add and complete this task is because we have already chosen the stack we will be
+ 1. Task: (code) node + express + mongo set up with basic MVC architecture in an AWS server at ip addr 52.205.254.60 (see pubcal in root directory)
+ 2. The reason to add and complete this task is because we have already chosen the stack we will be
     working with for the next iteration, next basic environment set up would be change dramatically 
     even if we change our designs. It is therefore in our best interest to complete this part ahead
     of time in order to focus on more important task during the next iteration.
