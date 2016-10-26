@@ -48,11 +48,13 @@ Users can receive browser-notifications or emails when their subscribed calendar
 ## Why users should choose our product
 In our modern society, people often forget or don’t know what events are happening simply 
 because there are just so much going on around them. People stared to utilize their 
-electronic calendars to remind them what their schedule is like and what they need to do next.  
+electronic calendars to remind them what their schedule is like and what they need to do next.
+
 However it is often irritating to add events to their calendars. Our 
 PubCal comes to rescue. PubCal allows organizations, communities, and various groups to 
 add their own calendars to a centralized repository so that users can save their time of manually typing them up. 
-Users can also create their own personal calendars to share them to their friends and families, or even strangers.  
+Users can also create their own personal calendars to share them to their friends and families, or even strangers. 
+
 Users don’t have to worry about changes in the calendars they subscribe to because of our update system.
 Moreover our app not only allows users to keep track of what is going on in life, but also allows them to explore 
 different events going on in their local communities. PubCal connects communities and bring people closer 
