@@ -101,3 +101,5 @@ Artifacts
 * Interactive mockups of the interface for the main pages of the app
 * UML diagrams of the main classes
 * MongoDB data model in text format
+
+![alt tag](https://raw.githubusercontent.com/csc301-fall-2016/project-team-18/master/artifacts/Account%20settings.png?token=AQ23kNbq6LNmcCnmt-9VfkEL2W30s0zfks5YGX9SwA%3D%3D)
