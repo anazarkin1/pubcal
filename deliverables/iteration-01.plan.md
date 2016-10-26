@@ -103,3 +103,12 @@ Artifacts
 * MongoDB data model in text format
 
 ![alt tag](https://raw.githubusercontent.com/csc301-fall-2016/project-team-18/master/artifacts/Account%20settings.png?token=AQ23kNbq6LNmcCnmt-9VfkEL2W30s0zfks5YGX9SwA%3D%3D)
+![alt tag](https://raw.githubusercontent.com/csc301-fall-2016/project-team-18/master/artifacts/AddCalendar.png?token=AQ23kLWU7lKWAJ7AIDlm7wfUAy6BaYaYks5YGX-0wA%3D%3D)
+![alt tag](https://raw.githubusercontent.com/csc301-fall-2016/project-team-18/master/artifacts/Calendar%20Page.png?token=AQ23kJdVjzhMAWy0UeYeRYCQ7cA5SBpOks5YGX-3wA%3D%3D)
+![alt tag](https://raw.githubusercontent.com/csc301-fall-2016/project-team-18/master/artifacts/Created%20calendar.png?token=AQ23kHiQ76sjo77Z4QClu1UJSIL_0OqJks5YGX-6wA%3D%3D)
+![alt tag](https://raw.githubusercontent.com/csc301-fall-2016/project-team-18/master/artifacts/Front%20page.png?token=AQ23kONsyhsQOwX6M3nSGP1lE_RGaNnxks5YGX-8wA%3D%3D)
+![alt tag](https://raw.githubusercontent.com/csc301-fall-2016/project-team-18/master/artifacts/Login.png?token=AQ23kEXb5rLtexUicfV4J-WALF0lI7F-ks5YGX--wA%3D%3D)
+![alt tag](https://raw.githubusercontent.com/csc301-fall-2016/project-team-18/master/artifacts/LoginWithOptions.png?token=AQ23kPDGph6WpNmSsVlgK7LGwWCBdACCks5YGX_BwA%3D%3D)
+![alt tag](https://raw.githubusercontent.com/csc301-fall-2016/project-team-18/master/artifacts/Profile%20page.png?token=AQ23kMog_2sq99mKDq6IrhCptlds0McQks5YGX_EwA%3D%3D)
+![alt tag](https://raw.githubusercontent.com/csc301-fall-2016/project-team-18/master/artifacts/Search%20result.png?token=AQ23kEX3Wg8nE5CBOsocUG3lmvtCtcasks5YGX_HwA%3D%3D)
+![alt tag](https://raw.githubusercontent.com/csc301-fall-2016/project-team-18/master/artifacts/Signup.png?token=AQ23kJHGb6OGt0moQAfBKJrMSGGVdjRRks5YGX_KwA%3D%3D)
