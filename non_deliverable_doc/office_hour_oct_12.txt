@@ -1,9 +1,0 @@
-Different kinds of mock ups: Rough sketch -> wireframe -> low-fidelity design -> high fidelity -> Prototype
-
-
-Rough sketch: paper, board
-Wireframe: Balsamiq
-
-Mock ups don’t have to be html/css. Drawing on paper would work too.
-Address other similar products out there such as Facebook event and google calendar. Explain why our product is better. There are still people that use pen and paper for their own calendar.
-
