@@ -12,7 +12,7 @@
 #### Roles & responsibilities
 
 * Frontend: Barry, Navie
-* Backend: Alex, Eddie, and Nathan
+* Backend: Eddie,Alex and Nathan
 
 
 #### Events
