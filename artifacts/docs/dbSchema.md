@@ -37,19 +37,20 @@ Calendars: {
                 {
                 "name": STRING,
                 "description": STRING,
-                "start-date": DATE, 
-                "end-date": DATE, 
+                "start": DATE, 
+                "end": DATE, 
                 "location": STRING,
-                "isAllDay": BOOLEAN,
-                "repeating":[
+                "allDay": BOOLEAN,
+                "repeating":{
                                 freq: STRING,
                                 count: NUMBER,
                                 interval: NUMBER,
                                 until: DATE,
                                 byDay: [STRING], 
                                 byMonth: [NUMBER], 
-                                byMonthDay: [NUMBER], 
-                            ]
+                                byMonthDay: [NUMBER]
+                             }
+                            
                 
                 
                 },
