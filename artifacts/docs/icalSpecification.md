@@ -28,8 +28,7 @@ WARNING:    We are implementing a limited set of iCal specifications here, const
                     end:    DATE,
                     timezone:   STRING,      //OPTIONAL?
                     allDay:     BOOLEAN,     //if true-->event is for whole day
-                    repeating:[
-                                {
+                    repeating:{
                                     freq: 'MONTHLY', // required 
                                     count: 5,
                                     interval: 2,
@@ -38,10 +37,8 @@ WARNING:    We are implementing a limited set of iCal specifications here, const
                                     byMonth: [1, 2], // repeat only in january und february, 
                                     byMonthDay: [1, 15], // repeat only on the 1st and 15th 
                                     exclude: [new Date('Dec 25 2013 00:00:00 UTC')] // NOT IMPLEMENTED BY US exclude these dates 
-                                },
-                                {}
-                              ]
-                },
+                                }
+                 },
                 {}
                ]
         
