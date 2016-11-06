@@ -70,7 +70,7 @@ class DBClient {
             console.error(err);
         })
     }
-    // returns number of document that matches provided email & password. 
+    // returns number of document that matches provided email & password.
     static matchUserPassword(email, password){
         let database = null;
         connectToDB()
@@ -92,7 +92,7 @@ class DBClient {
 
     // checks availability of provided username.
     // - returns 0 if username is available to be used.
-    // - returns 1 if username is already in use. 
+    // - returns 1 if username is already in use.
     // - returns 2 if username is invalid (i.e. wrong format).
     static validateUsername(username){
 
@@ -122,8 +122,8 @@ class DBClient {
                 }
 
             }
-            
-            
+
+
         })
         .then((result) => {
             console.log(result);
@@ -137,11 +137,11 @@ class DBClient {
 
     // returns number of document that returns provided email address.
     // - returns 0 if username is available to be used.
-    // - returns 1 if username is already in use. 
+    // - returns 1 if username is already in use.
     // - returns 2 if username is invalid (i.e. wrong format).
     static validateEmail(email){
         let emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    
+
         let database = null;
         connectToDB()
         .then((db)=> {
@@ -149,7 +149,7 @@ class DBClient {
             return db.collection('users');
         })
         .then((users) => {
-            if users.find({$and:[{"email": email}]}).count()==1){ // email already in use
+            if (users.find({$and:[{"email": email}]}).count()==1){ // email already in use
                 return 1;
             } else {
                 if (emailRegex.test(email)){ // email valid & available
@@ -162,7 +162,7 @@ class DBClient {
 
                 }
             }
-            
+
         })
         .then((result) => {
             console.log(result);
