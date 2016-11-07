@@ -70,6 +70,25 @@ class DBClient {
             console.error(err);
         })
     }
+
+    static lookupUser(email) {
+        let database = null;
+        connectToDB()
+        .then((db) => {
+            database = db;
+            return db.collection('users');
+        })
+        .then((users) => {
+            return users.find(email);
+        })
+        .then((result) => {
+            console.log(result);
+            database.close();
+        })
+        .catch((err) => {
+            console.error(err);
+        })
+    }
     // returns number of document that matches provided email & password.
     static matchUserPassword(email, password){
         let database = null;

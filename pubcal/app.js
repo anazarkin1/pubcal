@@ -34,13 +34,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Session settings here.
-app.use(session({
-    cookieName: 'session',
-    secret: 'shush',
-    duration: 30 * 60 * 1000, // each session is active for 30 minutes 
-    activeDuration: 5 * 60 * 1000, // any user interaction lengthen the session by 5 minutes.
-}));
+
 
 app.use('/', routes);
 app.use('/users', users);
