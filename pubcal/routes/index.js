@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const DBClient = require('../models/index');
-const ObjectID = require('mongodb').ObjectID;
+const session = require('client-sessions');
 
 
-// Session settings here.
+// session settings here
 router.use(session({
     cookieName: 'session',
     secret: 'shush',
@@ -14,25 +14,17 @@ router.use(session({
 
 // middleware to handle session logic on each request
 router.use(function(req, res, next){
-	if (req.session && req.session.user){
-		var user = DBClient.lookupUser(req.session.user.email);
-		if (user) {
-			req.user = user;
-			delete req.user.password;
-			req.session.user = user;
-			res.locals.user = user;
-		}
-
-		next();
-	} else {
-		next();
-	}
+    if (req.session && req.session.user){
+        DBClient.lookupUser(req, res, next);
+    } else {
+        next();
+    }
 });
 
 // function to ensure that a user is logged in when accessing login-required pages.
 function requireLogin(req, res, next) {
 	if (!req.user){
-		res.redirect('/login');
+		res.redirect('/');
 	} else {
 		next();
 	}
@@ -40,39 +32,32 @@ function requireLogin(req, res, next) {
 
 // GET home page.
 router.get('/', function(req, res, next) {
-    DBClient.addUser({ name: 'Mioo Do', age: 89 });
-    DBClient.updateUser(
-        { name: 'Mioo Do' },
-        { $set:  {age: 38} });
-    DBClient.findAllUsers();
-    res.render('index', { title: 'Express' });
+	if (!(req.session && req.session.user)){
+		res.render('index_sample', { title: 'Express' });
+	} else {
+		res.render('profile_sample', {
+			// passing current user's email address for testing 
+			email: req.session.user.email
+		});
+	}
+    
 });
 
 // Handles profile requests. (host/profile)
 router.get('/profile', requireLogin, function(req, res){
 
-	res.render('profile');
-
+	res.render('profile_sample', {
+		// passing current user's email address for testing 
+		email: req.session.user.email
+	});
 });
 
 // Handle login requests
 router.post('/login', function(req, res){
-	
-	// validate user id and password combination
-	var user = DBClient.matchUserPassword(req.body.email, req.body.password);
-	
-	if (matchResult){// if successful, render profile page
-
-		// TODO: give the user a unique session 
-		req.session.user = user;
-		res.render('profile');
-
-	} else {// if not, ask for right combination
-
-		res.render('login');
-	}
-	
-
+	var user = null;
+	var email = req.body.email;
+	var password = req.body.password;
+	DBClient.matchUserPassword(email, password, req, res);
 
 });
 
@@ -87,65 +72,34 @@ router.post('/signup', function(req, res){
 
 	// TODO: Figure out if users are required to provide additional account info
 
-	var email = req.body.email;
+	var email = req.body.emailNew;
 	var username = req.body.username;
-	var password = req.body.password;
+	var password = req.body.passwordNew;
+	var passwordConfirm = req.body.confirmPassword;
 
-	if (DBClient.validateUsername(username)==0 && DBClient.validateEmail(email)==0){ //both username and email valid & available
+	if (password.length < 8){ // prompt user to provide different password
 
-		// Create new user object
-		var objectId = newObjectID();
-		var newUser = {
-			_id: objectId,
-			username: username,
-			password: password,
-			email: email,
-			subscribed_to: []
-		}
-
-		// adding new user to the database
-		DBClient.addUser(newUser);
-
-
-	} else if (DBClient.validateUsername(username) == 1) { // prompt user to provide different email
-		res.render('signup', {
-			errors: "email already in use"
-		});
-
-	} else if (DBClient.validateEmail(email) == 1) { // prompt user to provide different username
-		res.render('signup', {
-			errors: "username already in use"
-		});
-
-	} else if (DBClient.validateUsername(username) == 2){ // prompt user that username is invalid
-
-		res.render('signup', {
-			errors: "username invalid format"
-		});
-
-	} else if (DBClient.validateEmail(email) == 2){  // prompt user that email is invalid
-
-		res.render('signup', {
-			errors: "email invalid format"
-		});
-
-	} else if (password.length < 8){ // prompt user to provide different password
-
-		res.render('signup', {
+		res.render('index_sample', {
 			errors: "password must be at least 8 characters"
 		});
+	} else if (!(password === passwordConfirm)) {
+		res.render('index_sample', {
+			errors: "confirmPassword is different"
+		});
 	}
-
-
+	DBClient.checkUsernameEmailExistsThenAddUser(email, username, password, req, res);
 
 });
 
 
 // Handle logout requests
-router.post('logout', function(req, res){
+router.post('/logout', function(req, res){
 
 	// should reset session first
-	req.session.reset();
+	if (req.session){
+		req.session.reset();
+	}
+	
 
 	// redirect user to the index page
 	res.redirect('/');

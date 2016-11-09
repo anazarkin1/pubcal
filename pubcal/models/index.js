@@ -1,5 +1,6 @@
+/* MODEL INDEX JS */
 const mongoClient = require('mongodb').MongoClient;
-
+const assert = require('assert');
 const connectToDB = () => {
     let url = process.env.MONGO_URL;
     return new Promise((resolve, reject) => {
@@ -70,8 +71,9 @@ class DBClient {
             console.error(err);
         })
     }
+    
 
-    static lookupUser(email) {
+    static lookupUser(req,res, next) {
         let database = null;
         connectToDB()
         .then((db) => {
@@ -79,119 +81,123 @@ class DBClient {
             return db.collection('users');
         })
         .then((users) => {
-            return users.find(email);
+            return users.findOne({"email": req.session.user.email});
         })
         .then((result) => {
+            console.log("result from lookupUser");
             console.log(result);
+            if (result) {
+                req.user = result;
+                delete req.user.password;
+                req.session.user = result;
+                res.locals.user = result;
+            }
+            next();
             database.close();
         })
         .catch((err) => {
             console.error(err);
         })
     }
+
     // returns number of document that matches provided email & password.
-    static matchUserPassword(email, password){
+    static matchUserPassword(email, password, req, res){
         let database = null;
+        
         connectToDB()
         .then((db)=> {
             database = db;
             return db.collection('users');
         })
         .then((users) => {
-            return users.find({$and:[{"email": email}, {"password": password}]});
+            return users.findOne({$and:[{"email": email}, {"password": password}]});
         })
-        .then((result) => {
-            console.log(result);
+       .then((result) => {
+            if (result){
+                req.session.user = result;
+                res.render('profile_sample', {
+                    email: req.session.user.email
+                });
+            } else {
+                res.redirect('/');
+            }
             database.close();
         })
         .catch((err) => {
             console.error(err);
         })
+        
     }
 
-    // checks availability of provided username.
-    // - returns 0 if username is available to be used.
-    // - returns 1 if username is already in use.
-    // - returns 2 if username is invalid (i.e. wrong format).
-    static validateUsername(username){
-
-        // TODO: add more restriction to the whitelist
+    static checkUsernameEmailExistsThenAddUser(email, username, password, req, res){
+        let database = null;
         let usrRegex = new RegExp("^[a-zA-Z0-9äöüÄÖÜ]*$");
-        let database = null;
-        connectToDB()
-        .then((db)=> {
-            database = db;
-            return db.collection('users');
-        })
-        .then((users) => {
-
-            if (users.find({$and:[{"username": username}]}).count() == 1){ //username already in use
-
-                return 1;
-
-            } else {
-
-                if (usrRegex.test(username)) { //username valid & available
-
-                    return 0;
-
-                } else { //username invalid
-
-                    return 2;
-                }
-
-            }
-
-
-        })
-        .then((result) => {
-            console.log(result);
-            database.close();
-        })
-        .catch((err) => {
-            console.error(err);
-        })
-
-    }
-
-    // returns number of document that returns provided email address.
-    // - returns 0 if username is available to be used.
-    // - returns 1 if username is already in use.
-    // - returns 2 if username is invalid (i.e. wrong format).
-    static validateEmail(email){
         let emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
-        let database = null;
         connectToDB()
         .then((db)=> {
             database = db;
             return db.collection('users');
         })
-        .then((users) => {
-            if (users.find({$and:[{"email": email}]}).count()==1){ // email already in use
-                return 1;
-            } else {
-                if (emailRegex.test(email)){ // email valid & available
+         .then((users) => {
+            users.findOne({"username": username}).then((result)=>{
+                console.log("the result is: " + JSON.stringify(result));
+                if (result){
 
-                    return 0;
+                    res.render('index_sample', {
+                        errors: "username already in use"
+                    });
+                } else {
+                    users.findOne({"email": email}).then((result)=>{
+                        console.log("the result is: " + JSON.stringify(result));
+                        if (result){
+                            console.log("the result is: " + JSON.stringify(result));
+                            res.render('index_sample', {
+                                errors: "email already in use"
+                            });
+                        } else {
+                             if (!usrRegex.test(username)){
+                                res.render('index_sampe', {
+                                    errors: "username invalid format"
+                                });
 
-                } else { // email invalid
+                            } else if (!emailRegex.test(email)){
+                                res.render('index_sample', {
+                                    errors: "email invalid format"
+                                });
+                            } else {
+                                // Create new user object
+                        
+                                var newUser = {
+                                    
+                                    username: username,
+                                    password: password,
+                                    email: email,
+                                    subscribed_to: []
+                                }
 
-                    return 2;
+                                // adding new user to the database
+                                users.insert(newUser).then((result) =>{
 
+                                    req.user = result;
+                                    delete req.user.password;
+                                    req.session.user = result;
+                                    res.locals.user = result;
+                                  
+                        
+                                    res.render('profile_sample', {
+                                        email: req.session.user.email
+                                    });
+                                    database.close();
+                                })
+                            }
+                        }
+                    })
                 }
-            }
-
-        })
-        .then((result) => {
-            console.log(result);
-            database.close();
-        })
+            })
+        })   
         .catch((err) => {
             console.error(err);
         })
-
-
     }
 }
 
