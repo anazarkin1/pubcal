@@ -3,7 +3,6 @@ const router = express.Router();
 const DBClient = require('../models/index');
 const session = require('client-sessions');
 
-
 // session settings here
 router.use(session({
     cookieName: 'session',
@@ -13,7 +12,7 @@ router.use(session({
 }));
 
 // middleware to handle session logic on each request
-router.use(function(req, res, next){
+router.use((req, res, next) => {
     if (req.session && req.session.user){
         DBClient.lookupUser(req, res, next);
     } else {
@@ -23,15 +22,14 @@ router.use(function(req, res, next){
 
 // function to ensure that a user is logged in when accessing login-required pages.
 function requireLogin(req, res, next) {
-	if (!req.user){
+	if (!req.user) {
 		res.redirect('/');
 	} else {
 		next();
 	}
-};
+}
 
-// GET home page.
-router.get('/', function(req, res, next) {
+router.get('/', (req, res) => {
 	if (!(req.session && req.session.user)){
 		res.render('index_sample', { title: 'Express' });
 	} else {
@@ -40,12 +38,10 @@ router.get('/', function(req, res, next) {
 			email: req.session.user.email
 		});
 	}
-    
 });
 
 // Handles profile requests. (host/profile)
-router.get('/profile', requireLogin, function(req, res){
-
+router.get('/profile', requireLogin, (req, res) => {
 	res.render('profile_sample', {
 		// passing current user's email address for testing 
 		email: req.session.user.email
@@ -53,18 +49,14 @@ router.get('/profile', requireLogin, function(req, res){
 });
 
 // Handle login requests
-router.post('/login', function(req, res){
-	var user = null;
+router.post('/login', (req, res) => {
 	var email = req.body.email;
 	var password = req.body.password;
 	DBClient.matchUserPassword(email, password, req, res);
-
 });
 
-
 // Handle signup requests
-router.post('/signup', function(req, res){
-
+router.post('/signup', (req, res) => {
 	// take email address -> check if it already exists
 	//					  -> check if valid format
 	// take username -> check if it already exists
@@ -82,29 +74,26 @@ router.post('/signup', function(req, res){
 		res.render('index_sample', {
 			errors: "password must be at least 8 characters"
 		});
-	} else if (!(password === passwordConfirm)) {
+	} else if (password !== passwordConfirm) {
 		res.render('index_sample', {
 			errors: "confirmPassword is different"
 		});
 	}
-	DBClient.checkUsernameEmailExistsThenAddUser(email, username, password, req, res);
-
+	DBClient.addUser(email, username, password, req, res);
 });
-
 
 // Handle logout requests
-router.post('/logout', function(req, res){
-
+router.post('/logout', (req, res) => {
 	// should reset session first
-	if (req.session){
+	if (req.session) {
 		req.session.reset();
 	}
-	
-
-	// redirect user to the index page
 	res.redirect('/');
-
 });
 
+router.get('/searchForCalenders', (req, res) => {
+    let tag = req.body.tag;
+    DBClient.searchForCalendars(tag, res);
+});
 
 module.exports = router;

@@ -15,13 +15,13 @@ Users: {
 
 Calendars: {
 
+    _id: INTEGER
+    
     name: STRING
     
     description: STRING
     
     tags: [tag1,tag2,...,tagn](reference?)
-    
-    url: STRING
     
     filepath: STRING
     
