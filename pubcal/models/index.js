@@ -33,25 +33,6 @@ class DBClient {
         })
     }
 
-    static findAllUsers() {
-        let database = null;
-        connectToDB()
-        .then((db) => {
-            database = db;
-            return db.collection('users');
-        })
-        .then((users) => {
-            return users.find();
-        })
-        .then((result) => {
-            console.log(result);
-            database.close();
-        })
-        .catch((err) => {
-            console.error(err);
-        })
-    }
-
     static lookupUser(req,res, next) {
         let database = null;
         connectToDB()
@@ -82,7 +63,7 @@ class DBClient {
     }
 
     // returns number of document that matches provided email & password.
-    static matchUserPassword(email, password, req, res){
+    static login(email, password, req, res){
         let database = null;
         connectToDB()
         .then((db)=> {
@@ -153,7 +134,7 @@ class DBClient {
 
                                 // adding new user to the database
                                 users.insert(newUser)
-                                    .then((result) =>{
+                                    .then((result) => {
                                         req.user = result;
                                         delete req.user.password;
                                         req.session.user = result;
@@ -175,7 +156,7 @@ class DBClient {
         })
     }
 
-    static searchForCalendars(tag, res, next) {
+    static searchForCalendars(tag, res) {
         let database = null;
         connectToDB()
             .then((db) => {
@@ -184,27 +165,25 @@ class DBClient {
             })
             .then((calendars) => {
                 // find calendars where tags contain tag
-                return calendars.find({'tags': tag});
+                return calendars.find({tags: tag});
             })
             .then((result) => {
-                if (!result.length) { // not found
-                    res.render('index_sample', {
-                        errors: 'calendar not found'
-                    });
-                } else {
-                    res.render('calendar_result_sample', {
-                        calendarResult: result
-                    });
-                }
-
+                result.toArray((err, calendars) => {
+                    if (!calendars.length) { // not found
+                        res.render('index_sample', {
+                            errors: 'no calendar matches your request'
+                        });
+                    } else {
+                        res.render('calendar_result_sample', {
+                            calendarResult: JSON.stringify(calendars)
+                        });
+                    }
+                });
                 database.close();
             })
             .catch((err) => {
                 console.error(err);
             })
-    }
-    static reloadIndex(res, message){
-        res.render("index_sample");
     }
 }
 

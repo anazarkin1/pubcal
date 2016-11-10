@@ -52,7 +52,7 @@ router.get('/profile', requireLogin, (req, res) => {
 router.post('/login', (req, res) => {
 	var email = req.body.email;
 	var password = req.body.password;
-	DBClient.matchUserPassword(email, password, req, res);
+	DBClient.login(email, password, req, res);
 });
 
 // Handle signup requests
@@ -91,7 +91,7 @@ router.post('/logout', (req, res) => {
 	res.redirect('/');
 });
 
-router.get('/calenders', (req, res) => {
+router.post('/searchCalendars', (req, res) => {
     let tag = req.body.tag;
     DBClient.searchForCalendars(tag, res);
 });
