@@ -13,8 +13,10 @@ router.use(session({
 
 // middleware to handle session logic on each request
 router.use((req, res, next) => {
-    if (req.session && req.session.user){
-        DBClient.lookupUser(req, res, next);
+    if (req.session && req.session.user) {
+        let email = req.session.user.email;
+        DBClient.findUserByEmail(email, req, res);
+        next();
     } else {
         next();
     }
@@ -64,22 +66,44 @@ router.post('/signup', (req, res) => {
 
 	// TODO: Figure out if users are required to provide additional account info
 
-	var email = req.body.emailNew;
-	var username = req.body.username;
-	var password = req.body.passwordNew;
-	var passwordConfirm = req.body.confirmPassword;
+    let usrRegex = new RegExp('^[a-zA-Z0-9äöüÄÖÜ]*$');
+    let emailRegex = /^(([^<>()\[\]\\.,;:\s@']+(\.[^<>()\[\]\\.,;:\s@']+)*)|('.+'))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-	if (password.length < 8){ // prompt user to provide different password
+	let email = req.body.emailNew;
+	let username = req.body.username;
+	let password = req.body.passwordNew;
+	let passwordConfirm = req.body.confirmPassword;
 
-		res.render('index_sample', {
-			errors: "password must be at least 8 characters"
-		});
-	} else if (password !== passwordConfirm) {
-		res.render('index_sample', {
-			errors: "confirmPassword is different"
-		});
-	}
-	DBClient.addUser(email, username, password, req, res);
+    var errMessage;
+    var hasError = 1;
+    if (!usrRegex.test(username)) { // invalid username. load index with error message
+        errMessage = 'username invalid format';
+    } else if (!emailRegex.test(email)) { // invalid email. load index with error message
+        errMessage = 'email invalid format';
+    } else if (password.length < 8) { // prompt user to provide different password
+        errMessage = "password must be at least 8 characters";
+    } else if (password !== passwordConfirm) {
+        errMessage = "confirmPassword is different";
+    } else {
+        hasError = 0;
+    }
+
+    if (hasError) {
+        res.render('index_sample', {
+            errors: errMessage
+        });
+    }
+
+    DBClient.findUserByEmail(email, req, res)
+        .then((found) => {
+            if (found) {
+                res.render('index_sample', {
+                    errors: 'username already in use'
+                });
+            } else {
+                DBClient.addUser(email, username, password, req, res);
+            }
+        });
 });
 
 // Handle logout requests
