@@ -192,7 +192,9 @@ class DBClient {
                         errors: 'calendar not found'
                     });
                 } else {
-                    res.redirect('calendar_result_sample');
+                    res.render('calendar_result_sample', {
+                        calendarResult: result
+                    });
                 }
 
                 database.close();
