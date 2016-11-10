@@ -63,10 +63,11 @@ class DBClient {
             return users.findOne({'email': req.session.user.email});
         })
         .then((result) => {
-            console.log('result from lookupUser');
-            console.log(result);
-            if (result) {
+
+            if (result) { 
                 // TODO: nathan -> eddie: WHY ASSIGN RESULT TO MULTIPLE VARIABLES
+                // req.user is the important one, it keeps track of the session user.
+                // req.session.user pulls information from cookie which is subject to changes.
                 req.user = result;
                 delete req.user.password;
                 req.session.user = result;
@@ -94,10 +95,10 @@ class DBClient {
         .then((result) => {
             if (result){
                 req.session.user = result;
-                res.render('profile_sample', {
+                res.render('profile_sample', { // when matching user is found, load profile page.
                     email: req.session.user.email
                 });
-            } else {
+            } else { // no matching user is found, load index page
                 res.redirect('/');
             }
             database.close();
@@ -118,32 +119,32 @@ class DBClient {
             })
             .then((users) => {
                 return users.findOne({'username': username})
-            .then((result) => {
-                    console.log('the result is: ' + JSON.stringify(result));
-                if (result) {
-                    res.render('index_sample', {
+            .then((result) => { 
+                    
+                if (result) { // username already in use
+                    res.render('index_sample', {  
                         errors: 'username already in use'
                     });
                 } else {
                     users.findOne({'email': email})
-                        .then((result)=>{
-                        console.log('the result is: ' + JSON.stringify(result));
-                        if (result) {
-                            console.log('the result is: ' + JSON.stringify(result));
-                            res.render('index_sample', {
+                        .then((result)=>{ 
+                        
+                        if (result) { // email already in use
+                            
+                            res.render('index_sample', { // load index with error message
                                 errors: 'email already in use'
                             });
                         } else {
-                             if (!usrRegex.test(username)) {
+                             if (!usrRegex.test(username)) { // invalid username. load index with error message
                                 res.render('index_sampe', {
                                     errors: 'username invalid format'
                                 });
-                            } else if (!emailRegex.test(email)) {
+                            } else if (!emailRegex.test(email)) { // invalid email. load index with error message
                                 res.render('index_sample', {
                                     errors: 'email invalid format'
                                 });
                             } else {
-                                let newUser = {
+                                let newUser = { // create new user object
                                     username: username,
                                     password: password,
                                     email: email,
@@ -174,7 +175,7 @@ class DBClient {
         })
     }
 
-    static searchForCalendars(tag, res) {
+    static searchForCalendars(tag, res, next) {
         let database = null;
         connectToDB()
             .then((db) => {
@@ -193,11 +194,15 @@ class DBClient {
                 } else {
                     res.redirect('calendar_result_sample');
                 }
+
                 database.close();
             })
             .catch((err) => {
                 console.error(err);
             })
+    }
+    static reloadIndex(res, message){
+        res.render("index_sample");
     }
 }
 

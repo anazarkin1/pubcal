@@ -85,15 +85,21 @@ router.post('/signup', (req, res) => {
 // Handle logout requests
 router.post('/logout', (req, res) => {
 	// should reset session first
-	if (req.session) {
-		req.session.reset();
+
+	if (req.user) {
+		req.session.reset();	
+	} else {
+		DBClient.reloadIndex(res, null);
 	}
+
 	res.redirect('/');
 });
 
-router.get('/searchForCalenders', (req, res) => {
+router.get('/searchForCalendars', (req, res) => {
+
     let tag = req.body.tag;
     DBClient.searchForCalendars(tag, res);
+
 });
 
 module.exports = router;
