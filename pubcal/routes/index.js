@@ -13,11 +13,22 @@ router.use(session({
 
 // middleware to handle session logic on each request
 router.use((req, res, next) => {
-    if (req.session && req.session.user){
-        DBClient.lookupUser(req, res, next);
-    } else {
-        next();
+    if (req.session && req.session.user) {
+        let email = req.session.user.email;
+        DBClient.findUserByEmail(email)
+            .then((result) => {
+                if (result) {
+                    // TODO: nathan -> eddie: WHY ASSIGN RESULT TO MULTIPLE VARIABLES
+                    // req.user is the important one, it keeps track of the session user.
+                    // req.session.user pulls information from cookie which is subject to changes.
+                    req.user = result;
+                    delete req.user.password;
+                    req.session.user = result;
+                    res.locals.user = result;
+                }
+            });
     }
+    next();
 });
 
 // function to ensure that a user is logged in when accessing login-required pages.
@@ -30,6 +41,7 @@ function requireLogin(req, res, next) {
 }
 
 router.get('/', (req, res) => {
+    // TODO: WHY THIS CHECKING CONDITION
 	if (!(req.session && req.session.user)){
 		res.render('index_sample', { title: 'Express' });
 	} else {
@@ -50,9 +62,20 @@ router.get('/profile', requireLogin, (req, res) => {
 
 // Handle login requests
 router.post('/login', (req, res) => {
-	var email = req.body.email;
-	var password = req.body.password;
-	DBClient.login(email, password, req, res);
+	let email = req.body.email;
+	let password = req.body.password;
+
+	DBClient.login(email, password)
+        .then((result) => {
+            if (result) {
+                req.session.user = result;
+                res.render('profile_sample', { // when matching user is found, load profile page.
+                    email: req.session.user.email
+                });
+            } else { // no matching user is found, load index page
+                res.redirect('/');
+            }
+        });
 });
 
 // Handle signup requests
@@ -64,22 +87,60 @@ router.post('/signup', (req, res) => {
 
 	// TODO: Figure out if users are required to provide additional account info
 
-	var email = req.body.emailNew;
-	var username = req.body.username;
-	var password = req.body.passwordNew;
-	var passwordConfirm = req.body.confirmPassword;
+    let usrRegex = new RegExp('^[a-zA-Z0-9äöüÄÖÜ]*$');
+    let emailRegex = /^(([^<>()\[\]\\.,;:\s@']+(\.[^<>()\[\]\\.,;:\s@']+)*)|('.+'))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-	if (password.length < 8){ // prompt user to provide different password
+	let email = req.body.emailNew;
+	let username = req.body.username;
+	let password = req.body.passwordNew;
+	let passwordConfirm = req.body.confirmPassword;
 
-		res.render('index_sample', {
-			errors: "password must be at least 8 characters"
-		});
-	} else if (password !== passwordConfirm) {
-		res.render('index_sample', {
-			errors: "confirmPassword is different"
-		});
-	}
-	DBClient.addUser(email, username, password, req, res);
+    let errMessage;
+    var hasError = 1;
+    if (!usrRegex.test(username)) { // invalid username. load index with error message
+        errMessage = 'username invalid format';
+    } else if (!emailRegex.test(email)) { // invalid email. load index with error message
+        errMessage = 'email invalid format';
+    } else if (password.length < 8) { // prompt user to provide different password
+        errMessage = "password must be at least 8 characters";
+    } else if (password !== passwordConfirm) {
+        errMessage = "confirmPassword is different";
+    } else {
+        hasError = 0;
+    }
+
+    if (hasError) {
+        res.render('index_sample', {
+            errors: errMessage
+        });
+    }
+
+    DBClient.findUserByEmail(email)
+        .then((result) => {
+            if (result) {
+                res.render('index_sample', {
+                    errors: 'username already in use'
+                });
+            } else {
+                let user = {
+                    username: username,
+                    password: password,
+                    email: email,
+                    subscribed_to: []
+                };
+                DBClient.addUser(user)
+                    .then((result) => {
+                        req.user = result;
+                        delete req.user.password;
+                        req.session.user = result;
+                        res.locals.user = result;
+
+                        res.render('profile_sample', {
+                            email: req.session.user.email
+                        });
+                    });
+            }
+        });
 });
 
 // Handle logout requests
@@ -93,7 +154,17 @@ router.post('/logout', (req, res) => {
 
 router.post('/searchCalendars', (req, res) => {
     let tag = req.body.tag;
-    DBClient.searchForCalendars(tag, res);
+    DBClient.searchForCalendars(tag, (result) => {
+        if (!result.length) { // not found
+            res.render('index_sample', {
+                errors: 'no calendar matches your request'
+            });
+        } else {
+            res.render('calendar_result_sample', {
+                calendarResult: JSON.stringify(result)
+            });
+        }
+    })
 });
 
 module.exports = router;
