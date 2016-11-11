@@ -88,37 +88,40 @@ html.no-js
               button(id="close") close
               form(id="loginForm" class="form" action="login" method="post")
                   section(class="span12 text-center")
-                      h3(id="inputField") Login
+                      h2(class="formTitle") Login
+                          br
+                          br
                           section
                               label(for="email" class="inputField") Email address
                               input(id="emailEx" class="inputField" type="email" name ="email" placeholder="Enter your email")
+                              br
                               br
                               label(id="pwdField" for="password") Password
                               input(id="passwordEx" class="inputField" type="password" name="password" placeholder="Enter your password")
                           section
                               input(id="existingClient" class="button" type="submit" value="Login")
-              form(id="signupForm" action="signup" method="post" hidden="")
-                  h3(class="inputField") Sign Up
-                    section(id="usernameField" class="span12")
+              form(id="signupForm" class="form" action="signup" method="post" hidden="")
+                  section(class="span12 text-center")
+                      h2(class="formTitle") Sign Up
+                        br
+                        br
                         label(class="inputField" for="username") Username
                         input(id="usernameNew" class="inputField" type="text" name ="username" placeholder="Choose a Username")
-                    p(class="error" id="error_user")
-                    section(id="emailField" class="span12 m_b_10x")
+                        br
+                        br
                         label(class="inputField" for="email" id="m_b_30x") Email address
                         input(id="emailNew" class="inputField" type="email" name ="emailNew" placeholder="Enter your email")
-                    section(id="passwordField" class="span12 m_b_10x")
+                        br
+                        br
                         label(class="inputField" for="password") Password
                         input(class="inputField" id="passwordNew" type="password" name="passwordNew")
-                    section(id="confirmPasswordField" class="span12 m_b_10x")
+                        br
+                        br
                         label(id="inputField6" for="password") Confirm password
                         input(id="passwordNewConfirm" class="inputField" type="password"  name="confirmPassword")
-                    section(id="passnew" class="span12")
-                    section(class="span12 text-center")
+                        br
+                        br
                         input(id="newClient" class="button" type="submit" value="Sign Up")
-                    section
-                        h3
-                        span=errors
-
 
       .bottom-footer
         .container
