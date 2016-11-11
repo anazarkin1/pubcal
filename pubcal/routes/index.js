@@ -8,7 +8,7 @@ const UserClient = require('../models/users');
 router.use(session({
     cookieName: 'session',
     secret: 'shush',
-    duration: 30 * 60 * 1000, // each session is active for 30 minutes 
+    duration: 30 * 60 * 1000, // each session is active for 30 minutes
     activeDuration: 5 * 60 * 1000, // any user interaction lengthen the session by 5 minutes.
 }));
 
@@ -44,10 +44,10 @@ function requireLogin(req, res, next) {
 router.get('/', (req, res) => {
     // TODO: WHY THIS CHECKING CONDITION
 	if (!(req.session && req.session.user)){
-		res.render('index_sample', { title: 'Express' });
+		res.render('index', { title: 'Express' });
 	} else {
 		res.render('profile_sample', {
-			// passing current user's email address for testing 
+			// passing current user's email address for testing
 			email: req.session.user.email
 		});
 	}
@@ -56,7 +56,7 @@ router.get('/', (req, res) => {
 // Handles profile requests. (host/profile)
 router.get('/profile', requireLogin, (req, res) => {
 	res.render('profile_sample', {
-		// passing current user's email address for testing 
+		// passing current user's email address for testing
 		email: req.session.user.email
 	});
 });
