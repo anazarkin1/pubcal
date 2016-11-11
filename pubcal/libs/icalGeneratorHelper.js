@@ -1,34 +1,7 @@
 "use strict";
 const ical = require('ical-generator'); //Used to generate ICAL files
+const uuid = require('uuid');   //Used to generate random names for calendars
 const path = require('path');
-
-//@formatter:off
-/*
- `newCal` is a JSON with data about a calendar that needs to be craete, with the following structure:
- For more information: https://www.npmjs.com/package/ical-generator
-{
-    domain: 'DOMAIN',
-    name: 'CALENDARNAME'
-    events: [
-        {
-            start: 'Date()', !! start's value is a string that was generate from Date object
-            end: 'Date()',
-            timestamp: 'Date()',
-            summary: 'EVENTSUMMARY',
-            organizer: 'ORGANIZER'
-        },...
-    ]
-}
-
-RETURNS: {
-            status: 'success'|'failed', !! if failed, the rest keys are not supplied
-            path: 'file_path_to_created_calendar',
-            url: 'url_to_created_calendar'
-         }
-
- */
-//@formatter:on
-
 
 exports.createCalendar = function createCalendar(newCal) {
     //Convert date from strings to Date objects
@@ -36,18 +9,22 @@ exports.createCalendar = function createCalendar(newCal) {
         newCal.events.map(convertEvent);
     }
 
-    //add path (TODO: add autogenerating path, ITS FIXED NOW
-    let calPath = path.join(__dirname, '../calendars/generatedCal.ics');
+    //add path (TODO: add autogenerating path
+    let newName = uuid.v4().substr(0, 7);
+    let calPath = path.join(__dirname, '../calendars/' + newName + '.ics');
 
     let cal = ical(newCal);
-    cal.saveSync(calPath);
-    return cal;
+    //Save to directory with all calendars
+    if (cal != null) {
+        cal.saveSync(calPath);
+        return calPath;
+    } else {
+        return null;
+    }
+
 
 };
-/*
- Array of JSON dicts each representing an event, each value of such a dict is a string
 
- */
 
 function convertEvent(item, index) {
     let eventDateKeys = ['start', 'end'];
