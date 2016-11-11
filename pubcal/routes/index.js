@@ -152,6 +152,18 @@ router.post('/logout', (req, res) => {
 	res.redirect('/');
 });
 
+router.post('/addCalendar', (req, res) => {
+    // TODO: ASSUME NOW WE HAVE THE CALENDAR OBJECT
+    let  calendar = req.body.calendar;
+    DBClient.addCalendar(calendar)
+        .then((result) => {
+            if (result) {
+                // TODO: RENDER SUCCESS MESSAGE
+                res.render();
+            }
+        });
+});
+
 router.post('/searchCalendars', (req, res) => {
     let tag = req.body.tag;
     DBClient.searchForCalendars(tag, (result) => {
@@ -165,6 +177,31 @@ router.post('/searchCalendars', (req, res) => {
             });
         }
     })
+});
+
+router.post('/updateCalendar', (req, res) => {
+    // TODO: ASSUME NOW WE HAVE THE FILTER AND UPDATE
+    let filter = req.body.filter;
+    let update = req.body.update;
+    DBClient.updateCalendar(filter, update)
+        .then((result) => {
+            if (result) {
+                // TODO: RENDER SUCCESS MESSAGE
+                res.render();
+            }
+        });
+});
+
+router.post('/removeCalendar', (req, res) => {
+    // TODO: ASSUME NOW WE HAVE THE FILTER
+    let filter = req.body.filter;
+    DBClient.removeCalendar(filter)
+        .then((result) => {
+            if (result) {
+                // TODO: RENDER SUCCESS MESSAGE
+                res.render();
+            }
+        });
 });
 
 module.exports = router;
