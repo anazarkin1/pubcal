@@ -15,11 +15,20 @@ router.use(session({
 router.use((req, res, next) => {
     if (req.session && req.session.user) {
         let email = req.session.user.email;
-        DBClient.findUserByEmail(email, req, res);
-        next();
-    } else {
-        next();
+        DBClient.findUserByEmail(email)
+            .then((result) => {
+                if (result) {
+                    // TODO: nathan -> eddie: WHY ASSIGN RESULT TO MULTIPLE VARIABLES
+                    // req.user is the important one, it keeps track of the session user.
+                    // req.session.user pulls information from cookie which is subject to changes.
+                    req.user = result;
+                    delete req.user.password;
+                    req.session.user = result;
+                    res.locals.user = result;
+                }
+            });
     }
+    next();
 });
 
 // function to ensure that a user is logged in when accessing login-required pages.
@@ -32,6 +41,7 @@ function requireLogin(req, res, next) {
 }
 
 router.get('/', (req, res) => {
+    // TODO: WHY THIS CHECKING CONDITION
 	if (!(req.session && req.session.user)){
 		res.render('index_sample', { title: 'Express' });
 	} else {
@@ -85,7 +95,7 @@ router.post('/signup', (req, res) => {
 	let password = req.body.passwordNew;
 	let passwordConfirm = req.body.confirmPassword;
 
-    var errMessage;
+    let errMessage;
     var hasError = 1;
     if (!usrRegex.test(username)) { // invalid username. load index with error message
         errMessage = 'username invalid format';
@@ -105,14 +115,30 @@ router.post('/signup', (req, res) => {
         });
     }
 
-    DBClient.findUserByEmail(email, req, res)
-        .then((found) => {
-            if (found) {
+    DBClient.findUserByEmail(email)
+        .then((result) => {
+            if (result) {
                 res.render('index_sample', {
                     errors: 'username already in use'
                 });
             } else {
-                DBClient.addUser(email, username, password, req, res);
+                let user = {
+                    username: username,
+                    password: password,
+                    email: email,
+                    subscribed_to: []
+                };
+                DBClient.addUser(user)
+                    .then((result) => {
+                        req.user = result;
+                        delete req.user.password;
+                        req.session.user = result;
+                        res.locals.user = result;
+
+                        res.render('profile_sample', {
+                            email: req.session.user.email
+                        });
+                    });
             }
         });
 });

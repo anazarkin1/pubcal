@@ -33,9 +33,8 @@ class DBClient {
         })
     }
 
-    static findUserByEmail(email, req, res) {
+    static findUserByEmail(email) {
         let database = null;
-        var found = false;
         return connectToDB()
             .then((db) => {
                 database = db;
@@ -45,18 +44,8 @@ class DBClient {
                 return users.findOne({'email': email});
             })
             .then((result) => {
-                if (result) {
-                    // TODO: nathan -> eddie: WHY ASSIGN RESULT TO MULTIPLE VARIABLES
-                    // req.user is the important one, it keeps track of the session user.
-                    // req.session.user pulls information from cookie which is subject to changes.
-                    req.user = result;
-                    delete req.user.password;
-                    req.session.user = result;
-                    res.locals.user = result;
-                    found = true;
-                }
                 database.close();
-                return found;
+                return result;
             });
     }
 
@@ -80,35 +69,23 @@ class DBClient {
             })
     }
 
-    static addUser(email, username, password, req, res) {
+    static addUser(user) {
         let database = null;
-        connectToDB()
-        .then((db)=> {
-            database = db;
-            return db.collection('users');
-        })
-        .then((users) => {
-            return users.insert({
-                username: username,
-                password: password,
-                email: email,
-                subscribed_to: []
-            });
-        })
-        .then((result) => {
-            req.user = result;
-            delete req.user.password;
-            req.session.user = result;
-            res.locals.user = result;
-
-            res.render('profile_sample', {
-                email: req.session.user.email
-            });
-            database.close();
-        })
-        .catch((err) => {
-            console.error(err);
-        })
+        return connectToDB()
+            .then((db)=> {
+                database = db;
+                return db.collection('users');
+            })
+            .then((users) => {
+                return users.insert(user);
+            })
+            .then((result) => {
+                database.close();
+                return result;
+            })
+            .catch((err) => {
+                console.error(err);
+            })
     }
 
     static searchForCalendars(tag, callback) {
