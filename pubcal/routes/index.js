@@ -52,9 +52,20 @@ router.get('/profile', requireLogin, (req, res) => {
 
 // Handle login requests
 router.post('/login', (req, res) => {
-	var email = req.body.email;
-	var password = req.body.password;
-	DBClient.login(email, password, req, res);
+	let email = req.body.email;
+	let password = req.body.password;
+
+	DBClient.login(email, password)
+        .then((result) => {
+            if (result) {
+                req.session.user = result;
+                res.render('profile_sample', { // when matching user is found, load profile page.
+                    email: req.session.user.email
+                });
+            } else { // no matching user is found, load index page
+                res.redirect('/');
+            }
+        });
 });
 
 // Handle signup requests
@@ -117,7 +128,17 @@ router.post('/logout', (req, res) => {
 
 router.post('/searchCalendars', (req, res) => {
     let tag = req.body.tag;
-    DBClient.searchForCalendars(tag, res);
+    DBClient.searchForCalendars(tag, (result) => {
+        if (!result.length) { // not found
+            res.render('index_sample', {
+                errors: 'no calendar matches your request'
+            });
+        } else {
+            res.render('calendar_result_sample', {
+                calendarResult: JSON.stringify(result)
+            });
+        }
+    })
 });
 
 module.exports = router;
