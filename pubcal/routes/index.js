@@ -1,7 +1,7 @@
+const session = require('client-sessions');
 const express = require('express');
 const router = express.Router();
-const DBClient = require('../models/index');
-const session = require('client-sessions');
+const UserClient = require('../models/index');
 
 // session settings here
 router.use(session({
@@ -15,7 +15,7 @@ router.use(session({
 router.use((req, res, next) => {
     if (req.session && req.session.user) {
         let email = req.session.user.email;
-        DBClient.findUserByEmail(email)
+        UserClient.findUserByEmail(email)
             .then((result) => {
                 if (result) {
                     // TODO: nathan -> eddie: WHY ASSIGN RESULT TO MULTIPLE VARIABLES
@@ -65,7 +65,7 @@ router.post('/login', (req, res) => {
 	let email = req.body.email;
 	let password = req.body.password;
 
-	DBClient.login(email, password)
+	UserClient.login(email, password)
         .then((result) => {
             if (result) {
                 req.session.user = result;
@@ -115,7 +115,7 @@ router.post('/signup', (req, res) => {
         });
     }
 
-    DBClient.findUserByEmail(email)
+    UserClient.findUserByEmail(email)
         .then((result) => {
             if (result) {
                 res.render('index_sample', {
@@ -128,7 +128,7 @@ router.post('/signup', (req, res) => {
                     email: email,
                     subscribed_to: []
                 };
-                DBClient.addUser(user)
+                UserClient.addUser(user)
                     .then((result) => {
                         req.user = result;
                         delete req.user.password;
@@ -150,58 +150,6 @@ router.post('/logout', (req, res) => {
 		req.session.reset();
 	}
 	res.redirect('/');
-});
-
-router.post('/addCalendar', (req, res) => {
-    // TODO: ASSUME NOW WE HAVE THE CALENDAR OBJECT
-    let  calendar = req.body.calendar;
-    DBClient.addCalendar(calendar)
-        .then((result) => {
-            if (result) {
-                // TODO: RENDER SUCCESS MESSAGE
-                res.render();
-            }
-        });
-});
-
-router.post('/searchCalendars', (req, res) => {
-    let tag = req.body.tag;
-    DBClient.searchForCalendars(tag, (result) => {
-        if (!result.length) { // not found
-            res.render('index_sample', {
-                errors: 'no calendar matches your request'
-            });
-        } else {
-            res.render('calendar_result_sample', {
-                calendarResult: JSON.stringify(result)
-            });
-        }
-    })
-});
-
-router.post('/updateCalendar', (req, res) => {
-    // TODO: ASSUME NOW WE HAVE THE FILTER AND UPDATE
-    let filter = req.body.filter;
-    let update = req.body.update;
-    DBClient.updateCalendar(filter, update)
-        .then((result) => {
-            if (result) {
-                // TODO: RENDER SUCCESS MESSAGE
-                res.render();
-            }
-        });
-});
-
-router.post('/removeCalendar', (req, res) => {
-    // TODO: ASSUME NOW WE HAVE THE FILTER
-    let filter = req.body.filter;
-    DBClient.removeCalendar(filter)
-        .then((result) => {
-            if (result) {
-                // TODO: RENDER SUCCESS MESSAGE
-                res.render();
-            }
-        });
 });
 
 module.exports = router;
