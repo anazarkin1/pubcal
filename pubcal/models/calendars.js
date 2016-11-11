@@ -1,21 +1,9 @@
-const mongoClient = require('mongodb').MongoClient;
-const connectToDB = () => {
-    let url = process.env.MONGO_URL;
-    return new Promise((resolve, reject) => {
-        mongoClient.connect(url, (err, db) => {
-            if (err) {
-                reject(err);
-            } else {
-                resolve(db);
-            }
-        });
-    });
-};
+const BaseClient = require('./base');
 
 class CalendarClient {
     static addCalendar(calendar) {
         let database = null;
-        return connectToDB()
+        return BaseClient.connectToDB()
             .then((db) => {
                 database = db;
                 return db.collection('calendars');
@@ -31,7 +19,7 @@ class CalendarClient {
 
     static searchForCalendars(tag, callback) {
         let database = null;
-        connectToDB()
+        BaseClient.connectToDB()
             .then((db) => {
                 database = db;
                 return db.collection('calendars');
@@ -52,7 +40,7 @@ class CalendarClient {
 
     static updateCalendar(filter, update) {
         let database = null;
-        return connectToDB()
+        return BaseClient.connectToDB()
             .then((db) => {
                 database = db;
                 return db.collection('calendars');
@@ -71,7 +59,7 @@ class CalendarClient {
 
     static removeCalendar(filter) {
         let database = null;
-        return connectToDB()
+        return BaseClient.connectToDB()
             .then((db) => {
                 database = db;
                 return db.collection('calendars');

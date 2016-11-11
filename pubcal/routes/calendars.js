@@ -38,7 +38,7 @@ router.post('/addCalendar', (req, res) => {
 
 router.post('/searchCalendars', (req, res) => {
     let tag = req.body.tag;
-    UserClient.searchForCalendars(tag, (result) => {
+    CalendarClient.searchForCalendars(tag, (result) => {
         if (!result.length) { // not found
             res.render('index_sample', {
                 errors: 'no calendar matches your request'
@@ -55,7 +55,7 @@ router.post('/updateCalendar', (req, res) => {
     // TODO: ASSUME NOW WE HAVE THE FILTER AND UPDATE
     let filter = req.body.filter;
     let update = req.body.update;
-    UserClient.updateCalendar(filter, update)
+    CalendarClient.updateCalendar(filter, update)
         .then((result) => {
             if (result) {
                 // TODO: RENDER SUCCESS MESSAGE
@@ -67,7 +67,7 @@ router.post('/updateCalendar', (req, res) => {
 router.post('/removeCalendar', (req, res) => {
     // TODO: ASSUME NOW WE HAVE THE FILTER
     let filter = req.body.filter;
-    UserClient.removeCalendar(filter)
+    CalendarClient.removeCalendar(filter)
         .then((result) => {
             if (result) {
                 // TODO: RENDER SUCCESS MESSAGE
