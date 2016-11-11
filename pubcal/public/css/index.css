@@ -20,5 +20,24 @@
 
 #popup {
     border-style: solid;
+    width: 70%;
+    margin-left: 10%;
     border-width: 5px;
+}
+
+.button {
+    background-color: #2A80B9;
+    border: none;
+    color: white;
+    padding: 10px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.topButton {
+    margin-left: 85%;
 }
