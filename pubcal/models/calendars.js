@@ -14,6 +14,20 @@ const connectToDB = () => {
 };
 
 class CalendarClient {
+    //Used for testing
+    static getRandomCalendar() {
+        return connectToDB()
+            .then((db)=> {
+                return db.collection('calendars');
+            })
+            .then((calendars)=> {
+                return calendars.findOne();
+            })
+            .then((result)=> {
+                return result;
+            });
+    }
+
     static addCalendar(calendar) {
         return connectToDB()
             .then((db) => {
