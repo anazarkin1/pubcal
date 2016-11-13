@@ -25,7 +25,13 @@ router.get('/:id/download', (req, res)=> {
             }
         };
 
-        res.sendFile(filepath, options);
+        res.sendFile(filepath, options, (err)=> {
+            if (err) {
+                console.log("ERROR: failed to serve calendar file: " + err);
+                res.status(404).send("Error, we couldn't find this calendar");
+            }
+
+        });
     }).catch((err)=> {
         console.log("ERROR: failed to serve calendar file: " + err);
         res.send("Error, no such calendar");
