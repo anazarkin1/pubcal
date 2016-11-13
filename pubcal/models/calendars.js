@@ -14,11 +14,6 @@ const connectToDB = () => {
 };
 
 class CalendarClient {
-    //size of the pagination page
-    static get pageSize() {
-        return 10;
-    }
-
     //Used for testing
     static getRandomCalendar() {
         return connectToDB()
@@ -46,19 +41,15 @@ class CalendarClient {
             });
     }
 
-    static searchForCalendars(query, skip = 0, callback) {
+    static searchForCalendars(tag, callback) {
         let database = null;
-        let filter = {$text: {$search: query, $caseSensitive: false}};
         connectToDB()
             .then((db) => {
                 database = db;
                 return db.collection('calendars');
             })
             .then((calendars) => {
-                //TODO: very basic pagination, want to rewrite this in the future to
-                //paginate using id's of previously returned resutls
-                //see https://scalegrid.io/blog/fast-paging-with-mongodb/
-                return calendars.find(filter).skip(skip).limit(this.pageSize);
+                return calendars.find({tags: tag});
             })
             .then((result) => {
                 result.toArray((err, documents) => {

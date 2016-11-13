@@ -45,10 +45,6 @@ router.get('/import', (req, res)=> {
     res.render('calendars/import');
 });
 
-router.get('/search', (req, res)=> {
-    res.render('calendars/search', {results: {}});
-});
-
 //Get particular by id
 //Get /calendars/:id
 router.get('/:id', (req, res)=> {
@@ -112,16 +108,16 @@ router.post('/new', (req, res) => {
 
 //POST /calendars/search
 router.post('/search', (req, res) => {
-    let query = req.body.query;
-    let skip = req.body.skip;
-    CalendarClient.searchForCalendars(query, skip, (result) => {
+    let tag = req.body.tag;
+    UserClient.searchForCalendars(tag, (result) => {
         if (!result.length) { // not found
             res.render('index_sample', {
                 errors: 'no calendar matches your request'
             });
         } else {
-            console.log(result);
-            res.render('calendars/search', {results: result});
+            res.render('calendar_result_sample', {
+                calendarResult: JSON.stringify(result)
+            });
         }
     })
 });
