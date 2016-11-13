@@ -45,12 +45,6 @@ router.get('/import', (req, res)=> {
     res.render('calendars/import');
 });
 
-//Get form for creating a calendar
-//GET /calendars/new
-router.get('/new', (req, res) => {
-    res.render('createCalendar');
-});
-
 //Get particular by id
 //Get /calendars/:id
 router.get('/:id', (req, res)=> {
@@ -68,6 +62,11 @@ router.get('/', (req, res) => {
     res.send('GET list of calendars');
 });
 
+//Get form for creating a calendar
+//GET /calendars/new
+router.get('/new', (req, res) => {
+    res.render('createCalendar');
+});
 
 //Send calendar data to create a new calendar
 //POST /calendars/new
@@ -109,6 +108,7 @@ router.post('/new', (req, res) => {
 
 //POST /calendars/search
 router.post('/search', (req, res) => {
+    let tag = req.body.tag;
     UserClient.searchForCalendars(tag, (result) => {
         if (!result.length) { // not found
             res.render('index_sample', {
@@ -135,10 +135,8 @@ router.put('/:id', (req, res) => {
     CalendarClient.getCalendarById(id).then((oldCalendar)=> {
         //Get old calendar, copy its users and filepath, since we want to preserve this information
         //and frontend doesn't send this to us(for security)
-        if (oldCalendar.hasOwnProperty("users_subsribed"))
-            calendar.users_subscribed = oldCalendar.users_subscribed.slice();
-        if (oldCalendar.hasOwnProperty("filepath"))
-            calendar.filepath = oldCalendar.filepath;
+        calendar.users_subscribed = oldCalendar.users_subscribed.slice();
+        calendar.filepath = oldCalendar.filepath;
         return calendar;
     }).then((newCalendar)=> {
         //Replace calendar object in the database first, newCalendar contains copied users and filepath
@@ -156,7 +154,6 @@ router.put('/:id', (req, res) => {
                             res.json({"status": "success", "id": id});
                         else {
                             //Something went horribly wrong
-                            console.log("filepath :" + filepath, "cal's filepath:" + newCalendar.filepath);
                             console.log("ERROR: Promise returned a different filepath than expected");
                             res.json({"status": "failed"});
                         }
