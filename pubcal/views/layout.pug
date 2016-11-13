@@ -1,7 +1,50 @@
 doctype html
-html
-  head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
-  body
-    block content
+//if lt IE 7
+  html.no-js.lt-ie9.lt-ie8.lt-ie7
+//if IE 7
+  html.no-js.lt-ie9.lt-ie8
+//if IE 8
+  html.no-js.lt-ie9
+// [if gt IE 8] <!
+html.no-js
+    // <![endif]
+    head
+        meta(charset='utf-8')
+        title PubCal
+        meta(name='description', content='Public repository of calendars')
+        meta(name='viewport', content='width=device-width')
+        link(href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800', rel='stylesheet')
+        link(rel='stylesheet', href='/css/bootstrap.css')
+        link(rel='stylesheet', href='/css/normalize.min.css')
+        link(rel='stylesheet', href='/css/font-awesome.min.css')
+        link(rel='stylesheet', href='/css/animate.css')
+        link(rel='stylesheet', href='/css/templatemo-misc.css')
+        link(rel='stylesheet', href='/css/templatemo-style.css')
+        link(rel='stylesheet', href='/css/index.css')
+        script(src='../js/vendor/modernizr-2.6.2.min.js')
+        script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js")
+        script(src='../js/index_front.js')
+    body
+        //if lt IE 7
+          p.chromeframe
+            | You are using an
+            strong outdated
+            |  browser. Please
+            a(href='http://browsehappy.com/') upgrade your browser
+            |  or
+            a(href='http://www.google.com/chromeframe/?redirect=true') activate Google Chrome Frame
+            |  to improve your experience.
+        header.site-header
+            .top-header
+                button(class="topButton button" id="loginButton") login
+        .main-header
+            .container
+                .row
+                    .col-md-4.col-sm-6.col-xs-8
+                        .logo
+                            h1
+                                a(href='/') PubCal
+            include ./calendars/search-bar
+
+        .content-section
+            block content

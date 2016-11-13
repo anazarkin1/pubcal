@@ -1,112 +1,56 @@
-doctype html
-//if lt IE 7
-  html.no-js.lt-ie9.lt-ie8.lt-ie7
-//if IE 7
-  html.no-js.lt-ie9.lt-ie8
-//if IE 8
-  html.no-js.lt-ie9
-// [if gt IE 8] <!
-html.no-js
-  // <![endif]
-  head
-    meta(charset='utf-8')
-    title PubCal
-    meta(name='description', content='')
-    meta(name='viewport', content='width=device-width')
-    link(href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800', rel='stylesheet')
-    link(rel='stylesheet', href='./css/bootstrap.css')
-    link(rel='stylesheet', href='./css/normalize.min.css')
-    link(rel='stylesheet', href='./css/font-awesome.min.css')
-    link(rel='stylesheet', href='./css/animate.css')
-    link(rel='stylesheet', href='./css/templatemo-misc.css')
-    link(rel='stylesheet', href='./css/templatemo-style.css')
-    link(rel='stylesheet', href='./css/index.css')
-    script(src='js/vendor/modernizr-2.6.2.min.js')
-    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js")
-    script(src='js/index_front.js')
-  body
-    //if lt IE 7
-      p.chromeframe
-        | You are using an
-        strong outdated
-        |  browser. Please
-        a(href='http://browsehappy.com/') upgrade your browser
-        |  or
-        a(href='http://www.google.com/chromeframe/?redirect=true') activate Google Chrome Frame
-        |  to improve your experience.
-    header.site-header
-        .top-header
-            button(class="topButton button" id="loginButton") login
-    .main-header
-      .container
-        .row
-          .col-md-4.col-sm-6.col-xs-8
-            .logo
-              h1
-                a(href='#') PubCal
-
-      .main-nav
-        .container
-          .row
-            .col-md-6.col-sm-7
-                .container
-                  .row
-                    .col-xs-8.col-xs-offset-2
-                        form(action="calendars/search" method="post")
-                            input.form-control(name="query" type="text" placeholder='Search term...')
-                            input(type="submit" value="search")
-
+extends layout
+block content
     .content-section
         section(id="popular")
             h3.center Most Popular Calendar
         section(id="popup" hidden="")
-          button(class="button" id="login") login
-          button(class="button" id="signup") signup
-          button(class="button" id="close") close
-          form(id="loginForm" class="form" action="login" method="post")
-              section(class="span12 text-center")
-                  h2(class="formTitle") Login
-                      br
-                      br
-                      section
-                          label(for="email" class="inputField") Email address
-                          input(id="emailEx" class="inputField" type="email" name ="email" placeholder="Enter your email")
-                          br
-                          br
-                          label(id="pwdField" for="password") Password
-                          input(id="passwordEx" class="inputField" type="password" name="password" placeholder="Enter your password")
-                          br
-                          br
-                          input(type="submit" value="Login")
-          form(id="signupForm" class="form" action="signup" method="post" hidden="")
-              section(class="span12 text-center")
-                  h2(class="formTitle") Sign Up
-                    br
-                    br
-                    label(class="inputField" for="username") Username
-                    input(id="usernameNew" class="inputField" type="text" name ="username" placeholder="Choose a Username")
-                    br
-                    br
-                    label(class="inputField" for="email" id="m_b_30x") Email address
-                    input(id="emailNew" class="inputField" type="email" name ="emailNew" placeholder="Enter your email")
-                    br
-                    br
-                    label(class="inputField" for="password") Password
-                    input(class="inputField" id="passwordNew" type="password" name="passwordNew" placeholder="Choose a Password")
-                    br
-                    br
-                    label(id="inputField6" for="password") Confirm password
-                    input(id="passwordNewConfirm" class="inputField" type="password"  name="confirmPassword" placeholder="Confirm Password")
-                    br
-                    br
-                    input(type="submit" value="Sign Up")
+            button(class="button" id="login") login
+            button(class="button" id="signup") signup
+            button(class="button" id="close") close
+            form(id="loginForm" class="form" action="login" method="post")
+                section(class="span12 text-center")
+                    h2(class="formTitle") Login
+                        br
+                        br
+                        section
+                            label(for="email" class="inputField") Email address
+                            input(id="emailEx" class="inputField" type="email" name ="email" placeholder="Enter your email")
+                            br
+                            br
+                            label(id="pwdField" for="password") Password
+                            input(id="passwordEx" class="inputField" type="password" name="password" placeholder="Enter your password")
+                            br
+                            br
+                            input(type="submit" value="Login")
+            form(id="signupForm" class="form" action="signup" method="post" hidden="")
+                section(class="span12 text-center")
+                    h2(class="formTitle") Sign Up
+                        br
+                        br
+                        label(class="inputField" for="username") Username
+                        input(id="usernameNew" class="inputField" type="text" name ="username" placeholder="Choose a Username")
+                        br
+                        br
+                        label(class="inputField" for="email" id="m_b_30x") Email address
+                        input(id="emailNew" class="inputField" type="email" name ="emailNew" placeholder="Enter your email")
+                        br
+                        br
+                        label(class="inputField" for="password") Password
+                        input(class="inputField" id="passwordNew" type="password" name="passwordNew" placeholder="Choose a Password")
+                        br
+                        br
+                        label(id="inputField6" for="password") Confirm password
+                        input(id="passwordNewConfirm" class="inputField" type="password"  name="confirmPassword" placeholder="Confirm Password")
+                        br
+                        br
+                        input(type="submit" value="Sign Up")
     .bottom-footer
         .container
-          .row
+            .row
 
     script(src='js/vendor/jquery-1.10.1.min.js')
     script.
-      window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\\/script>')
+        window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\\/script>')
     script(src='js/jquery.easing-1.3.js')
     script(src='js/bootstrap.js')
     script(src='js/plugins.js')
