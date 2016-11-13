@@ -8,6 +8,8 @@ const helper = require('../libs/icalGeneratorHelper');
 //Get /calendars/:id
 router.get('/:id', (req, res)=> {
     let id = req.params.id;
+
+    //TODO: WE don't want to return ALL fields of calendar object(ie user doesn't need to know filepath, user_subscribed etc...)
     CalendarClient.getCalendarById(id).then((calendar)=> {
         res.send(calendar);
     });
@@ -77,28 +79,52 @@ router.post('/search', (req, res) => {
 });
 
 //Update a calendar by id
-//POST /calendars/:id
+//PUT /calendars/:id
 router.put('/:id', (req, res) => {
-    let id = req.query.id;
+    let id = req.params.id;
     let calendar = req.body.calendar;
 
-    //get filepath from the old calendar
+    CalendarClient.getCalendarById(id).then((oldCalendar)=> {
+        //Get old calendar, copy its users and filepath, since we want to preserve this information
+        //and frontend doesn't send this to us(for security)
+        calendar.users_subscribed = oldCalendar.users_subscribed.slice();
+        calendar.filepath = oldCalendar.filepath;
+        return calendar;
+    }).then((newCalendar)=> {
+        //Replace calendar object in the database first, newCalendar contains copied users and filepath
+        CalendarClient.replaceCalendar(id, newCalendar)
+            .then((result) => {
+                if (result.modifiedCount == 1) {
+                    //We are NOT doing upsert, so if modifiedCount >0, means that there was an actual record
+                    //that we modified which is good
+                    new Promise((resolve, reject)=> {
+                        //We want to create a new ical file on the disk with the same filepath(filename) as
+                        let filepath = helper.createCalendar(newCalendar, newCalendar.filepath);
+                        resolve(filepath);
+                    }).then((filepath)=> {
+                        if (filepath === newCalendar.filepath)
+                            res.json({"status": "success", "id": id});
+                        else {
+                            //Something went horribly wrong
+                            console.log("ERROR: Promise returned a different filepath than expected");
+                            res.json({"status": "failed"});
+                        }
+                    }).catch((err)=> {
+                        console.log("ERROR: Failed on promise to update file: " + err);
+                        res.json({"status": "failed"});
+                    });
+                } else {
+                    //We didn't find any documents with such id in the database
+                    console.log("ERROR: failed to update calendar in database");
+                    res.json({"status": "failed"});
+                }
+            });
+    });
 
-    // console.log(calendar);
-    CalendarClient.replaceCalendar(id, calendar)
-        .then((result) => {
-            if (result) {
-                // TODO: RENDER SUCCESS MESSAGE
-                console.log(result);
-                res.render();
-            }
-        });
-    res.send("asdf");
 });
 
 //DELETE /calendars/:id
 router.delete('/:id', (req, res) => {
-    // TODO: ASSUME NOW WE HAVE THE FILTER
     let filter = req.body.filter;
     UserClient.removeCalendar(filter)
         .then((result) => {

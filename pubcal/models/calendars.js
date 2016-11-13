@@ -15,17 +15,14 @@ const connectToDB = () => {
 
 class CalendarClient {
     static addCalendar(calendar) {
-        let database = null;
         return connectToDB()
             .then((db) => {
-                database = db;
                 return db.collection('calendars');
             })
             .then((calendars) => {
                 return calendars.insertOne(calendar);
             })
             .then((result) => {
-                database.close();
                 return result;
             });
     }
@@ -52,21 +49,16 @@ class CalendarClient {
     }
 
     static replaceCalendar(id, newCalendar) {
-        let database = null;
         let filter = {"_id": ObjectId(id)};
-        console.log(newCalendar);
         return connectToDB()
             .then((db) => {
-                database = db;
                 return db.collection('calendars');
             })
             .then((calendars) => {
                 return calendars.replaceOne(filter, newCalendar);
             })
             .then((result) => {
-                console.log(result);
-                //TODO: return result
-                database.close();
+                return result;
             })
             .catch((err) => {
                 console.error(err);
@@ -74,10 +66,8 @@ class CalendarClient {
     }
 
     static updateCalendar(filter, update) {
-        let database = null;
         return connectToDB()
             .then((db) => {
-                database = db;
                 return db.collection('calendars');
             })
             .then((calendars) => {
@@ -85,18 +75,16 @@ class CalendarClient {
             })
             .then((result) => {
                 console.log(result);
-                database.close();
             })
             .catch((err) => {
                 console.error(err);
             });
     }
 
-    static removeCalendar(filter) {
-        let database = null;
+    static removeCalendarById(id) {
+        let filter = {"_id": ObjectId(id)};
         return connectToDB()
             .then((db) => {
-                database = db;
                 return db.collection('calendars');
             })
             .then((calendars) => {
@@ -104,7 +92,6 @@ class CalendarClient {
             })
             .then((result) => {
                 console.log(result);
-                database.close();
             })
             .catch((err) => {
                 console.error(err);
@@ -120,6 +107,9 @@ class CalendarClient {
             })
             .then((result)=> {
                 return result;
+            })
+            .catch((err)=> {
+                console.log(err);
             });
     }
 }
