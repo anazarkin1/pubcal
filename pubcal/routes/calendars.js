@@ -115,18 +115,15 @@ router.post('/search', (req, res) => {
     console.log(req.body);
     let query = "";
     let skip = 0;
-    if (req.body.hasOwnProperty("query"))
+    if ("query" in req.body)
         query = req.body.query;
-    else {
-        res.json({"status": "failed"});
-    }
-    if (req.body.hasOwnProperty("skip"))
+    if ("skip" in req.body)
         skip = req.body.skip;
 
     CalendarClient.searchForCalendars(query, skip, (result) => {
         if (result != null) {
             console.log(result);
-            res.render('calendars/search', {results: result});
+            res.send(result);
         } else {
             res.render('index_sample', {
                 errors: 'no calendar matches your request'
