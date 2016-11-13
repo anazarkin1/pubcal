@@ -22,7 +22,6 @@ class CalendarClient {
         let database = null;
         return BaseClient.connectToDB()
             .then((db) => {
-                database = db;
                 return db.collection('calendars');
             })
             .then((calendars) => {
@@ -75,25 +74,6 @@ class CalendarClient {
             });
     }
 
-    static updateCalendar(filter, update) {
-        let database = null;
-        return BaseClient.connectToDB()
-            .then((db) => {
-                database = db;
-                return db.collection('calendars');
-            })
-            .then((calendars) => {
-                return calendars.updateOne(filter, update);
-            })
-            .then((result) => {
-                database.close();
-                return result;
-            })
-            .catch((err) => {
-                console.error(err);
-            });
-    }
-
     static removeCalendarById(id) {
         let database = null;
         let filter = {"_id": ObjectId(id)};
@@ -103,7 +83,6 @@ class CalendarClient {
                 return db.collection('calendars');
             })
             .then((calendars) => {
-                //remove is Deprecated, see https://mongodb.github.io/node-mongodb-native/2.2/api/Collection.html#remove
                 return calendars.deleteOne(filter);
             })
             .then((result) => {
