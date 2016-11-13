@@ -109,7 +109,6 @@ router.post('/new', (req, res) => {
 
 //POST /calendars/search
 router.post('/search', (req, res) => {
-    let tag = req.body.tag;
     UserClient.searchForCalendars(tag, (result) => {
         if (!result.length) { // not found
             res.render('index_sample', {
