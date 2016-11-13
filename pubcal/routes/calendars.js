@@ -125,14 +125,41 @@ router.put('/:id', (req, res) => {
 
 //DELETE /calendars/:id
 router.delete('/:id', (req, res) => {
-    let filter = req.body.filter;
-    UserClient.removeCalendar(filter)
-        .then((result) => {
-            if (result) {
-                // TODO: RENDER SUCCESS MESSAGE
-                res.render();
-            }
-        });
+    let id = req.params.id;
+
+    //Keep old copy of calendar in case we need to restore it
+    //For example: we removed database object, but disk file failed to get removed and we want to revert everything back
+    let tmpCalendar;
+    CalendarClient.getCalendarById(id).then((calendar)=> {
+        tmpCalendar = calendar;
+    }).then(()=> {
+
+        //Remove database object
+        CalendarClient.removeCalendarById(id)
+            .then((response) => {
+                if (response.result.ok == 1 && response.result.n == 1) {
+                    //Successful delete inside db
+                    //Do file delete
+                    helper.deleteCalendar(tmpCalendar.filepath)
+                        .then((result)=> {
+                            //Successfully removed file
+                            res.json({"status": "success"});
+                        })
+                        .catch((err)=> {
+                            console.log("ERROR: failed to remove calendar file: " + err);
+                            res.json({"status": "failed"});
+                        });
+                } else {
+                    console.log("ERROR: Failed to delete calendar from database");
+                    res.json({"status": "failed"});
+                }
+            })
+            .catch((err)=> {
+                console.log("ERROR: Failed to delete calendar from database");
+                res.json({"status": "failed"});
+            });
+
+    });
 });
 
 

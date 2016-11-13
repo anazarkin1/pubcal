@@ -88,10 +88,11 @@ class CalendarClient {
                 return db.collection('calendars');
             })
             .then((calendars) => {
-                return calendars.remove(filter);
+                //remove is Deprecated, see https://mongodb.github.io/node-mongodb-native/2.2/api/Collection.html#remove
+                return calendars.deleteOne(filter);
             })
             .then((result) => {
-                console.log(result);
+                return result;
             })
             .catch((err) => {
                 console.error(err);

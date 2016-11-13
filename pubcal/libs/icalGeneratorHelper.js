@@ -2,6 +2,7 @@
 const ical = require('ical-generator'); //Used to generate ICAL files
 const uuid = require('uuid');   //Used to generate random names for calendars
 const path = require('path');
+const fs = require('fs');   //Used to remove files from the disk
 
 exports.createCalendar = function createCalendar(newCal, calPath = null) {
     //Convert date from strings to Date objects
@@ -21,6 +22,17 @@ exports.createCalendar = function createCalendar(newCal, calPath = null) {
 
 };
 
+exports.deleteCalendar = function deleteCalendar(filepath) {
+    return new Promise((resolve, reject)=> {
+        fs.unlink(filepath, (err)=> {
+            if (err) {
+                reject(err);
+            }
+            resolve(filepath);
+        });
+
+    });
+};
 
 function convertEvent(item, index) {
     let eventDateKeys = ['start', 'end'];
