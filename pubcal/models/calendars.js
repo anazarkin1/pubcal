@@ -1,6 +1,23 @@
 const BaseClient = require('./base');
 
 class CalendarClient {
+    //Used for testing
+    static getRandomCalendar() {
+        let database = null;
+        return BaseClient.connectToDB()
+            .then((db)=> {
+                database = db;
+                return db.collection('calendars');
+            })
+            .then((calendars)=> {
+                return calendars.findOne();
+            })
+            .then((result)=> {
+                database.close();
+                return result;
+            });
+    }
+
     static addCalendar(calendar) {
         let database = null;
         return BaseClient.connectToDB()
@@ -38,6 +55,26 @@ class CalendarClient {
             });
     }
 
+    static replaceCalendar(id, newCalendar) {
+        let database = null;
+        let filter = {"_id": ObjectId(id)};
+        return BaseClient.connectToDB()
+            .then((db) => {
+                database = db;
+                return db.collection('calendars');
+            })
+            .then((calendars) => {
+                return calendars.replaceOne(filter, newCalendar);
+            })
+            .then((result) => {
+                database.close();
+                return result;
+            })
+            .catch((err) => {
+                console.error(err);
+            });
+    }
+
     static updateCalendar(filter, update) {
         let database = null;
         return BaseClient.connectToDB()
@@ -49,30 +86,50 @@ class CalendarClient {
                 return calendars.updateOne(filter, update);
             })
             .then((result) => {
-                console.log(result);
                 database.close();
+                return result;
             })
             .catch((err) => {
                 console.error(err);
             });
     }
 
-    static removeCalendar(filter) {
+    static removeCalendarById(id) {
         let database = null;
+        let filter = {"_id": ObjectId(id)};
         return BaseClient.connectToDB()
             .then((db) => {
                 database = db;
                 return db.collection('calendars');
             })
             .then((calendars) => {
-                return calendars.remove(filter);
+                //remove is Deprecated, see https://mongodb.github.io/node-mongodb-native/2.2/api/Collection.html#remove
+                return calendars.deleteOne(filter);
             })
             .then((result) => {
-                console.log(result);
                 database.close();
+                return result;
             })
             .catch((err) => {
                 console.error(err);
+            });
+    }
+
+    static getCalendarById(id) {
+        let database = null;
+        return BaseClient.connectToDB()
+            .then((db)=> {
+                database = db;
+                return db.collection('calendars');
+            }).then((calendars)=> {
+                return calendars.findOne({"_id": ObjectId(id)});
+            })
+            .then((result)=> {
+                database.close();
+                return result;
+            })
+            .catch((err)=> {
+                console.log(err);
             });
     }
 }

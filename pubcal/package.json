@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "test": "mocha spec"
   },
   "dependencies": {
     "body-parser": "~1.15.2",
@@ -12,11 +13,13 @@
     "debug": "~2.2.0",
     "express": "~4.14.0",
     "ical-generator": "^0.2.9",
+    "mocha": "^3.1.2",
     "mongodb": "~2.2.10",
     "morgan": "~1.7.0",
     "pmx": "^0.6.8",
     "pug": "~2.0.0-beta6",
     "serve-favicon": "~2.3.0",
+    "supertest": "^2.0.1",
     "uuid": "^2.0.3"
   }
 }
