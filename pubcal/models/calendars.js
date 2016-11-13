@@ -1,4 +1,5 @@
 const BaseClient = require('./base');
+const ObjectID = require('mongodb').ObjectID;
 
 class CalendarClient {
     //size of the pagination page
