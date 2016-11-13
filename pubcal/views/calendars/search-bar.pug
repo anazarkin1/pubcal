@@ -1,0 +1,11 @@
+block search-bar
+    .main-nav
+        .container
+            .row
+                .col-md-6.col-sm-7
+                    .container
+                        .row
+                            .col-xs-8.col-xs-offset-2
+                                form(action="calendars/search" method="post")
+                                    input.form-control(name="query" type="text" placeholder='Search term...')
+                                    input(type="submit" value="search")
