@@ -56,7 +56,7 @@ class CalendarClient {
 
     static replaceCalendar(id, newCalendar) {
         let database = null;
-        let filter = {"_id": ObjectId(id)};
+        let filter = {"_id": ObjectID(id)};
         return BaseClient.connectToDB()
             .then((db) => {
                 database = db;
@@ -76,7 +76,7 @@ class CalendarClient {
 
     static removeCalendarById(id) {
         let database = null;
-        let filter = {"_id": ObjectId(id)};
+        let filter = {"_id": ObjectID(id)};
         return BaseClient.connectToDB()
             .then((db) => {
                 database = db;
@@ -101,7 +101,7 @@ class CalendarClient {
                 database = db;
                 return db.collection('calendars');
             }).then((calendars)=> {
-                return calendars.findOne({"_id": ObjectId(id)});
+                return calendars.findOne({"_id": ObjectID(id)});
             })
             .then((result)=> {
                 database.close();
