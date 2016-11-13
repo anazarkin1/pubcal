@@ -49,16 +49,6 @@ router.get('/search', (req, res)=> {
     res.render('calendars/search', {results: {}});
 });
 
-//Get particular by id
-//Get /calendars/:id
-router.get('/:id', (req, res)=> {
-    let id = req.params.id;
-
-    //TODO: WE don't want to return ALL fields of calendar object(ie user doesn't need to know filepath, user_subscribed etc...)
-    CalendarClient.getCalendarById(id).then((calendar)=> {
-        res.send(calendar);
-    });
-});
 
 //Get index of calendars
 //GET /calendars/
@@ -179,6 +169,17 @@ router.put('/:id', (req, res) => {
             });
     });
 
+});
+
+//Get particular by id
+//Get /calendars/:id
+router.get('/:id', (req, res)=> {
+    let id = req.params.id;
+
+    //TODO: WE don't want to return ALL fields of calendar object(ie user doesn't need to know filepath, user_subscribed etc...)
+    CalendarClient.getCalendarById(id).then((calendar)=> {
+        res.send(calendar);
+    });
 });
 
 //DELETE /calendars/:id
