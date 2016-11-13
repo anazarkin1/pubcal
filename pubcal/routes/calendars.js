@@ -4,6 +4,35 @@ const router = express.Router();
 const CalendarClient = require('../models/calendars');
 const helper = require('../libs/icalGeneratorHelper');
 
+//
+router.get('/:id/download', (req, res)=> {
+    let id = req.params.id;
+    let filepath = null;
+    let filename = null;
+    CalendarClient.getCalendarById(id).then((calendar)=> {
+        filepath = calendar.filepath;
+
+        //filename is the last element of splitted array
+        filename = filepath.split("/").slice(-1)[0];
+
+        //added manual headers only to make downloading files have a proper filename,
+        //without them it downloads as 'download' file.
+        let options = {
+            headers: {
+                'x-timestamp': Date.now(),
+                'x-sent': true,
+                'content-disposition': "attachment; filename=" + filename
+            }
+        };
+
+        res.sendFile(filepath, options);
+    }).catch((err)=> {
+        console.log("ERROR: failed to serve calendar file: " + err);
+        res.send("Error, no such calendar");
+    });
+});
+
+
 //Get particular by id
 //Get /calendars/:id
 router.get('/:id', (req, res)=> {
