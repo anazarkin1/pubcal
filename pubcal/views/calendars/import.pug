@@ -1,0 +1,8 @@
+extends ../layout
+
+
+block content
+    form(class="import-calendar-form" action="/calendars/import" ref='uploadForm'  method="post" enctype="multipart/form-data")
+        h3(class="inputField") Import a calendar file
+        input(id="import-calendar-form-choose" class="button" type="file" value="Choose file")
+        input(id="import-calendar-form-submit" class="button" type="submit" value="Submit")

@@ -4,7 +4,9 @@ const router = express.Router();
 const CalendarClient = require('../models/calendars');
 const helper = require('../libs/icalGeneratorHelper');
 
-//
+
+//Download ical file for a calendar with id = :id
+//GET /calendars/:id/download
 router.get('/:id/download', (req, res)=> {
     let id = req.params.id;
     let filepath = null;
@@ -38,6 +40,10 @@ router.get('/:id/download', (req, res)=> {
     });
 });
 
+router.get('/import', (req, res)=> {
+    //TODO: implement
+    res.render('calendars/import');
+});
 
 //Get particular by id
 //Get /calendars/:id
@@ -65,9 +71,12 @@ router.get('/new', (req, res) => {
 //Send calendar data to create a new calendar
 //POST /calendars/new
 router.post('/new', (req, res) => {
-    // TODO: check if calendar is in the body
+    //check if calendar was sent to us
+    if (!req.body.hasOwnProperty("calendar")) {
+        res.json({"status": "failed"});
+        return;
+    }
     let calendar = req.body.calendar;
-    console.log(calendar);
 
     let createCalendarFile = new Promise((resolve, reject) => {
         let filepath = helper.createCalendar(calendar);
@@ -116,6 +125,10 @@ router.post('/search', (req, res) => {
 //Update a calendar by id
 //PUT /calendars/:id
 router.put('/:id', (req, res) => {
+    if (!req.body.hasOwnProperty("calendar")) {
+        res.json({status: "failed"});
+        return;
+    }
     let id = req.params.id;
     let calendar = req.body.calendar;
 
@@ -195,6 +208,14 @@ router.delete('/:id', (req, res) => {
             });
 
     });
+});
+
+
+//Import ical file
+//POST /calendars/import
+router.post('/import', (req, res)=> {
+    //TODO: implement
+    res.send("not implemented");
 });
 
 
