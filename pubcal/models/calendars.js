@@ -28,6 +28,7 @@ class CalendarClient {
         let database = null;
         return BaseClient.connectToDB()
             .then((db) => {
+                database = db;
                 return db.collection('calendars');
             })
             .then((calendars) => {

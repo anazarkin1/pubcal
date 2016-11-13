@@ -112,16 +112,25 @@ router.post('/new', (req, res) => {
 
 //POST /calendars/search
 router.post('/search', (req, res) => {
-    let query = req.body.query;
-    let skip = req.body.skip;
+    console.log(req.body);
+    let query = "";
+    let skip = 0;
+    if (req.body.hasOwnProperty("query"))
+        query = req.body.query;
+    else {
+        res.json({"status": "failed"});
+    }
+    if (req.body.hasOwnProperty("skip"))
+        skip = req.body.skip;
+
     CalendarClient.searchForCalendars(query, skip, (result) => {
-        if (!result.length) { // not found
+        if (result != null) {
+            console.log(result);
+            res.render('calendars/search', {results: result});
+        } else {
             res.render('index_sample', {
                 errors: 'no calendar matches your request'
             });
-        } else {
-            console.log(result);
-            res.render('calendars/search', {results: result});
         }
     })
 });
