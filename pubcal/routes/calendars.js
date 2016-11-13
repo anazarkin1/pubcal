@@ -4,6 +4,15 @@ const router = express.Router();
 const CalendarClient = require('../models/calendars');
 const helper = require('../libs/icalGeneratorHelper');
 
+//Get particular by id
+//Get /calendars/:id
+router.get('/:id', (req, res)=> {
+    let id = req.params.id;
+    CalendarClient.getCalendarById(id).then((calendar)=> {
+        res.send(calendar);
+    });
+});
+
 //Get index of calendars
 //GET /calendars/
 router.get('/', (req, res) => {

@@ -1,4 +1,5 @@
 const mongoClient = require('mongodb').MongoClient;
+const ObjectId = require('mongodb').ObjectID;
 const connectToDB = () => {
     let url = process.env.MONGO_URL;
     return new Promise((resolve, reject) => {
@@ -50,6 +51,28 @@ class CalendarClient {
             });
     }
 
+    static replaceCalendar(id, newCalendar) {
+        let database = null;
+        let filter = {"_id": ObjectId(id)};
+        console.log(newCalendar);
+        return connectToDB()
+            .then((db) => {
+                database = db;
+                return db.collection('calendars');
+            })
+            .then((calendars) => {
+                return calendars.replaceOne(filter, newCalendar);
+            })
+            .then((result) => {
+                console.log(result);
+                //TODO: return result
+                database.close();
+            })
+            .catch((err) => {
+                console.error(err);
+            });
+    }
+
     static updateCalendar(filter, update) {
         let database = null;
         return connectToDB()
@@ -85,6 +108,18 @@ class CalendarClient {
             })
             .catch((err) => {
                 console.error(err);
+            });
+    }
+
+    static getCalendarById(id) {
+        return connectToDB()
+            .then((db)=> {
+                return db.collection('calendars');
+            }).then((calendars)=> {
+                return calendars.findOne({"_id": ObjectId(id)});
+            })
+            .then((result)=> {
+                return result;
             });
     }
 }
