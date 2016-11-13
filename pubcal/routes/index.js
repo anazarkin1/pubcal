@@ -1,8 +1,7 @@
 const session = require('client-sessions');
 const express = require('express');
 const router = express.Router();
-const IndexClient = require('../models/index');
-const UserClient = require('../models/users');
+const UserClient = require('../models/index');
 
 // session settings here
 router.use(session({
@@ -16,7 +15,7 @@ router.use(session({
 router.use((req, res, next) => {
     if (req.session && req.session.user) {
         let email = req.session.user.email;
-        IndexClient.findUserByEmail(email)
+        UserClient.findUserByEmail(email)
             .then((result) => {
                 if (result) {
                     // TODO: nathan -> eddie: WHY ASSIGN RESULT TO MULTIPLE VARIABLES
@@ -66,7 +65,7 @@ router.post('/login', (req, res) => {
 	let email = req.body.email;
 	let password = req.body.password;
 
-    IndexClient.login(email, password)
+	UserClient.login(email, password)
         .then((result) => {
             if (result) {
                 req.session.user = result;
@@ -116,7 +115,7 @@ router.post('/signup', (req, res) => {
         });
     }
 
-    IndexClient.findUserByEmail(email)
+    UserClient.findUserByEmail(email)
         .then((result) => {
             if (result) {
                 res.render('index_sample', {
