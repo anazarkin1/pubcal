@@ -29,13 +29,13 @@ router.get('/:id/download', (req, res) => {
 
         res.sendFile(filePath, options, (err) => {
             if (err) {
-                console.log("ERROR: failed to serve calendar file: " + err);
+                console.error("Failed to serve calendar file: " + err);
                 res.status(404).send("Error, we couldn't find this calendar");
             }
 
         });
     }).catch((err) => {
-        console.log("ERROR: failed to serve calendar file: " + err);
+        console.error("Failed to serve calendar file: " + err);
         res.send("Error, no such calendar");
     });
 });
@@ -112,7 +112,6 @@ router.post('/new', (req, res) => {
 
 //POST /calendars/search
 router.post('/search', (req, res) => {
-    console.log(req.body);
     let query = "";
     let skip = 0;
     if ("query" in req.body)
@@ -122,7 +121,6 @@ router.post('/search', (req, res) => {
 
     CalendarClient.searchForCalendars(query, skip, (result) => {
         if (result != null) {
-            console.log(result);
             res.send(result);
         } else {
             res.render('index_sample', {
@@ -164,16 +162,16 @@ router.put('/:id', (req, res) => {
                             res.json({"status": "success", "id": id});
                         else {
                             //Something went horribly wrong
-                            console.log("ERROR: Promise returned a different filePath than expected");
+                            console.error("Promise returned a different filepath than expected");
                             res.json({"status": "failed"});
                         }
                     }).catch((err) => {
-                        console.log("ERROR: Failed on promise to update file: " + err);
+                        console.error("Failed on promise to update file: " + err);
                         res.json({"status": "failed"});
                     });
                 } else {
                     //We didn't find any documents with such id in the database
-                    console.log("ERROR: failed to update calendar in database");
+                    console.error("Failed to update calendar in database");
                     res.json({"status": "failed"});
                 }
             });
@@ -188,7 +186,6 @@ router.get('/:id', (req, res) => {
 
     //TODO: WE don't want to return ALL fields of calendar object(ie user doesn't need to know filePath, user_subscribed etc...)
     CalendarClient.getCalendarById(id).then((calendar) => {
-        console.log(calendar);
         res.render('calendar', calendar);
     });
 });
@@ -216,11 +213,11 @@ router.delete('/:id', (req, res) => {
                             res.json({"status": "success"});
                         })
                         .catch((err) => {
-                            console.log("ERROR: failed to remove calendar file: " + err);
+                            console.error("Failed to remove calendar file: " + err);
                             res.json({"status": "failed"});
                         });
                 } else {
-                    console.log("ERROR: Failed to delete calendar from database");
+                    console.error("Failed to delete calendar from database");
                     res.json({"status": "failed"});
                 }
             });
