@@ -66,12 +66,13 @@ router.get('/new', (req, res) => {
 //POST /calendars/new
 router.post('/new', (req, res) => {
     //check if calendar was sent to us
+
     if (!req.body.hasOwnProperty("calendar")) {
         res.json({"status": "failed"});
         return;
     }
     let calendar = req.body.calendar;
-
+    console.log(calendar);
     let createCalendarFile = new Promise((resolve, reject) => {
         let filepath = helper.createCalendar(calendar);
         resolve(filepath);

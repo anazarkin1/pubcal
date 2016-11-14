@@ -200,33 +200,30 @@
 			for (var i = 0; i < $('#calendar').fullCalendar('clientEvents').length; i++) {
 				var obj = $('#calendar').fullCalendar('clientEvents')[i];
 				var tmp_event = {};
-				tmp_event['description'] = obj['description'];
-				tmp_event['id'] = obj['id'];
-				tmp_event['name'] = obj['title'];
-				tmp_event['start'] = obj['start']['_d'];
-				tmp_event['end'] = obj['end']? obj['end']['_d'] : null;
-				tmp_event['allDay'] = obj['allDay'];
+				tmp_event.description = obj.description;
+				tmp_event.id = obj.id;
+				tmp_event.name = obj.title;
+				tmp_event.start = obj.start._d;
+				tmp_event.end = obj.end ? obj.end._d : null;
+				tmp_event.allDay = obj.allDay;
 				output_events.push(tmp_event);
 			}
 			var data_to_send = {
-				"calendar":{
-			        "created_by":"userid1",
-			        "description": $('#cal_description').val(),
-			        "name": $('#cal_title').val(),
-			     	"events": output_events
+				calendar: {
+			        created_by:"userid1",
+			        description: $('#cal_description').val(),
+			        name: $('#cal_title').val(),
+			     	events: output_events
 			   		}	
 			};
-			data_to_send = JSON.stringify(data_to_send);
-			
+
 			$.ajax({
-				type: "POST",
-				url: "/calendars/new",
-				dataType: 'json',
-				data: data_to_send,
-				success: function(){
-					alert('success');
-				}
-			})
+				url: '/calendars/new',
+				type: 'POST',
+				data: JSON.stringify(data_to_send),
+				contentType: 'application/json'
+			});
+
 			// var events = $('#calendar').fullCalendar('clientEvents');
 			console.log(data_to_send);
 
