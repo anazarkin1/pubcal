@@ -40,6 +40,20 @@ router.get('/:id/download', (req, res)=> {
     });
 });
 
+//Return json object for calendar with this id
+// GET /calendars/:id/json
+router.get('/:id/json', (req, res)=> {
+    let id = req.params.id;
+    CalendarClient.getCalendarById(id)
+        .then((calendar)=> {
+            res.json(calendar);
+        })
+        .catch((err)=> {
+            if (err)
+                res.json({"status": "failed"});
+        });
+});
+
 router.get('/import', (req, res)=> {
     //TODO: implement
     res.render('calendars/import');
@@ -179,7 +193,8 @@ router.get('/:id', (req, res)=> {
 
     //TODO: WE don't want to return ALL fields of calendar object(ie user doesn't need to know filepath, user_subscribed etc...)
     CalendarClient.getCalendarById(id).then((calendar)=> {
-        res.send(calendar);
+        console.log(calendar);
+        res.render('calendar', calendar);
     });
 });
 
