@@ -36,17 +36,17 @@ describe('loading express', function () {
         let id = "";
         let url = "";
         let calendar;
-        CalendarClient.getRandomCalendar().then((randomCalendar)=> {
+        CalendarClient.getRandomCalendar().then((randomCalendar) => {
             calendar = randomCalendar;
-            url = '/calendars/' + calendar._id;
+            url = '/calendars/' + calendar._id + "/json";
 
             // Create a promise to test if ical file exits for this calendar
             return checkFileExists(calendar.filepath);
-        }).then((exists)=> {
+        }).then((exists) => {
             request(server)
                 .get(url)
                 .expect(200)
-                .end((err, res)=> {
+                .end((err, res) => {
                     if (err) {
                         throw new Error("Error: Failed test: " + err);
                     }
@@ -58,7 +58,7 @@ describe('loading express', function () {
                     done();
                 })
 
-        }).catch((err)=> {
+        }).catch((err) => {
             console.log("ERROR: test failed :" + err);
             throw new Error("Caught promise error");
         });
@@ -90,7 +90,7 @@ describe('loading express', function () {
             .post(url)
             .send(data)
             .expect(200)
-            .expect((res)=> {
+            .expect((res) => {
                 res.body.status.should.equal("success");
                 expect(res.body).to.have.property("id");
             })
@@ -111,7 +111,7 @@ describe('loading express', function () {
             //         })
             //
             // })
-            .end((err, res)=> {
+            .end((err, res) => {
                 if (err) {
                     throw new Error(err)
                     done();
@@ -149,7 +149,7 @@ describe('loading express', function () {
             .post(url)
             .send(data)
             .expect(200)
-            .end((err, res)=> {
+            .end((err, res) => {
                 if (res.body.status != "success") {
                     throw new Error("returned status is not success");
                 }
@@ -163,8 +163,8 @@ describe('loading express', function () {
 });
 
 function checkFileExists(filepath) {
-    return new Promise((resolve, reject)=> {
-        fs.access(filepath, (err)=> {
+    return new Promise((resolve, reject) => {
+        fs.access(filepath, (err) => {
             if (err) {
                 reject(false);
             }
