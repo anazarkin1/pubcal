@@ -3,6 +3,7 @@ const router = express.Router();
 const UserClient = require('../models/users');
 const CalendarClient = require('../models/calendars');
 
+
 // GET users listing.
 router.get('/', function(req, res, next) {
   	res.send('respond with a resource');
@@ -20,11 +21,18 @@ router.get('/getCalendarName/:id', function(req, res, next){
 	});
 
 });
+
 router.get('/getMyCalendars/:userEmail', function(req, res, next) { 
 	let userEmail = req.params.userEmail;
-	UserClient.getCalendars(userEmail).then((result)=> {
-			res.send(result);
-		});
+	
+	return UserClient.getCalendars(userEmail)
+		.then((result) => {
+			console.log(result)
+			CalendarClient.getCalendarsbyIds(result, (documents) => {
+				console.log(documents);
+				res.send(documents);
+			});
+	});
 }); 
 	
 
