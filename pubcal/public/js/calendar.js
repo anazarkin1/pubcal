@@ -11,8 +11,13 @@ $(document).ready(function() {
 		var modal = document.getElementById('myModal');
 		// Get the <span> element that closes the modal
 		var span = document.getElementsByClassName("close")[0];
+
+		// This is the url to get the json object
+		var calendarURL = window.location.href + '/json';
+
+
 		// Get the calendar object
-		$.getJSON('http://localhost:3000/calendars/5828d989fef3c761e51629fd', function(result){
+		$.getJSON(calendarURL, function(result){
 			var events = result.events;
 			$('#calendarTitle').append(result.name);
 			$('#descriptionBox').append(result.description);
