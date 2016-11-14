@@ -38,6 +38,22 @@ class UserClient {
                 console.error(err);
             });
     }
+
+    static getCalendars(email) {
+        let database = null;
+        return BaseClient.connectToDB()
+            .then((db)=> {
+                database = db;
+                return db.collection('users');
+            })
+            .then((users) => {
+                return users.findOne({'email': email});
+            })
+            .then((result) => {
+                database.close();
+                return result.subscribed_to;
+            });
+    }
 }
 
 module.exports = UserClient;

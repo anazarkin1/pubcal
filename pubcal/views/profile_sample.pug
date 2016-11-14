@@ -1,8 +1,106 @@
-p this is profile page
+doctype html
+html(lang="en")
+
+	head
+		meta(charset="utf-8")
+		title= pageTitle
+		link(rel='stylesheet', href='./css/profile.css')
+		script(src='js/profile.js', defer)
+		link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Open+Sans')
+		script(src='js/vendor/modernizr-2.6.2.min.js')
+		script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js")
+		link(rel='stylesheet', href='css/w3-theme-teal.css')
+		link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Open+Sans')
+		link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css')
 
 	section
+		p
+			span(class="userEmail")=email
 		form(class="anchor-wrap" action="/logout" method="post")
 			input(type="submit" class="flt_r m_l_5" id="logoutButton" value="SIGN OUT")
 
-	p
-		span(class="username-field")=email
+	body
+		main(id=type)
+			section(class="main-wrap")
+				section(class="main-nav bdb-lg h100")
+					div(class="main-nav-button-wrap vert-cent")
+						div(id="mycalendars" class="main-nav-button selected")
+							a(id="nav1" href="#")
+								span(class="nav-title") My Calendars
+						div(id="createcalendar" class="main-nav-button m_l_r_10")
+							a(id="nav2" href="#")
+								span(class="nav-title") Create a Calendar
+						div(id="accountsettings" class="main-nav-button")
+							a(id="nav3" href="#")
+								span(class="nav-title") Account Settings
+
+				ul(id="friends" class="profile-info selected")
+					li(class="profile-contents")
+						section(class="container-content bdb-lg")
+							section(class="content-key")
+								span(class="sub-title") My Calendars
+							section(class="content-value")
+								div(class="info-content")
+									div(id="resultWrap")
+										div(id="resultField")
+
+				ul(id="viewReq" class="profile-info")
+					li(class="profile-contents")
+						section(class="container-content bdb-lg")
+							section(class="content-key")
+								span(class="sub-title") Create Calendar
+
+				ul(id="account-settings" class="profile-info")
+					li(id="profile-manage" class="bdb-lg profile-contents")
+						section(class="container-content")
+							section(class="content-key")
+								span(class="sub-title") Account Settings
+
+							section(class="content-value")
+								div(class="acc-info")
+									div(class="perma")
+										label(class="profile-label") Username
+										div(class="username-container")
+											span(class="username-field")=email
+									div(class="edit-profile")
+										div(class="email mt10")
+											form
+												div(class="edite-zone")
+													label(class="profile-label") Email Address
+													section(class="edit-box e1")
+														div(class="edit-disable" id="ed1")
+															span(class="email-value edit-line" id="email-attr")=email
+															span(class="edit-icon")
+																img(src="img/edit_icon.png" class="edit-img" id="edit-button1")
+
+					li(id="password-manage" class="bdb-lg profile-contents")
+						section(class="container-content")
+							section(class="content-key")
+								span(class="sub-title") Password
+								span(class="sub-description") change your password
+
+							section(class="content-value")
+								div(class="edit-password")
+									form(action="updatePassword" method="post")
+										section(class="m_b_15")
+											label(class="profile-label") Current Password
+											div(class="edit-box")
+												input(type="password" name="cpassword" id="cpw")
+
+										section(class="m_b_15")
+											label(class="profile-label") New Password
+											div(class="edit-box")
+												input(type="password" name="npassword" id="npw")
+
+										section(class="confirm-pw m_b_15")
+											label(class="profile-label") Confirm New Password
+											div(class="edit-box")
+												input(type="password" name="ncpassword" id="ncpw")
+
+										div(class="mt10")
+											input(id="updatePW" class="button" type="submit" disabled = "true" value="UPDATE")
+
+
+
+
+

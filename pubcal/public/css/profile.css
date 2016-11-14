@@ -1,0 +1,375 @@
+*, *::after, *::before {
+	box-sizing: border-box;
+}
+
+a:link{
+	color:black;
+	text-decoration:none;
+}
+a:visited{
+	text-decoration: none;
+	color:black;
+}
+
+a.underlined:hover{
+	text-decoration:underline;
+}
+
+input#logoutButton{
+	position:absolute;
+	bottom: 0;
+	right:0;
+	font-size:13px;
+	color:white;
+	border:none;
+	background-color: #00766a;
+	-webkit-appearance:none;
+}
+
+input#logoutButton:hover{
+	cursor:pointer;
+	text-decoration: underline;
+	
+}
+
+input#logoutButton:focus{
+	outline: none;
+
+}
+
+
+input.submitButton, input.decisionButton{
+	font-size:20px;
+	border:none;
+    -webkit-appearance:none;
+
+}
+
+input.submitButton:hover, input.decisionButton:hover{
+	cursor:pointer;
+	text-decoration: underline;
+}
+
+input.submitButton:focus, input.decisionButton:focus{
+	outline: none;
+}
+
+input.removeButton{
+
+	font-size:14px;
+	padding-top:10px;
+	border:none;
+    -webkit-appearance:none;
+
+}
+
+input.removeButton:hover{
+	cursor:pointer;
+	text-decoration: underline;
+}
+
+input.removeButton:focus{
+	outline: none;
+}
+textarea{
+	width: 300px;
+	height: 400px;
+}
+.b_p_50{
+	padding-bottom: 80px;
+}
+.anchor-wrap{
+	position:relative;
+	min-height: 47px;
+}
+#desc-val{
+	width:40%;
+}
+.descval{
+	word-wrap:break-word;
+	width: 100px !important;
+	
+}
+.descval.edit-line{
+	border-bottom:none;	
+}
+
+.hidden{
+	display:none;
+}
+
+
+.new-input{
+	width:70%;
+}
+
+#newEmailError{
+	margin-top:25px;
+}
+
+#nav1, #nav2, #nav3, #nav4, #nav5 {
+	color:#596981;
+}
+
+.top-nav{
+	height:50px;
+	background-color: #354458;
+}
+
+.main-title{
+	color:#95B9C7;
+	font-size:17px;
+	border:none;
+	background-color: #354458;
+	-webkit-appearance:none;
+}
+
+.main-title:hover{
+	cursor:pointer;
+	text-decoration: underline;
+
+}
+
+.main-title:focus{
+	outline: none;
+}
+
+.main-wrap{
+
+}
+
+.main-nav{
+
+
+}
+
+.main-nav-button{
+	display:inline-block;
+}
+
+.main-nav-button.selected{
+
+	border-bottom: 2px solid #005892;
+
+}
+
+
+
+#account, #personal, #manageUser, #friends-list, #view-request{
+	margin-right: 15px;
+}
+
+.m_b_10{
+	margin-bottom: 10px
+}
+.m_b_15 {
+	margin-bottom:45px;
+}
+
+.m_l_5{
+	margin-left:5px;
+}
+.m_r_5{
+	margin-right:5px;
+}
+
+.m_r_t{
+	margin-right:10px;
+}
+
+.m_t_10{
+	padding-top:20px;
+}
+
+.main-contents {
+	height: 100%;
+	margin-top:30px;
+}
+
+li.fr-pro-wrap{
+	list-style: none;
+}
+
+.profile-thumb{
+	width:70px;
+	height:70px;
+}
+
+#account-settings, #personal-info, #friends, .main-nav-button-wrap, #manusr, #mandata, .main-nav, .top-nav{
+	min-width:1000px;
+	max-width: 1200px;
+	width:100%;
+	margin-right: auto;
+	margin-left: auto;
+	padding-left: 0;
+}
+.profile-contents{
+	height:100%;
+	list-style: none;
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+
+.sub-description{
+	display: block;
+}
+.content-key{
+	width: 25%;
+	float:left;
+	
+}
+
+.content-value{
+	width:66.6%;
+	margin-left: 8.3%;
+	float:left;
+}
+.container-content::after{
+	clear:both;
+}
+
+.container-content::after, .container-content::before{
+	content:" ";
+	display: table;
+}
+.picture{
+	width:65px;
+	position:absolute;
+}
+.profile_pic {
+	width: 64px;
+	height: 64px;
+}
+
+.profile-label{
+	font-size: 17px;
+	color: #596981;
+}
+
+.mb5{
+	padding-bottom:5px;
+}
+
+.mt10{
+	margin-top: 10px;
+}
+
+.mb20 {
+	margin-bottom:20px;
+}
+
+.p_t_5{
+	padding-top:5px;
+}
+
+.acc-info{
+	padding-left: 90px;
+	width: 70%;
+}
+
+.perma {
+	border-bottom: 1px #cfd7e6 solid;
+	
+	
+}
+
+.bdb-lg {
+	border-bottom: 1px #cfd7e6 solid;
+}
+
+.bp10{
+	padding-bottom: 10px;
+}
+.button{
+	height: 30px;
+	width: 100px;
+	color: #009688;
+}
+
+.logoutButton{
+	width: 8
+	0px;
+	height: 40px;
+	color:black;
+}
+.username-container{
+	margin-top:10px;
+}
+.username-field {
+	margin-bottom: 5px;
+
+	padding-right:50px;
+	
+}
+
+.error {
+    color:red;
+    width:100% !important;
+}
+
+.edit-box{
+	padding-top:10px;
+	padding-bottom: 10px;
+}
+
+.edit-box.e4{
+	width:40%;
+}
+
+.edit-line{
+	padding: 0 50px 7px 0;
+	border-bottom: 1px solid #cfd7e6;
+}
+
+.edit-img{
+	position: relative;
+	left: -16px;
+	bottom: -3px;
+	width: 16px;
+	height:16px;
+}
+
+.edit-img.button{
+	left: inherit !important;
+	bottom: inherit !important;
+	width: inherit !important;
+	height: inherit !important;
+}
+
+.edit-img:hover{
+	cursor: pointer;
+}
+
+.flt_l {
+	float:left;
+}
+
+.flt_r {
+	float:right;
+}
+
+.profile-info{
+	display: none;
+}
+
+.profile-info.selected{
+	display:block;
+}
+
+.h100{
+	height:45px;
+}
+
+.vert-cent{
+	position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.w30p{
+	width:30%;
+}
+.w50p{
+	width:33%;
+
+}
+
