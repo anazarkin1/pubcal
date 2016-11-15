@@ -5,28 +5,15 @@ const path = require('path');
 const fs = require('fs');   //Used to remove files from the disk
 
 function convertEvent(item, index) {
-    let eventDateKeys = ['start', 'end'];
-    for (let key of eventDateKeys) {
-        if (item.key != null)
-            item.key = Date.parse(item.key);
-    }
-    if (item.repeating != null && item.repeating.length > 0) {
-        item.repeating.map(convertRepeating);
-    }
-}
-
-function convertRepeating(item, index) {
-    let repeatingDateKeys = ['until'];
-    for (let key of repeatingDateKeys) {
-        if (item.key != null) {
-            item.key = Date.parse(item.key);
-        }
+    if ("name" in item) {
+        item.summary = item.name;
     }
 }
 
 class Helper {
-    static createCalendar(newCal, calPath=null) {
-        //Convert date from strings to Date objects
+    static createCalendar(newCal, calPath = null) {
+        //ical format requries events names' to be called summaries
+        //so we add summary to every event that equals to name
         if (newCal.events.length > 0) {
             newCal.events.map(convertEvent);
         }

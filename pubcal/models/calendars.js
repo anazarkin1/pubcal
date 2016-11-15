@@ -122,6 +122,31 @@ class CalendarClient {
                 console.log(err);
             });
     }
+
+    static getCalendarsbyIds(ids, callback) {
+        let database = null;
+        BaseClient.connectToDB()
+            .then((db) => {
+                database = db;
+                return database.collection('calendars');
+            })
+            .then((calendars) => {
+                for (let i = 0; i < ids.length; i++) {
+                    ids[i] = ObjectID(ids[i])
+                }
+                return calendars.find({'_id': {$in: ids}});
+            })
+            .then((result) => {
+                result.toArray((err, documents) => {
+                    callback(documents);
+                    database.close();
+                });
+            })
+            .catch((err) => {
+                console.error(err);
+            });
+    }
+
 }
 
 module.exports = CalendarClient;

@@ -54,6 +54,8 @@ class UserClient {
                 return result.subscribed_to;
             });
     }
+
+    
 }
 
 module.exports = UserClient;

@@ -309,15 +309,13 @@ function getMyCalendars(){
 
 		for (i=0; i < result.length; i++){
 
-
-
 			$('<li>', {
 				"class": "fr-pro-wrap b_p_50",
 				"id": "usr_" + i
 			}).appendTo("#left_column");
 
 			$('<form>', {
-				"action": "calendars/" + result[i],
+				"action": "calendars/" + result[i]._id,
 				"id": "prof_" + i
 			}).appendTo("#usr_" + i);
 
@@ -328,9 +326,9 @@ function getMyCalendars(){
 
 			$('<input>', {
 				"class": "submitButton",
-				"id": "submitButton_" + result[i],
+				"id": "submitButton_" + result[i]._id,
 				// TODO: Find a way to display name of the calendar rather than the actual ID.
-				"value": result[i]
+				"value": result[i].name
 
 			}).appendTo("#acc" + i);
 		}
@@ -339,7 +337,8 @@ function getMyCalendars(){
 
 		for (i=0; i < submitButtons.length; i++){
 
-			$("#submitButton_" + result[i]).click(function(event){
+			$("#submitButton_" + result[i]._id).click(function(event){
+				
 				window.location.href="/calendars/" + event.target.id.substring(13);
 			});
 
