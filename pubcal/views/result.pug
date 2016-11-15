@@ -6,10 +6,13 @@ block content
             .text-primary
                 ul(class="list-group")
                     each calendar in result
-                        each obj, key in calendar
-                            if key == "name"
-                                li(class="list-group-item")=obj
-                            if key == "tags"
-                                li(class="list-group-item")=obj
-                            if key == "hostname"
-                                li(class="list-group-item")=obj
+                        ul
+                            li
+                                each obj, key in calendar
+                                    ul
+                                        if key == "name"
+                                            li(class="list-group-item")=obj
+                                        if key == "tags"
+                                            li(class="list-group-item")=obj
+                                        if key == "hostname"
+                                            li(class="list-group-item")=obj
