@@ -70,7 +70,7 @@ router.get('/search', (req, res) => {
 
     CalendarClient.searchForCalendars(query, skip, (result) => {
         if (result != null) {
-            res.render('result', {'result': result});
+            res.render('result', {'result': result, 'hostname': req.hostname});
         } else {
             res.render('result', {'errors': 'No calendar matched your search'});
         }
@@ -79,6 +79,7 @@ router.get('/search', (req, res) => {
 //Get index of calendars
 //GET /calendars/
 router.get('/', (req, res) => {
+
     res.send('GET list of calendars');
 });
 
@@ -169,12 +170,11 @@ router.put('/:id', (req, res) => {
 //Get particular by id
 //Get /calendars/:id
 router.get('/:id', (req, res) => {
-    let id = req.params.id;
-
-    //TODO: WE don't want to return ALL fields of calendar object(ie user doesn't need to know filePath, user_subscribed etc...)
-    CalendarClient.getCalendarById(id).then((calendar) => {
-        res.render('calendar', calendar);
-    });
+    if (req.session && req.session.user) {
+        res.render("calendar", {username: req.session.user.username});
+    } else {
+        res.redirect('/');
+    }
 });
 
 //DELETE /calendars/:id
