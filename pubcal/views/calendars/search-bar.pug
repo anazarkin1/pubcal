@@ -2,10 +2,24 @@ block search-bar
     .main-nav
         .container
             .row
-                .col-md-6.col-sm-7
-                    .container
-                        .row
-                            .col-xs-8.col-xs-offset-2.input-group
-                                form(action="calendars/search" method="get")
-                                    input.form-control(name="q" type="text" placeholder='Search term...')
-                                    input.btn.btn-group(type="submit" value="search")
+                .col-md-12
+                    form(action="calendars/search" method="get")
+                        #adv-search.input-group
+                            input.form-control(name="q" type="text" placeholder='Search Calendars...')
+                            .input-group-btn
+                                .btn-group(role='group')
+                                    .dropdown.dropdown-lg
+                                        button.btn.btn-default.dropdown-toggle(type='button', data-toggle='dropdown', aria-expanded='false')
+                                            span.caret
+                                        .dropdown-menu.dropdown-menu-right(role='menu')
+                                            form.form-horizontal(role='form')
+                                                .form-group
+                                                    label(for='filter') Filter by
+                                                    select.form-control
+                                                        option(value='0', selected='') none
+                                                        option(value='1') Featured
+                                                        option(value='2') Most popular
+                                                        option(value='3') Top rated
+                                                        option(value='4') Most commented
+                                        button.btn.btn-primary(type="submit" value="search")
+                                            span.glyphicon.glyphicon-search(aria-hidden='true')
