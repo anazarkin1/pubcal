@@ -1,0 +1,44 @@
+block login
+    .container
+        section(id="popup" hidden="")
+            button(class="button" id="login") login
+            button(class="button" id="signup") signup
+            button(class="button" id="close") close
+            section.small
+                form(id="loginForm" class="form" action="login" method="post")
+                    section(class="span12 text-center")
+                        h2(class="formTitle") Login
+                            br
+                            br
+                            section
+                                label(for="email" class="inputField") Email address
+                                input(id="emailEx" class="inputField" type="email" name ="email" placeholder="Enter your email")
+                                br
+                                br
+                                label(id="pwdField" for="password") Password
+                                input(id="passwordEx" class="inputField" type="password" name="password" placeholder="Enter your password")
+                                br
+                                br
+                                input(type="submit" value="Login")
+                form(id="signupForm" class="form" action="signup" method="post" hidden="")
+                    section(class="span12 text-center")
+                        h2(class="formTitle") Sign Up
+                            br
+                            br
+                            label(class="inputField" for="username") Username
+                            input(id="usernameNew" class="inputField" type="text" name ="username" placeholder="Choose a Username")
+                            br
+                            br
+                            label(class="inputField" for="email" id="m_b_30x") Email address
+                            input(id="emailNew" class="inputField" type="email" name ="emailNew" placeholder="Enter your email")
+                            br
+                            br
+                            label(class="inputField" for="password") Password
+                            input(class="inputField" id="passwordNew" type="password" name="passwordNew" placeholder="Choose a Password")
+                            br
+                            br
+                            label(id="inputField6" for="password") Confirm password
+                            input(id="passwordNewConfirm" class="inputField" type="password"  name="confirmPassword" placeholder="Confirm Password")
+                            br
+                            br
+                            input(type="submit" value="Sign Up")
