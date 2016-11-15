@@ -303,7 +303,6 @@ function getMyCalendars(){
 
 	var email = $(".username-field").html();
 
-	alert(email);
 
 	$.get("/users/getMyCalendars/" + email, function(result){
 
