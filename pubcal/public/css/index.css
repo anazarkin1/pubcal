@@ -38,6 +38,16 @@
     cursor: pointer;
 }
 
+.main-nav-pro{
+    background-color: white !important;
+}
+.main-nav-button{
+    padding-right:10px;
+
+}
+
 .topButton {
-    margin-left: 85%;
+
+    margin-left: 90%;
+    margin-top: 3%;
 }

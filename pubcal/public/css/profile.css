@@ -80,7 +80,11 @@ textarea{
 }
 .anchor-wrap{
 	position:relative;
+	width:1%;
+	height: 20px;
 	min-height: 47px;
+	float:right;
+	margin-top: 2%;
 }
 #desc-val{
 	width:40%;
