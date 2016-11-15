@@ -54,6 +54,25 @@ router.get('/:id/json', (req, res) => {
         });
 });
 
+// render `edit calendar` page
+// GET /calendars/:id/edit
+router.get('/:id/edit', () => {
+    if (req.session && req.session.user) {
+        let id = req.params.id;
+        CalendarClient.getCalendarById(id)
+            .then((calendar) => {
+                let users = calendar.users_subscribed;
+                let subscribed = users.contains(req.session.user.username);
+                res.render("editCalendar", {
+                    username: req.session.user.username,
+                    subscribed: subscribed
+                });
+            });
+    } else {
+        res.redirect('/');
+    }
+});
+
 router.get('/import', (req, res) => {
     //TODO: implement
     res.render('calendars/import');
@@ -177,8 +196,10 @@ router.get('/:id', (req, res) => {
             .then((calendar) => {
                 let users = calendar.users_subscribed;
                 let subscribed = users.contains(req.session.user.username);
-                res.render("calendar", {username: req.session.user.username,
-                                        subscribed: subscribed});
+                res.render("calendar", {
+                    username: req.session.user.username,
+                    subscribed: subscribed
+                });
             });
     } else {
         res.redirect('/');
