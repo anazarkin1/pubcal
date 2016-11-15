@@ -182,12 +182,11 @@ router.put('/:id', (req, res) => {
 //Get particular by id
 //Get /calendars/:id
 router.get('/:id', (req, res) => {
-    let id = req.params.id;
-
-    //TODO: WE don't want to return ALL fields of calendar object(ie user doesn't need to know filePath, user_subscribed etc...)
-    CalendarClient.getCalendarById(id).then((calendar) => {
-        res.render('calendar', calendar);
-    });
+    if (req.session && req.session.user) {
+        res.render({username: req.session.user.username});
+    } else {
+        res.redirect('/');
+    }
 });
 
 //DELETE /calendars/:id

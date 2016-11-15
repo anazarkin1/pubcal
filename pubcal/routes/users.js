@@ -33,7 +33,12 @@ router.get('/getMyCalendars/:userEmail', function(req, res, next) {
 				res.send(documents);
 			});
 	});
-}); 
+});
+
+router.get('')
+router.post('/subscribe/:id', (req, res) => {
+    let username = req.body.username;
+})
 	
 
 	
