@@ -123,7 +123,7 @@ class CalendarClient {
             });
     }
 
-    static getCalendarsbyIds(ids, callback) {
+    static getCalendarsByIds(ids, callback) {
         let database = null;
         BaseClient.connectToDB()
             .then((db) => {

@@ -28,17 +28,18 @@ router.get('/getMyCalendars/:userEmail', function(req, res, next) {
 	return UserClient.getCalendars(userEmail)
 		.then((result) => {
 			console.log(result)
-			CalendarClient.getCalendarsbyIds(result, (documents) => {
+			CalendarClient.getCalendarsByIds(result, (documents) => {
 				console.log(documents);
 				res.send(documents);
 			});
 	});
 });
 
-router.get('')
 router.post('/subscribe/:id', (req, res) => {
     let username = req.body.username;
-})
+
+
+});
 	
 
 	
