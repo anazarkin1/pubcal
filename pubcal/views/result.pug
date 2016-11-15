@@ -6,13 +6,14 @@ block content
             .text-primary
                 ul(class="list-group")
                     each calendar in result
-                        ul
-                            li
+                        li
+                            ul
                                 each obj, key in calendar
-                                    ul
-                                        if key == "name"
-                                            li(class="list-group-item")=obj
-                                        if key == "tags"
-                                            li(class="list-group-item")=obj
-                                        if key == "hostname"
-                                            li(class="list-group-item")=obj
+                                    if key == "_id"
+                                        - var link = '/calendars/' + obj
+                                    if key == "name"
+                                        li(class="list-group-item")
+                                            a(href=link)=obj
+                                    if key == "tags"
+                                        li(class="list-group-item")
+                                            p="TAGS:  " + obj
