@@ -147,6 +147,25 @@ class CalendarClient {
             });
     }
 
+    static getSubscribed(id, username) {
+        let database = null;
+        return BaseClient.connectToDB()
+            .then((db) => {
+                database = db;
+                return db.collection('calendars');
+            }).then((calendars) => {
+                return calendars.update(
+                    {_id: ObjectID(id)},
+                    {$push: {users_subscribed: username}});
+            })
+            .then((result) => {
+                database.close();
+                return result;
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
 }
 
 module.exports = CalendarClient;

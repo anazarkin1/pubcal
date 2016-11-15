@@ -56,7 +56,23 @@ class UserClient {
             });
     }
 
-    
+    static subscribe(username, id) {
+        let database = null;
+        return BaseClient.connectToDB()
+            .then((db)=> {
+                database = db;
+                return db.collection('users');
+            })
+            .then((users) => {
+                return users.update(
+                    {username: username},
+                    {$push: {subscribed_to: id}});
+            })
+            .then((result) => {
+                database.close();
+                return result;
+            });
+    }
 }
 
 module.exports = UserClient;
