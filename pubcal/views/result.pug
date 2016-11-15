@@ -1,0 +1,12 @@
+extends layout
+block content
+    .content-section
+        section(id="popular")
+            h3.center Search Results
+            ul(class="list-group")
+                each cal in result
+                    each obj, key in cal
+                        if key == "name"
+                            li(class="list-group-item")=obj
+                        if key == "tags"
+                            li(class="list-group-item")=obj
