@@ -23,7 +23,6 @@ html.no-js
         link(rel='stylesheet', href='/css/templatemo-style.css')
         link(rel='stylesheet', href='/css/index.css')
         link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css')
-        link(rel='stylesheet', href='css/w3-theme-teal.css')
         script(src='../js/vendor/modernizr-2.6.2.min.js')
         script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js")
         script(src='../js/index_front.js')
@@ -41,6 +40,8 @@ html.no-js
         header.site-header
             .top-header
                 button(class="topButton button" id="loginButton") login
+                form(class="anchor-wrap" action="/logout" method="post")
+                    input(type="submit" class="flt_r m_l_5" id="logoutButton" value="SIGN OUT")
         .main-header
             .container
                 .row
