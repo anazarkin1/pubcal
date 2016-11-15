@@ -21,7 +21,7 @@ html.no-js
         link(rel='stylesheet', href='/css/animate.css')
         link(rel='stylesheet', href='/css/templatemo-misc.css')
         link(rel='stylesheet', href='/css/templatemo-style.css')
-        link(rel='stylesheet', href='/css/searchBar.css')
+        link(rel='stylesheet', href='/css/footer.css')
         link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css')
         script(src='../js/vendor/modernizr-2.6.2.min.js')
         script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js")
@@ -52,8 +52,14 @@ html.no-js
                     .logo
                         h1
                             a(href='/') PubCal
+        footer
+            .bottom-footer
+
+    hr
     include ./calendars/search-bar
 
     .content-section
         block content
         include ./calendars/login
+    footer(class="footer")
+        .bottom-footer
