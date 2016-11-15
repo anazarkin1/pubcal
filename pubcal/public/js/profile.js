@@ -338,7 +338,7 @@ function getMyCalendars(){
 		for (i=0; i < submitButtons.length; i++){
 
 			$("#submitButton_" + result[i]._id).click(function(event){
-				alert(1);
+				
 				window.location.href="/calendars/" + event.target.id.substring(13);
 			});
 
