@@ -227,7 +227,11 @@ $(document).ready(function () {
             data: JSON.stringify(data_to_send),
             dataType: "json",
             contentType: 'application/json',
-            success: alert('success')
+            success: function(result){
+                alert('success');
+                next_hop_url = "http://localhost:3000/calendars/" + result.id;
+                window.location.href = next_hop_url;
+            }
         });
 
         // var events = $('#calendar').fullCalendar('clientEvents');
