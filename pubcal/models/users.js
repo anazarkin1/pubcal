@@ -47,6 +47,7 @@ class UserClient {
                 return db.collection('users');
             })
             .then((users) => {
+                console.log("hehe"+email);
                 return users.findOne({'email': email});
             })
             .then((result) => {

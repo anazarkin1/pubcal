@@ -301,8 +301,7 @@ function getMyCalendars(){
 		"id":"left_column"
 	}).appendTo("#resultField");
 
-	var email = $(".userEmail").html();
-
+	var email = $(".username-field").html();
 
 
 	$.get("/users/getMyCalendars/" + email, function(result){
