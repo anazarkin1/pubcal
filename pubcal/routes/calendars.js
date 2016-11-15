@@ -70,7 +70,8 @@ router.get('/search', (req, res) => {
 
     CalendarClient.searchForCalendars(query, skip, (result) => {
         if (result != null) {
-            res.render('result', {'result': result, 'hostname': req.hostname});
+            result.hostname = req.hostname;
+            res.render('result', {'result': result});
         } else {
             res.render('result', {'errors': 'No calendar matched your search'});
         }
