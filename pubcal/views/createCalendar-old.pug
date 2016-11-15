@@ -1,5 +1,16 @@
-extends layout
-block content
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    link(href='./../css/calendar_library/fullcalendar.css', rel='stylesheet')
+    link(href='./../css/calendar_library/modal.css', rel='stylesheet')
+    link(href='./../css/calendar_library/fullcalendar.print.css', rel='stylesheet', media='print')
+    script(src='./../js/calendar_library/moment.min.js')
+    script(src='./../js/calendar_library/jquery.min.js')
+    script(src='./../js/calendar_library/fullcalendar.min.js')
+    script(src='./../js/create_calendar.js')
+
+  body
     #myModal.modal
       .modal-content
         span.close x
@@ -62,10 +73,4 @@ block content
       br
       |  
       input#submitButton(type='submit', name='submit', value='submit')
-    link(href='./../css/calendar_library/fullcalendar.css', rel='stylesheet')
-    link(href='./../css/calendar_library/modal.css', rel='stylesheet')
-    link(href='./../css/calendar_library/fullcalendar.print.css', rel='stylesheet', media='print')
-    script(src='./../js/calendar_library/moment.min.js')
-    script(src='./../js/calendar_library/jquery.min.js')
-    script(src='./../js/calendar_library/fullcalendar.min.js')
-    script(src='./../js/create_calendar.js')
+

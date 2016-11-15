@@ -226,7 +226,8 @@ $(document).ready(function () {
             type: 'POST',
             data: JSON.stringify(data_to_send),
             dataType: "json",
-            contentType: 'application/json'
+            contentType: 'application/json',
+            success: alert('success')
         });
 
         // var events = $('#calendar').fullCalendar('clientEvents');
