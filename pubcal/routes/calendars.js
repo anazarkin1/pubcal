@@ -171,7 +171,7 @@ router.put('/:id', (req, res) => {
 //Get /calendars/:id
 router.get('/:id', (req, res) => {
     if (req.session && req.session.user) {
-        res.render("/calendars/" + req.params.id, {username: req.session.user.username});
+        res.render("calendar", {username: req.session.user.username});
     } else {
         res.redirect('/');
     }
