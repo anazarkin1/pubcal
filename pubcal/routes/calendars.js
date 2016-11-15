@@ -59,25 +59,11 @@ router.get('/import', (req, res) => {
     res.render('calendars/import');
 });
 
-
-//GET /calendars/search
 router.get('/search', (req, res) => {
-    console.log(req.query);
-    let q = "";
-    let skip = 0;
-    if ("q" in req.query)
-        q = req.query.q;
-    if ("skip" in req.query)
-        skip = req.query.skip;
-
-    CalendarClient.searchForCalendars(q, skip, (result) => {
-        if (result != null) {
-            res.render('result', {'result': result});
-        } else {
-            res.render('result', {'errors': 'no calendar matches your request'});
-        }
-    })
+    res.render('calendars/search', {results: {}});
 });
+
+
 //Get index of calendars
 //GET /calendars/
 router.get('/', (req, res) => {
@@ -124,6 +110,25 @@ router.post('/new', (req, res) => {
         });
 });
 
+//POST /calendars/search
+router.post('/search', (req, res) => {
+    let query = "";
+    let skip = 0;
+    if ("query" in req.body)
+        query = req.body.query;
+    if ("skip" in req.body)
+        skip = req.body.skip;
+
+    CalendarClient.searchForCalendars(query, skip, (result) => {
+        if (result != null) {
+            res.send(result);
+        } else {
+            res.render('index_sample', {
+                errors: 'no calendar matches your request'
+            });
+        }
+    })
+});
 
 //Update a calendar by id
 //PUT /calendars/:id
