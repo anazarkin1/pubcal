@@ -70,7 +70,7 @@ router.get('/search', (req, res) => {
 
     CalendarClient.searchForCalendars(query, skip, (result) => {
         if (result != null) {
-            res.render('result', {'result': result});
+            res.render('result', {'result': result, 'hostname': req.hostname});
         } else {
             res.render('result', {'errors': 'No calendar matched your search'});
         }
@@ -79,6 +79,7 @@ router.get('/search', (req, res) => {
 //Get index of calendars
 //GET /calendars/
 router.get('/', (req, res) => {
+
     res.send('GET list of calendars');
 });
 
