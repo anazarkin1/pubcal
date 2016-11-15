@@ -226,7 +226,14 @@ $(document).ready(function () {
             type: 'POST',
             data: JSON.stringify(data_to_send),
             dataType: "json",
-            contentType: 'application/json'
+            contentType: 'application/json',
+            success: function(result){
+                alert('success');
+                var current_url = window.location.href;
+                var str = current_url.substr(current_url.lastIndexOf('/') + 1) + '$';
+                var next_hop_url = current_url.replace(new RegExp(str), result.id);
+                window.location.href = next_hop_url;
+            }
         });
 
         // var events = $('#calendar').fullCalendar('clientEvents');
