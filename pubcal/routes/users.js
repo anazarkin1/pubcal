@@ -39,13 +39,26 @@ router.post('/subscribe/:id', (req, res) => {
     return UserClient.subscribe(username, id)
         .then((result) => {
             if (result.nModified) {
-                CalendarClient.getSubscribed(id, username)
+                CalendarClient.beSubscribed(id, username)
                     .then((result2) => {
-                        // TODO: SUCCESS, SEND TO FRONT END
+                        res.send('subscribed');
                     });
             }
         });
+});
 
+router.post('/unSubscribe/:id', (req, res) => {
+    let username = req.body.username;
+    let id = req.params.id;
+    return UserClient.unSubscribe(username, id)
+        .then((result) => {
+            if (result.nModified) {
+                CalendarClient.beUnSubscribed(id, username)
+                    .then((result2) => {
+                        res.send('subscribed');
+                    });
+            }
+        });
 });
 
 module.exports = router;
