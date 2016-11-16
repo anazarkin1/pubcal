@@ -14,7 +14,9 @@ $(document).ready(function() {
 
 		// This is the url to get the json object
 		var calendarURL = window.location.href + '/json';
+		var downloadURL = window.location.href + '/download';
 
+		$('#download-btn').attr('href', downloadURL);
 
 		// Get the calendar object
 		$.getJSON(calendarURL, function(result){
