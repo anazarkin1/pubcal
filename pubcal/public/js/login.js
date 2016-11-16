@@ -37,7 +37,9 @@ $(document).ready(function() {
 
         return false;
     });
-
-    // When clicking on the button close or the mask layer the popup closed
-
+    // click outside the popup to close
+    $('body').click(function(e) {
+        $('#mask').hide();
+        $('#login-box').hide();
+    });
 });
