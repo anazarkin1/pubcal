@@ -26,7 +26,7 @@ that it would be much more efficient to use something that we already know so th
 
         * Frontend developers:
             * Barry: index page, search result page
-            * Navie: create/import/edit calendar page, display subscribed calendar page, 
+            * Navie: create/import/edit/download calendar page, display subscribed calendar page 
         
         * Backend developers:
             * Eddie: 
@@ -36,8 +36,8 @@ that it would be much more efficient to use something that we already know so th
                   pages: create/import/edit calendar page
                   others: Setting up AWS server, making connection between SLACK and github
             * Nathan: 
-                  pages: handling search/search result, refactoring codes, general design patterns (?)
-                  others: Writing script for video, installation of mongoDB to the AWS server
+                  pages: handling search/search result, subscribe(add) calendars,  refactoring codes, general modularization
+                  others: Writing script for video, configuration of mongoDB to the AWS server
 #### Events
 
 * Meeting 1
@@ -56,12 +56,13 @@ that it would be much more efficient to use something that we already know so th
 * Format: in person
 * Purpose: To talk about our progress up to this point. Alex has gotten create/edit calendars working while 
            Eddie has gotten login/logout/session working. Frontend developers are mainly working on index, search, and
-           show calendar page.
+           show calendar page. Nathan is working on top module design.
 
 * Meeting 4
 * Time and location: Fri, Nov 11, 3pm - 5pm, BA3200
 * Format: in person
-* Purpose: Follow-ups on progress. Discussed bugs in create/edit calendars. 
+* Purpose: Follow-ups on progress. Discussed bugs in create/edit calendars. Also had a discussion on where we should store 
+           all of the calendar objects/database.
 
 * Meeting 5
 * Time and location: Sun, Nov 13, 3pm - 7:30pm, BA3200
