@@ -1,7 +1,7 @@
 # PubCal
 
 
-## Iteration 01 - Planning
+## Iteration 02 - Planning
 
 * Start date: Sun Oct 30
 * End date: Sun Nov 13 
