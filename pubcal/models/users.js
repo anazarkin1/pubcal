@@ -91,6 +91,29 @@ class UserClient {
                 return result;
             });
     }
+
+    static getTopFiveUsers() {
+        let database = null;
+        BaseClient.connectToDB(callback)
+            .then((db) => {
+                database = db;
+                return db.collection('users');
+            }).then((calendars) => {
+                return calendars.aggregate(
+                    {$project: {calendarSize: {$size:'subscribed_to'}}},
+                    {$sort: {calendarSize:-1}},
+                    {$limit: 5});
+            })
+            .then((result) => {
+                result.toArray((err, documents) => {
+                    callback(documents);
+                    database.close();
+                });
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
 }
 
 module.exports = UserClient;
