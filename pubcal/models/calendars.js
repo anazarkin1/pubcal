@@ -187,9 +187,9 @@ class CalendarClient {
             });
     }
 
-    static getTopFiveCalendars() {
+    static getTopFiveCalendars(callback) {
         let database = null;
-        return BaseClient.connectToDB()
+        BaseClient.connectToDB()
             .then((db) => {
                 database = db;
                 return db.collection('calendars');
@@ -200,8 +200,10 @@ class CalendarClient {
                     {$limit: 5});
             })
             .then((result) => {
-                database.close();
-                return result;
+                result.toArray((err, documents) => {
+                    callback(documents);
+                    database.close();
+                });
             })
             .catch((err) => {
                 console.log(err);
