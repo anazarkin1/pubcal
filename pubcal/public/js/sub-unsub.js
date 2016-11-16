@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	var username = $('#username').text();
 	// var subscribed = $('#subscribed').text();
-	var subscribed == 'true';
+	var subscribed = 'true';
 	var calID = window.location.href.substr(window.location.href.lastIndexOf('/') + 1)
 
 	if (subscribed == 'true') {
