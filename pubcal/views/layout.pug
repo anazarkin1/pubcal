@@ -38,10 +38,12 @@ html.no-js
             |  to improve your experience.
         header.site-header
             .top-header
-                button.align-right(class="topButton button" id="loginButton") login
                 if email
                     form(class="anchor-wrap" action="/logout" method="post")
                         input(type="submit" class="flt_r m_l_5" id="logoutButton" value="SIGN OUT")
+                else
+                    button.align-right(class="topButton button" id="loginButton") login
+
 
 
         .main-header
