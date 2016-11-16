@@ -25,7 +25,7 @@ html.no-js
         script(src='../js/vendor/modernizr-2.6.2.min.js')
         script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js")
         script(src='../js/login.js')
-        
+        script(src='../js/profile.js', defer)
     body
         //if lt IE 7
           p.chromeframe
@@ -38,12 +38,10 @@ html.no-js
             |  to improve your experience.
         header.site-header
             .top-header
+                button.align-right(class="topButton button" id="loginButton") login
                 if email
                     form(class="anchor-wrap" action="/logout" method="post")
                         input(type="submit" class="flt_r m_l_5" id="logoutButton" value="SIGN OUT")
-                else
-                    button.align-right(class="topButton button" id="loginButton") login
-
 
 
         .main-header
@@ -61,6 +59,6 @@ html.no-js
 
         .content-section
             block content
-            include ./component/login
+            include ./calendars/login
         footer(class="footer")
             .bottom-footer
