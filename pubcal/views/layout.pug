@@ -20,12 +20,12 @@ html.no-js
         script(src='../js/login.js')
     body
         header.site-header
-            a.login-window(href='#login-box') Login / Sign In
             .top-header
                 if email
                     form(class="anchor-wrap" action="/logout" method="post")
                         input(type="submit" class="flt_r m_l_5" id="logoutButton" value="SIGN OUT")
-
+                else
+                    a.login-window(href='#login-box') Login / Sign In
 
 
         .main-header
