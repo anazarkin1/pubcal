@@ -147,7 +147,7 @@ class CalendarClient {
             });
     }
 
-    static getSubscribed(id, username) {
+    static beSubscribed(id, username) {
         let database = null;
         return BaseClient.connectToDB()
             .then((db) => {
@@ -157,6 +157,47 @@ class CalendarClient {
                 return calendars.update(
                     {_id: ObjectID(id)},
                     {$push: {users_subscribed: username}});
+            })
+            .then((result) => {
+                database.close();
+                return result;
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
+
+    static beUnSubscribed(id, username) {
+        let database = null;
+        return BaseClient.connectToDB()
+            .then((db) => {
+                database = db;
+                return db.collection('calendars');
+            }).then((calendars) => {
+                return calendars.update(
+                    {_id: ObjectID(id)},
+                    {$pull: {users_subscribed: username}});
+            })
+            .then((result) => {
+                database.close();
+                return result;
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
+
+    static getTopFiveCalendars() {
+        let database = null;
+        return BaseClient.connectToDB()
+            .then((db) => {
+                database = db;
+                return db.collection('calendars');
+            }).then((calendars) => {
+                return calendars.aggregate(
+                    {$project: {userSize: {$size:'$users_subscribed'}}},
+                    {$sort: {userSize:-1}},
+                    {$limit: 5});
             })
             .then((result) => {
                 database.close();
