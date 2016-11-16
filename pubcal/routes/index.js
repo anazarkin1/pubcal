@@ -2,6 +2,7 @@ const session = require('client-sessions');
 const express = require('express');
 const router = express.Router();
 const UserClient = require('../models/index');
+const CalendarClient = require('../models/calendars');
 
 // session settings here
 router.use(session({
@@ -141,6 +142,25 @@ router.post('/signup', (req, res) => {
                     });
             }
         });
+});
+
+//GET /calendars/search
+router.get('/search', (req, res) => {
+    let query = "";
+    let skip = 0;
+    if ("q" in req.query)
+        query = req.query.q;
+    if ("skip" in req.query)
+        skip = req.query.skip;
+
+    CalendarClient.searchForCalendars(query, skip, (result) => {
+        if (result != null) {
+            console.log(result);
+            res.render('result', {'result': result, 'hostname': req.hostname});
+        } else {
+            res.render('result', {'errors': 'No calendar matched your search'});
+        }
+    })
 });
 
 // Handle logout requests

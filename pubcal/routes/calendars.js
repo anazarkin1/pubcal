@@ -78,24 +78,6 @@ router.get('/import', (req, res) => {
     res.render('calendars/import');
 });
 
-//GET /calendars/search
-router.get('/search', (req, res) => {
-    let query = "";
-    let skip = 0;
-    if ("q" in req.query)
-        query = req.query.q;
-    if ("skip" in req.query)
-        skip = req.query.skip;
-
-    CalendarClient.searchForCalendars(query, skip, (result) => {
-        if (result != null) {
-            console.log(result);
-            res.render('result', {'result': result, 'hostname': req.hostname});
-        } else {
-            res.render('result', {'errors': 'No calendar matched your search'});
-        }
-    })
-});
 //Get index of calendars
 //GET /calendars/
 router.get('/', (req, res) => {
@@ -195,7 +177,7 @@ router.get('/:id', (req, res) => {
         CalendarClient.getCalendarById(id)
             .then((calendar) => {
                 let users = calendar.users_subscribed;
-                let subscribed = users.contains(req.session.user.username);
+                let subscribed = users.includes(req.session.user.username);
                 res.render("calendar", {
                     username: req.session.user.username,
                     subscribed: subscribed
