@@ -56,13 +56,13 @@ router.get('/:id/json', (req, res) => {
 
 // render `edit calendar` page
 // GET /calendars/:id/edit
-router.get('/:id/edit', () => {
+router.get('/:id/edit', (req, res) => {
     if (req.session && req.session.user) {
         let id = req.params.id;
         CalendarClient.getCalendarById(id)
             .then((calendar) => {
                 let users = calendar.users_subscribed;
-                let subscribed = users.contains(req.session.user.username);
+                let subscribed = users.includes(req.session.user.username);
                 res.render("editCalendar", {
                     username: req.session.user.username,
                     subscribed: subscribed
