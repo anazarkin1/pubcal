@@ -20,7 +20,7 @@ Talking points:
 
 Intro
 The app we are going to present is called "PubCal". It is a central repository of calendars which can be created or imported by any users to our app.
-With this app, it is easy to add events to and create a calendar and share it with anyone whoever needs it. Users can also search for calendars and subscribe to them. In this video, we are going to demonstrate how to create, import, download, subscribed to, and search for calendars, and how each calendar is displayed on a user's profile page.
+With this app, it is easy to add events to and create a calendar and share it whoever needs it. Users can also search for calendars and subscribe to them. In this video, we are going to demonstrate how to create, import, download, subscribed to, and search for calendars, and how each calendar is displayed on a user's profile page.
 
 1. Profile page, display user?s calendars, create calendars
 After users sign up or log in to their accounts, they will be redirected to their profile page. Users can look up calendars they created previously and calendars they subscribed to. Now you see empty space but we will come back to this later. (20 seconds)
