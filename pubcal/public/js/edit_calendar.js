@@ -13,7 +13,7 @@ $(document).ready(function () {
     var addBox = document.getElementById('addEvent');
     // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
-    var calendarURL = window.location.href + '../json';
+    var calendarURL = window.location.href + '/../json';
 
     // When the user clicks on <span> (x), close the modal
     span.onclick = function () {
@@ -37,9 +37,8 @@ $(document).ready(function () {
     // This is the calendar mechanism
     $.getJSON(calendarURL, function(result){
         var events = result.events;
-        $('#calendarTitle').append(result.name);
-        $('#descriptionBox').append(result.description);
-        $('#owner').append(result.created_by);
+        $('#cal_title').val(result.name);
+        $('#cal_description').val(result.description);
 
         $.each(events, function(index, value){
             var start = new Date(Date.parse(value.start));
@@ -161,17 +160,15 @@ $(document).ready(function () {
                 xhrObj.setRequestHeader("Content-Type", "application/json");
                 xhrObj.setRequestHeader("Accept", "application/json");
             },
-            url: '../',
+            url: window.location.href + '/..',
             type: 'PUT',
             data: JSON.stringify(data_to_send),
             dataType: "json",
             contentType: 'application/json',
             success: function(result){
                 alert('success');
-                var current_url = window.location.href;
-                var str = current_url.substr(current_url.lastIndexOf('/') + 1) + '$';
-                var next_hop_url = current_url.replace(new RegExp(str), result.id);
-                window.location.href = next_hop_url;
+                var current_url = window.location.href + '/..';
+                window.location.href = current_url;
             }
         });
 
