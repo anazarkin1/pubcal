@@ -34,7 +34,7 @@
 * We are planning to make the following changes to our process:
    * Based on demand, we might assign different roles for the next phase of the assignment. This is to have a fair system where 
       everyone can learn different materials by working on various tasks.
-   * 
+   * We will take the vertical approach where most of the team members try to focus on one task (such as enballing users to communicate with each other). This way we can finish most of the features that's core to our app.
 
 
 ## Product - Review
@@ -53,11 +53,10 @@
     * subscribe/unsubscribed calendars 
         * It is partly working but we are still getting bugs when we incorporate it with session/cookie. We also
           did not have enough time to finish it by the deadline of this iteration.
-    * (add comments about more frontend on profile and also functionality)
 
 
 * Goals/tasks that were not originally planned, but ended up being met/completed:
-    * Implementation of session/cookie was not crucial for this deliverable but we still ended up implementing it.
+    * Implementation of session/cookie (for log in) was not crucial for this deliverable but we still ended up implementing it.
     * We also have backend implementation ready for showing most popular calendars on index page. However, frontend
       layout for this functionality is not ready yet.
     
