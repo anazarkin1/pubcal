@@ -22,19 +22,19 @@
           unify variable names and syntax. In contrast, we did not have such problem this time as backend developers always agreed upon 
           variable names and modular decision. It was also easier to set up smaller group meetings such as "chat room" for backend developers
           as it did not require all the group members to make decisions about backend stuff (and likewise for frontend developers and the
-          decisions they made).    
-
-    *
+          decisions they made).
 
 
 * Decisions did not turn out as well as you hoped:
-    *  We may have planned too many functionalities and pages to finish for this iteration as it was a very busy time of 
+   * We may have planned too many functionalities and pages to finish for this iteration as it was a very busy time of 
        the semester. Because we can continue to work on this until we demo, we should have waited on some of the functionalities
        and focused on functionalities that is core to our app (such as create/subscribe/unsubscribe/edit calendars)
-    
+   * We took the horizontal approach where each team member may focus on different features. This led to features that had backend support but no corresponding frontend display. The verical approach is better for this course project because the scope is small and focusing on the same feature would lead to better prototyping and more efficient debugging.
+   
 * We are planning to make the following changes to our process:
-    * Based on demand, we might assign different roles for the next phase of the assignment. This is to have a fair system where 
+   * Based on demand, we might assign different roles for the next phase of the assignment. This is to have a fair system where 
       everyone can learn different materials by working on various tasks.
+   * 
 
 
 ## Product - Review
