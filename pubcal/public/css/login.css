@@ -35,4 +35,9 @@
     /* Firefox */
         -webkit-border-radius: 3px;
     /* Safari, Chrome */;
+    width: 600px;
+}
+
+#close {
+    margin-left: 40%;
 }
