@@ -1,8 +1,9 @@
 const session = require('client-sessions');
 const express = require('express');
 const router = express.Router();
-const UserClient = require('../models/index');
+const IndexClient = require('../models/index');
 const CalendarClient = require('../models/calendars');
+const UserClient = require('../models/users');
 
 // session settings here
 router.use(session({
@@ -16,7 +17,7 @@ router.use(session({
 router.use((req, res, next) => {
     if (req.session && req.session.user) {
         let email = req.session.user.email;
-        UserClient.findUserByEmail(email)
+        IndexClient.findUserByEmail(email)
             .then((result) => {
                 if (result) {
                     // TODO: nathan -> eddie: WHY ASSIGN RESULT TO MULTIPLE VARIABLES
@@ -66,7 +67,7 @@ router.post('/login', (req, res) => {
 	let email = req.body.email;
 	let password = req.body.password;
 
-	UserClient.login(email, password)
+	IndexClient.login(email, password)
         .then((result) => {
             if (result) {
                 req.session.user = result;
@@ -116,7 +117,7 @@ router.post('/signup', (req, res) => {
         });
     }
 
-    UserClient.findUserByEmail(email)
+    IndexClient.findUserByEmail(email)
         .then((result) => {
             if (result) {
                 res.render('index_sample', {
@@ -129,7 +130,7 @@ router.post('/signup', (req, res) => {
                     email: email,
                     subscribed_to: []
                 };
-                UserClient.addUser(user)
+                IndexClient.addUser(user)
                     .then((result) => {
                         req.user = result;
                         delete req.user.password;
@@ -170,6 +171,16 @@ router.post('/logout', (req, res) => {
 		req.session.reset();
 	}
 	res.redirect('/');
+});
+
+router.get('/topFivePopular', (req, res) => {
+    UserClient.getTopFiveUsers((users) => {
+        CalendarClient.getTopFiveCalendars((calendars) => {
+            res.render('/', {
+                users: users,
+                calendars: calendars});
+        })
+    })
 });
 
 module.exports = router;
