@@ -37,9 +37,4 @@ $(document).ready(function() {
 
         return false;
     });
-    // click outside the popup to close
-    $('body').click(function(e) {
-        $('#mask').hide();
-        $('#login-box').hide();
-    });
 });
