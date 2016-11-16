@@ -1,13 +1,5 @@
 doctype html
-//if lt IE 7
-  html.no-js.lt-ie9.lt-ie8.lt-ie7
-//if IE 7
-  html.no-js.lt-ie9.lt-ie8
-//if IE 8
-  html.no-js.lt-ie9
-// [if gt IE 8] <!
 html.no-js
-    // <![endif]
     head
         meta(charset='utf-8')
         title PubCal
@@ -27,15 +19,6 @@ html.no-js
         script(src='../js/login.js')
         script(src='../js/profile.js', defer)
     body
-        //if lt IE 7
-          p.chromeframe
-            | You are using an
-            strong outdated
-            |  browser. Please
-            a(href='http://browsehappy.com/') upgrade your browser
-            |  or
-            a(href='http://www.google.com/chromeframe/?redirect=true') activate Google Chrome Frame
-            |  to improve your experience.
         header.site-header
             .top-header
                 if email
