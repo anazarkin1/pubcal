@@ -127,3 +127,4 @@
     1. The video which includes intro, demo and final keynote according to the handout.
     2. The web app (frontend with javascript, css, pug, backend with node, express, mongo) set up on the AWS.
     3. Github Issues https://github.com/csc301-fall-2016/project-team-18/issues
+    4. Video demo https://github.com/csc301-fall-2016/project-team-18/tree/master/deliverables/video_deliverable2.mp4
