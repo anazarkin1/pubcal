@@ -8,14 +8,6 @@
 ## Process - Reflection
 
 * Decisions turned out well:
-    * Choosing mongoDB and pug in our implementation.
-        * As we expected, instead of learning new, unfamiliar technologies, it was better to utilize those that
-          all of us were already familiar with because it saved us a lot of time.
-        * On the other hand, though it was our first time using mongoDB, it was actually a good decision because
-          all of us did know how to use SQL from CSC343 and mongoDB was very similar to SQL except some syntax.
-          Therefore, we were able to learn something new in a short period of time. In technical respect, we liked
-          mongoDB because it is flexible in that we did not have to specify as much schema as we would have to in SQL.
-
     * Separating roles into frontend and backend.
         * All of our group members (except Alex) worked on final project for CSC309 in which we separated our roles based on pages.  In that project, because each person worked on front and backend of pages, we later spent a lot of time trying to combine and unify variable names and syntax. In contrast, we did not have such problem this time as backend developers always agreed upon variable names and modular decision. It was also easier to set up smaller group meetings such as "chat room" for backend developers as it did not require all the group members to make decisions about backend stuff (and likewise for frontend developers and the decisions they made).
 
