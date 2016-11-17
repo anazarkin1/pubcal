@@ -8,23 +8,29 @@
 ## Process
 
 #### Roles & responsibilities
-    * Roles
-        * We decided to have two different roles, frontend developers and backend developers. We realized that this would be more efficient than having each person work on both frontend and backend of a page (or pages) because we might end up having different variable names that refer to same objects, etc
-            * Frontend developers: Barry, Navie
-            * Backend developers: Eddie, Alex and Nathan
+    * Roles and Responsibilities
+        * We decided to have two different roles, frontend developers and backend developers in general.  However we are using a Kanban development process so frontend developers also did some of the backend work and vice versa to make sure there would not be a bottleneck.
 
-    * Responsibilities
-        * Frontend developers:
-            * Barry was responsible creating the home page, login interface, the search bar, and displaying results after a search.
-            * Navie was in charge of the functionalities of creating a calendar as well as its features. display subscribed calendar page
+    * Frontend developers:
+        * Barry:
+            * Role: UX and UI designer
+            * Responsibilities: Barry was responsible creating the home page, login interface, the search bar, and displaying results after a search.
+        * Navie:
+            * Role: UX and UI designer
+            * Responsibilities: Navie was in charge of the functionalities of creating a calendar and its features and, displaying subscribed calendar page
 
-        * Backend developers:
-            * Eddie was responsible creating a profile page, the feature of logging in and out, as well as setting up    the mongoDB schema and inserting sample data.
-            * Alex was responsible setting up the AWS server, the server side API for the functionalities of calendar page.  He also connected SLACK and github to make communication easier.
-            * Nathan handled various server side APIs such as searching, subscribing.  He was also responsible for refactoring our codes and general modularization.  Lastly He also managed the configuration of mongoDB to the AWS server
+    * Backend developers:
+        * Eddie:
+            * Role: Middleware Developer
+            * responsibilities: Eddie was responsible creating a profile page, the feature of logging in and out, as well as setting connecting the frontend to the backend
+        * Alex:
+            * Role: Database Manager
+            * responsibilities: Alex was responsible setting up the AWS server, the server side API for some of the functionalities of calendar page.  He was also responsible for creating the database schema.
+        * Nathan:
+            * Role: Overseer
+            * Responsibilities: He was also responsible for refactoring our codes and general modularization.  He also managed the configuration of mongoDB to the AWS server.  Lastly He ensured various server side APIs were were setup such as searching, subscribing.  
 
 #### Events
-
     * Meeting 1
        * Title: Tasks and Goals
        * Time and location: Sun, Oct 30, 3:30 - 4pm, BA3200
@@ -59,13 +65,13 @@
 
     * Meeting 6
       * Title: Video Making
-      * Time and location: Tuesday, Nov 15, 7pm - 12pm, BA 3195
+      * Time and location: Tuesday, Nov 14, 7pm - 12pm, BA 3195
       * Format: In person
       * Purpose: To create the product video
 
     * Meeting 7
       * Title: Final Review and next step planning
-      * Ti
+      * Time and location: Wednesday, Nov 15, 12pm - 3pm BA 3200
       * Format: In person
       * Purpose: We looked over the requirements and made sure we did not miss any details as well as planning our next step.
 
@@ -87,6 +93,37 @@
     6. fake data in database (nathan)
     7. make a video
 
+    * Priority list (Ascending order)
+        1. The User Interface
+             * Deadline: 1 Nov 2016
+             * Reason: It is important for the video demo
+        2. The implementation for the main features and ensure the their functionalities are working
+            * Reason: It is important for the prototype
+            1. Create/Remove/Edit Calendars
+                * Deadline:  6 Nov 2016
+            2. Log in/ Log out
+                * Deadline: 6 Nov 2016
+            4. Importing Calendars
+                * Deadline: 6 Nov 2016
+            5. Searching
+                * Deadline: 9 Nov 2016
+        3. Setting up the database
+             * Deadline 10 Nov 2016
+             * Reason: We can create a temporary file to test instead of using database
+        4. Testing
+             * Deadline: 13 Nov 2016
+             * Reason: Need everything to be done before tesing
+        5. Mock Up data
+             * Deadline: 14 Nov 2016
+             * Reason: It would not take a lot of time and it is not needed for any main features
+        6. Video Making
+             * Deadline: 14 Nov 2016
+             * Reason: We need to have a prototype before making the video demo
+        7. The implementation of extra features
+             * Deadline: None
+             * Reason: It is not needed in this iteration
+
 #### Artifacts
     1. The video which includes intro, demo and final keynote according to the handout.
     2. The web app (frontend with javascript, css, pug, backend with node, express, mongo) set up on the AWS.
+    3. Github Issues https://github.com/csc301-fall-2016/project-team-18/issues
