@@ -85,14 +85,6 @@
     We would also reallocate items if a team member has an emergency and can't finish the task on time.
 
 #### Goals and tasks:
-    1. front end layout (navie + barry)
-    2. create/remove/edit calendars (alex)
-    3. log in/log out (eddie)
-    4. import calendars (eddie)
-    5. search calendars (nathan
-    6. fake data in database (nathan)
-    7. make a video
-
     * Priority list (Ascending order)
         1. The User Interface
              * Deadline: 1 Nov 2016
