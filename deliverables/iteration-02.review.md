@@ -8,6 +8,7 @@
 ## Process - Reflection
 
 * Decisions turned out well:
+
     * Choosing mongoDB and pug in our implementation.
         * As we expected, instead of learning new, unfamiliar technologies, it was better to utilize those that
           all of us were already familiar with because it saved us a lot of time.
@@ -36,17 +37,19 @@
 ## Product - Review
 
 * Goals/tasks that were met/completed:
-    * front end layout for index, profile, search result, show calendars
-    * create calendars
-    * import calendars
-    * making fake data in database
-    * making the video
+    * Frontend layout for index, profile, search result, show calendars
+    * Create calendars functionalities
+    * Import calendars functionalities
+    * Inserting sample data in database 
+    * Making the video that presents our application
 
 * Goals/tasks that were planned but not met/completed:
-    * edit calendars
+    * Edit calendars
         * Although we did implement this, we have not gotten to the point where it works
           perfectly. We simply did not have enough time to finish this.
-    * subscribe/unsubscribed calendars
+
+    * Subscribe/unsubscribed calendars
+
         * It is partly working but we are still getting bugs when we incorporate it with session/cookie. We also
           did not have enough time to finish it by the deadline of this iteration.
 

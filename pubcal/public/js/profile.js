@@ -1,3 +1,7 @@
+/*
+ * Some functions are adopted from my own project from CSC309  
+ */
+
 $(document).ready(function(){
 
 	var navs = document.getElementsByClassName("main-nav-button");
