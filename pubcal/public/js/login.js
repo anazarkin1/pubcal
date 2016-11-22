@@ -10,7 +10,16 @@ $(document).ready(function() {
             $('#login-box').hide();
         }
     });
-    
+
+    $("body").click(() => {
+        $('#mask').hide();
+        $('#login-box').hide();
+    });
+
+    $('#login-box').click((e) => {
+        e.stopPropagation();
+    })
+
     $('#signup').click((event) => {
         $('#loginForm').hide();
         $('#signupForm').show();
