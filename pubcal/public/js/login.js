@@ -4,6 +4,13 @@ $(document).ready(function() {
         $('#login-box').hide();
     });
 
+    $(document).keydown((e) => {
+        if (e.keyCode == 27) {
+            $('#mask').hide();
+            $('#login-box').hide();
+        }
+    });
+    
     $('#signup').click((event) => {
         $('#loginForm').hide();
         $('#signupForm').show();
