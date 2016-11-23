@@ -5,7 +5,7 @@ block login
             button.buttonFonts(class="button" id="signup") signup
             button.buttonFonts(class="close" id="close") x
             section
-                form(id="loginForm" class="form" action="login" method="post")
+                form(id="loginForm" class="form" action="/login" method="post")
                     section(class="span12 text-center")
                         h2(class="formTitle") Login
                         section.formFonts
@@ -18,7 +18,7 @@ block login
                             br
                             br
                             input.submit(type="submit" value="Login")
-                form(id="signupForm" class="form" action="signup" method="post" hidden="")
+                form(id="signupForm" class="form" action="/signup" method="post" hidden="")
                     section(class="span12 text-center")
                         h2(class="formTitle") Sign Up
                         section.formFonts
