@@ -13,7 +13,19 @@ $(document).ready(function () {
     var addBox = document.getElementById('addEvent');
     // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
-    var calendarURL = window.location.href + '/../json';
+    var calendarEditURL;
+    var calendarURL;
+
+    if (window.location.href.substr(-1) === '/') {
+        calendarEditURL = window.location.href;
+    } else {
+        calendarEditURL = window.location.href + '/';
+    }
+    //:id/edit/../ redirects to :id/
+    calendarURL = calendarEditURL + '../';
+
+    //swap :id/edit/ to :id/json
+    var calendarJsonURL = calendarEditURL + '../json';
 
     // When the user clicks on <span> (x), close the modal
     span.onclick = function () {
@@ -35,12 +47,12 @@ $(document).ready(function () {
 
     // =========================================
     // This is the calendar mechanism
-    $.getJSON(calendarURL, function(result){
+    $.getJSON(calendarJsonURL, function (result) {
         var events = result.events;
         $('#cal_title').val(result.name);
         $('#cal_description').val(result.description);
 
-        $.each(events, function(index, value){
+        $.each(events, function (index, value) {
             var start = new Date(Date.parse(value.start));
             var end = new Date(Date.parse(value.end));
             value.start = start.yyyymmdd() + 'T' + start.hhmm();
@@ -49,7 +61,7 @@ $(document).ready(function () {
 
         })
         $('#calendar').fullCalendar({
-            eventClick: function(calEvent, jsEvent, view) {
+            eventClick: function (calEvent, jsEvent, view) {
                 modal.style.display = "block";
                 // Clear previous info
                 $('.eventInfo').html('&nbsp')
@@ -148,7 +160,6 @@ $(document).ready(function () {
         }
         var data_to_send = {
             calendar: {
-                created_by: "userid1",
                 description: $('#cal_description').val(),
                 name: $('#cal_title').val(),
                 events: output_events
@@ -165,10 +176,8 @@ $(document).ready(function () {
             data: JSON.stringify(data_to_send),
             dataType: "json",
             contentType: 'application/json',
-            success: function(result){
-                alert('success');
-                var current_url = window.location.href + '/..';
-                window.location.href = current_url;
+            success: function (result) {
+                window.location.href = calendarURL;
             }
         });
 

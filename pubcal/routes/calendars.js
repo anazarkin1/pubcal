@@ -90,7 +90,7 @@ router.get('/', (req, res) => {
 router.post('/new', (req, res) => {
     //check if calendar was sent to us
     if (!("calendar" in req.body)) {
-        console.log("no calendar found");
+        console.error("no calendar found");
         res.json({"status": "failed"});
         return;
     }
@@ -135,6 +135,7 @@ router.put('/:id', (req, res) => {
         //and frontend doesn't send this to us(for security)
         calendar.users_subscribed = oldCalendar.users_subscribed.slice();
         calendar.filepath = oldCalendar.filepath;
+        calendar.created_by = oldCalendar.created_by;
         return calendar;
     }).then((newCalendar) => {
         //Replace calendar object in the database first, newCalendar contains copied users and filePath

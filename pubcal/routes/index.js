@@ -1,3 +1,4 @@
+"use strict";
 const session = require('client-sessions');
 const express = require('express');
 const router = express.Router();
@@ -33,41 +34,46 @@ router.use((req, res, next) => {
     next();
 });
 
+
+function index(req, res) {
+    // TODO: WHY THIS CHECKING CONDITION
+    if (!(req.session && req.session.user)) {
+        res.render('index', {title: 'Express'});
+    } else {
+        res.render('profile_sample', {
+            // passing current user's email address for testing
+            email: req.session.user.email
+        });
+    }
+}
+
 // function to ensure that a user is logged in when accessing login-required pages.
 function requireLogin(req, res, next) {
-	if (!req.user) {
-		res.redirect('/');
-	} else {
-		next();
-	}
+    if (!req.user) {
+        res.redirect('/');
+    } else {
+        next();
+    }
 }
 
 router.get('/', (req, res) => {
-    // TODO: WHY THIS CHECKING CONDITION
-	if (!(req.session && req.session.user)){
-		res.render('index', { title: 'Express' });
-	} else {
-		res.render('profile_sample', {
-			// passing current user's email address for testing
-			email: req.session.user.email
-		});
-	}
+    return index(req, res);
 });
 
 // Handles profile requests. (host/profile)
 router.get('/profile', requireLogin, (req, res) => {
-	res.render('profile_sample', {
-		// passing current user's email address for testing
-		email: req.session.user.email
-	});
+    res.render('profile_sample', {
+        // passing current user's email address for testing
+        email: req.session.user.email
+    });
 });
 
 // Handle login requests
 router.post('/login', (req, res) => {
-	let email = req.body.email;
-	let password = req.body.password;
+    let email = req.body.email;
+    let password = req.body.password;
 
-	IndexClient.login(email, password)
+    IndexClient.login(email, password)
         .then((result) => {
             if (result) {
                 req.session.user = result;
@@ -80,22 +86,26 @@ router.post('/login', (req, res) => {
         });
 });
 
+router.get('/login', (req, res) => {
+    return index(req, res);
+});
+
 // Handle signup requests
 router.post('/signup', (req, res) => {
-	// take email address -> check if it already exists
-	//					  -> check if valid format
-	// take username -> check if it already exists
-	// take password -> check if it has > 8 characters
+    // take email address -> check if it already exists
+    //					  -> check if valid format
+    // take username -> check if it already exists
+    // take password -> check if it has > 8 characters
 
-	// TODO: Figure out if users are required to provide additional account info
+    // TODO: Figure out if users are required to provide additional account info
 
     let usrRegex = new RegExp('^[a-zA-Z0-9äöüÄÖÜ]*$');
     let emailRegex = /^(([^<>()\[\]\\.,;:\s@']+(\.[^<>()\[\]\\.,;:\s@']+)*)|('.+'))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-	let email = req.body.emailNew;
-	let username = req.body.username;
-	let password = req.body.passwordNew;
-	let passwordConfirm = req.body.confirmPassword;
+    let email = req.body.emailNew;
+    let username = req.body.username;
+    let password = req.body.passwordNew;
+    let passwordConfirm = req.body.confirmPassword;
 
     let errMessage;
     var hasError = 1;
@@ -166,11 +176,11 @@ router.get('/search', (req, res) => {
 
 // Handle logout requests
 router.post('/logout', (req, res) => {
-	// should reset session first
-	if (req.session) {
-		req.session.reset();
-	}
-	res.redirect('/');
+    // should reset session first
+    if (req.session) {
+        req.session.reset();
+    }
+    res.redirect('/');
 });
 
 router.get('/topFivePopular', (req, res) => {
@@ -178,7 +188,8 @@ router.get('/topFivePopular', (req, res) => {
         CalendarClient.getTopFiveCalendars((calendars) => {
             res.render('/', {
                 users: users,
-                calendars: calendars});
+                calendars: calendars
+            });
         })
     })
 });
