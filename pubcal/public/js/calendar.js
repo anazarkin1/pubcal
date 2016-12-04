@@ -23,6 +23,16 @@ $(document).ready(function () {
     var downloadURL = url + 'download';
 
     $('#download-btn').attr('href', downloadURL);
+    $('#remove-btn').click(function () {
+        $.ajax({
+            url: url,
+            method: 'delete',
+            success: function (data) {
+                window.location.href = '/';
+            }
+        });
+
+    });
 
     // Get the calendar object
     $.getJSON(calendarURL, function (result) {

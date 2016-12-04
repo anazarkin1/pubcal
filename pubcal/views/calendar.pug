@@ -1,33 +1,31 @@
 extends layout
 block content
     #myModal.modal
-      .modal-content
-        span.close x
-        |  Title:
-        #eventTitle.eventInfo &amp;nbsp
-        |  Start date(yyyy-mm-dd):
-        #eventStart.eventInfo &amp;nbsp
-        |  Start time(hh:mm):
-        #eventStartTime.eventInfo &amp;nbsp
-        |  End date(yyyy-mm-dd):
-        #eventEnd.eventInfo &amp;nbsp
-        |  End time(hh:mm):
-        #eventEndTime.eventInfo &amp;nbsp
-        |  Description:
-        #eventDescription.eventInfo &amp;nbsp
+        .modal-content
+            span.close x
+            |  Title:
+            #eventTitle.eventInfo &amp;nbsp
+            |  Start date(yyyy-mm-dd):
+            #eventStart.eventInfo &amp;nbsp
+            |  Start time(hh:mm):
+            #eventStartTime.eventInfo &amp;nbsp
+            |  End date(yyyy-mm-dd):
+            #eventEnd.eventInfo &amp;nbsp
+            |  End time(hh:mm):
+            #eventEndTime.eventInfo &amp;nbsp
+            |  Description:
+            #eventDescription.eventInfo &amp;nbsp
     #calendarTitle
     #calendar
     #info
-      h3 Owner:
-      #owner.info
-      h3 Description
-      #descriptionBox
-      |  
-      a#download-btn.button(href='', target='_blank') Download
-      |  
-      a#subscribe-btn.button(href='', target='_blank') Subscribe
-      |  
-      a#unsubscribe-btn.button(href='', target='_blank') Unsubscribe
+        h3 Owner:
+        #owner.info
+        h3 Description
+        #descriptionBox
+        a#download-btn.button(href='', target='_blank') Download
+        div#remove-btn.button(href='', target='_blank') Remove
+        a#subscribe-btn.button(href='', target='_blank') Subscribe
+        a#unsubscribe-btn.button(href='', target='_blank') Unsubscribe
     #username.hidden "#{username}"
     #subscribed.hidden "#{subscribed}"
 
