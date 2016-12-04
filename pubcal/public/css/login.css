@@ -51,3 +51,12 @@
 #close {
     margin-left: 40%;
 }
+
+.centreForm {
+    text-align: center;
+}
+
+.centreInput {
+    width: 70%;
+    margin: 0 auto;
+}
