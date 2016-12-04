@@ -40,7 +40,7 @@ function index(req, res) {
     if (!(req.session && req.session.user)) {
         res.render('index', {title: 'Express'});
     } else {
-        res.render('profile_sample', {
+        res.render('profile', {
             // passing current user's email address for testing
             email: req.session.user.email
         });
@@ -62,7 +62,7 @@ router.get('/', (req, res) => {
 
 // Handles profile requests. (host/profile)
 router.get('/profile', requireLogin, (req, res) => {
-    res.render('profile_sample', {
+    res.render('profile', {
         // passing current user's email address for testing
         email: req.session.user.email
     });
@@ -77,7 +77,7 @@ router.post('/login', (req, res) => {
         .then((result) => {
             if (result) {
                 req.session.user = result;
-                res.render('profile_sample', { // when matching user is found, load profile page.
+                res.render('profile', { // when matching user is found, load profile page.
                     email: req.session.user.email
                 });
             } else { // no matching user is found, load index page
@@ -96,8 +96,6 @@ router.post('/signup', (req, res) => {
     //					  -> check if valid format
     // take username -> check if it already exists
     // take password -> check if it has > 8 characters
-
-    // TODO: Figure out if users are required to provide additional account info
 
     let usrRegex = new RegExp('^[a-zA-Z0-9äöüÄÖÜ]*$');
     let emailRegex = /^(([^<>()\[\]\\.,;:\s@']+(\.[^<>()\[\]\\.,;:\s@']+)*)|('.+'))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -122,7 +120,7 @@ router.post('/signup', (req, res) => {
     }
 
     if (hasError) {
-        res.render('index_sample', {
+        res.render('index', {
             errors: errMessage
         });
     }
@@ -130,7 +128,7 @@ router.post('/signup', (req, res) => {
     IndexClient.findUserByEmail(email)
         .then((result) => {
             if (result) {
-                res.render('index_sample', {
+                res.render('index', {
                     errors: 'username already in use'
                 });
             } else {
@@ -147,7 +145,7 @@ router.post('/signup', (req, res) => {
                         req.session.user = result;
                         res.locals.user = result;
 
-                        res.render('profile_sample', {
+                        res.render('profile', {
                             email: req.session.user.email
                         });
                     });

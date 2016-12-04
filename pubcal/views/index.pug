@@ -1,5 +1,52 @@
 extends layout
+
 block content
-    .content-section
-        section(id="popular")
-            h3.text-center Most Popular Calendar
+    p Login Section
+        form(class="existing" action="login" method="post")
+            section(class="span12 text-center")
+                h3(id="inputField") Login
+                    section(id="unameField" class="span12")
+                        label(for="email" class="inputField") Email address
+                            input(id="emailEx" class="inputField" type="email" name ="email" placeholder="Enter your email")
+
+                        label(id="pwdField" for="password") Password
+                        input(id="passwordEx" class="inputField" type="password" name="password")
+                    section(class="span12 text-center")
+                        input(id="existingClient" class="button" type="submit" value="Login")
+
+        section
+            form(class="anchor-wrap" action="logout" method="get")
+                input(type="submit" class="flt_r m_l_5" id="logoutButton" value="SIGN OUT")
+
+
+    p Signup Section
+        form(class="newmember" action="signup" method="post")
+            section
+                h3
+            section(class="span12 text-center")
+                h3(class="inputField") Sign Up
+            section(id="usernameField" class="span12")
+                label(class="inputField" for="username") Username
+                input(id="usernameNew" class="inputField" type="text" name ="username" placeholder="Choose a Username")
+                p(class="error" id="error_user")
+            section(id="emailField" class="span12 m_b_10x")
+                label(class="inputField" for="email" id="m_b_30x") Email address
+                    input(id="emailNew" class="inputField" type="email" name ="emailNew" placeholder="Enter your email")
+            section(id="passwordField" class="span12 m_b_10x")
+                label(class="inputField" for="password") Password
+                    input(class="inputField" id="passwordNew" type="password" name="passwordNew")
+            section(id="confirmPasswordField" class="span12 m_b_10x")
+                label(id="inputField6" for="password") Confirm password
+                    input(id="passwordNewConfirm" class="inputField" type="password"  name="confirmPassword")
+            section(id="passnew" class="span12")
+            section(class="span12 text-center")
+                input(id="newClient" class="button" type="button" value="Sign Up")
+            section
+                h3
+                    span=errors
+
+    p Search section
+        form(action="searchCalendars" method="post")
+            section
+                input(name="tag" type="text")
+                input(value="search" type="submit")
