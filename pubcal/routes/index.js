@@ -71,7 +71,7 @@ router.get('/profile', (req, res) => {
             email: req.session.user.email
         });
     }
-
+});
 
 // Handle login requests
 router.post('/login', (req, res) => {
