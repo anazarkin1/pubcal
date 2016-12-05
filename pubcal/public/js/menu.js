@@ -43,9 +43,9 @@ $(document).ready(function() {
 
         // Add the mask to body
         $('body').append('<div id="mask"></div>');
-        $("#search-value").val("Type here...");
+        $("#search-value").val("Click here to search...");
         $('#mask').fadeIn(300);
-        $("#pop").val("hahaha");
+
 
         return false;
     });

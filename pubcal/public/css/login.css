@@ -39,7 +39,9 @@
     border: solid 1px white !important;
     background: transparent !important;
 }
-
+#search-container{
+    text-align:center;
+}
 #menu-btn{
     margin-top:10px;
     float:right;
@@ -105,17 +107,19 @@
 
 .short-box{
 
-    border-bottom: solid 3px white !important;
-    border-top: solid 3px white !important;
+    /*border-bottom: solid 3px white !important;*/
+    /*border-top: solid 3px white !important;*/
+    border-bottom: none!important;
+    border-top: none !important;
     border-left: none !important;
     border-right: none !important;
     border-radius: 0;
-    height: 75px;
+    height: 55px;
     color: white;
-    font-size:50px;
+    font-size:27px;
     width:400px !important;
     background-color: transparent !important;
-
+    margin-left: 80px !important;
 
 }
 
