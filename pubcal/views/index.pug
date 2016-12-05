@@ -1,6 +1,50 @@
 extends layout
-
-
+block content
+    header.w3-display-container.w3-content.w3-wide(style='max-width:1500px;')
+        img.w3-image(src='/public/images/index_img.jpg', alt='PubCal', width='1500', height='800')
+        .w3-display-middle.w3-margin-top.w3-center
+            h1.w3-xxlarge
+                span.w3-border.w3-border-black.w3-padding Public
+                span.w3-hide-small Calendars
+            include ./calendars/search-bar
+    .w3-content.w3-padding(style='max-width:1564px')
+        // Calendar Section
+        #projects.w3-container.w3-padding-32
+            h3.w3-border-bottom.w3-border-light-grey.w3-padding-12 Featured Calendars
+        .w3-row-padding
+            .w3-col.l3.m6.w3-margin-bottom
+                .w3-display-container
+                    .w3-display-topleft.w3-black.w3-padding Summerlicious
+                    img(src='/public/images/calendar_1.jpg', alt='Calendar', style='width:100%')
+            .w3-col.l3.m6.w3-margin-bottom
+                .w3-display-container
+                    .w3-display-topleft.w3-black.w3-padding Winterlicious
+                    img(src='/public/images/calendar_2.jpg', alt='Calendar', style='width:100%')
+            .w3-col.l3.m6.w3-margin-bottom
+                .w3-display-container
+                    .w3-display-topleft.w3-black.w3-padding Christmas Shopping
+                    img(src='/public/images/calendar_3.jpg', alt='Calendar', style='width:100%')
+            .w3-col.l3.m6.w3-margin-bottom
+                .w3-display-container
+                    .w3-display-topleft.w3-black.w3-padding Thanksgiving North
+                    img(src='/public/images/calendar_4.jpg', alt='Calendar', style='width:100%')
+        .w3-row-padding
+            .w3-col.l3.m6.w3-margin-bottom
+                .w3-display-container
+                    .w3-display-topleft.w3-black.w3-padding Oktoberfest
+                    img(src='/public/images/calendar_5.jpg', alt='Calendar', style='width:99%')
+            .w3-col.l3.m6.w3-margin-bottom
+                .w3-display-container
+                    .w3-display-topleft.w3-black.w3-padding Your Birthday
+                    img(src='/public/images/calendar_6.jpg', alt='Calendar', style='width:99%')
+            .w3-col.l3.m6.w3-margin-bottom
+                .w3-display-container
+                    .w3-display-topleft.w3-black.w3-padding Cuba Week
+                    img(src='/public/images/calendar_7.jpg', alt='Calendar', style='width:99%')
+            .w3-col.l3.m6.w3-margin-bottom
+                .w3-display-container
+                    .w3-display-topleft.w3-black.w3-padding Science Fair
+                    img(src='/public/images/calendar_8.jpg', alt='Calendar', style='width:99%')
 
 
 
