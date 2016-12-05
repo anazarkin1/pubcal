@@ -53,10 +53,38 @@
 }
 
 .centreForm {
+    margin-top: 20px;
     text-align: center;
 }
 
 .centreInput {
     width: 70%;
     margin: 0 auto;
+}
+
+.toRight {
+    position: absolute;
+    right: 30px;
+}
+
+.relative {
+    top: 20px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.large {
+    font-size: 50px;
+}
+
+.login-window {
+    margin-top: 4px;
+}
+
+#profileButton {
+    margin-top: 4px;
+    margin-right: 100px;
+}
+#logoutButton {
+    margin-bottom: 2px;
 }

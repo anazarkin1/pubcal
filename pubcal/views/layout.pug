@@ -17,21 +17,15 @@ html
         script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js")
         script(src='/public/js/login.js')
     body
-        header.site-header
-            //.top-header
-            if email
-                form(class="anchor-wrap" action="/logout" method="post")
-                    input.btn.btn-danger#logoutButton(type="submit" value="Sign out")
-                a.btn.btn-info#profileButton(href="/profile") Profile
-            else
-                a.login-window.btn.btn-info(href='#login-box') Login | Sign Up
-        //.main-header
-        .container
-            .row
-                .col-md-4.col-sm-6.col-xs-8
-                    .logo
-                        h1
-                            a(href='/') PubCal
+        header.relative
+            a.large(href='/') PubCal
+            .toRight
+                if email
+                    form(action="/logout" method="post")
+                        a.btn.btn-info#profileButton(href="/profile") Profile
+                        input.btn.btn-danger#logoutButton(type="submit" value="Sign out")
+                else
+                    a.login-window.btn.btn-info(href='#login-box') Login | Sign Up
         footer
             .bottom-footer
 
