@@ -96,6 +96,8 @@ router.get('/login', (req, res) => {
     return index(req, res);
 });
 
+
+
 // Handle signup requests
 router.post('/signup', (req, res) => {
     // take email address -> check if it already exists
@@ -158,6 +160,29 @@ router.post('/signup', (req, res) => {
             }
         });
 });
+
+
+router.post("/updatePassword", (req, res) =>{
+
+    let email = req.session.user.email;
+
+    let cPassword = req.body.cPassword;
+    let nPassword = req.body.nPassword;
+    let ncPassword = req.body.ncPassword;
+    if (nPassword != ncPassword){
+        res.render('profile', {
+            errors: "new passwords does not match"
+        });
+    }
+
+    IndexClient.findUserByEmailAndPassword(email, cPassword, nPassword)
+    .then((result) => {
+        if (result) {
+            Index.Client.updatePassword(email, nPassword);
+        }
+    });
+});
+
 
 //GET /calendars/search
 router.get('/search', (req, res) => {
