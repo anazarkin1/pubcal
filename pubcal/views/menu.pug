@@ -1,0 +1,38 @@
+block menu
+    .container
+        #menu-box.login-popup.trans
+
+            form(action="/search" method="get")
+                section(class="span12 text-center")
+                    br
+                    br
+                    br
+                    section.search-container
+                        input.form-control.centreInput.input-lg.short-box(id="search-value" name="q" type="text" value="Type to search....")
+                        //.form-group.row
+                        //    input.w3-border.w3-border-black.w3-padding.white-letter#menu-btn(type="submit" value="search")
+
+                        br
+                        br
+                        br
+
+            section
+                form(id="profile-btn" class="form" action="/profile" method="get")
+                    section(class="span12 text-center")
+                        section.formFonts
+                            input.pop-white(type="submit" value="My Account")
+                            br
+                            br
+                            br
+
+                form(id="create-btn" class="form" action="/users/createCalendar" method="get")
+                    section(class="span12 text-center")
+                        section.formFonts
+                            input.pop-white(type="submit" value="Create A Calendar")
+                            br
+                            br
+                //form(id="acct-btn" class="form" action="/profile" method="get")
+                //    input#profileButton.submit(type="submit" value="Account Settings")
+
+
+

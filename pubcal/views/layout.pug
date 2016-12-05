@@ -17,6 +17,7 @@ html
         link(rel='stylesheet', href='http://www.w3schools.com/lib/w3.css')
         script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js")
         script(src='/public/js/login.js')
+        script(src="/public/js/menu.js")
     body
         .w3-top
             ul.w3-navbar.w3-white.w3-wide.w3-padding-8.w3-card-2
@@ -27,13 +28,16 @@ html
                 // float to right
                 li.w3-right.w3-hide-small
                     if email
-                        a.w3-left#profileButton(href="/profile") Profile
-                        a.w3-left.w3-margin-right#logoutButton(href="/logout") Sign out
+                        a.w3-left#menu-window(href="#menu-box")
+                            span(class="glyphicon glyphicon-list")
+                        a.w3-left.w3-margin-right#logoutButton(href="/logout")
+                            span(class="glyphicon glyphicon-log-out")
                     else
                         a.w3-margin-right#login-window(href='#login-box') Log in | Sign up
         .content-section#no-bottom-border
             block content
             include ./component/login
+            include menu
         footer.w3-center.w3-black.w3-padding-16
             p
                 | CSC301 Group 18
