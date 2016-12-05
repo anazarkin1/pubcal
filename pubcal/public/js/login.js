@@ -30,7 +30,7 @@ $(document).ready(function() {
         $('#loginForm').show();
     });
 
-    $('a.login-window').click(function() {
+    $('a#login-window').click(function() {
 
                 //Getting the variable's value from a link
         var loginBox = $(this).attr('href');

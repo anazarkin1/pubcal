@@ -14,23 +14,30 @@ html
         link(rel='stylesheet', href='/public/css/templatemo-style.css')
         link(rel='stylesheet', href='/public/css/login.css')
         link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css')
+        link(rel='stylesheet', href='http://www.w3schools.com/lib/w3.css')
         script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js")
         script(src='/public/js/login.js')
     body
-        header.relative
-            a.large(href='/') PubCal
-            .toRight
-                if email
-                    form(action="/logout" method="post")
-                        a.btn.btn-info#profileButton(href="/profile") Profile
-                        input.btn.btn-danger#logoutButton(type="submit" value="Sign out")
-                else
-                    a.login-window.btn.btn-info(href='#login-box') Login | Sign Up
-        footer
-            .bottom-footer
-
-        include ./calendars/search-bar
-
+        .w3-top
+            ul.w3-navbar.w3-white.w3-wide.w3-padding-8.w3-card-2
+                li
+                    a.w3-margin-left(href='/')
+                        b Pub
+                        |  Cal
+                // float to right
+                li.w3-right.w3-hide-small
+                    if email
+                        a.w3-left#profileButton(href="/profile") Profile
+                        a.w3-left.w3-margin-right#logoutButton(href="/logout") Sign out
+                    else
+                        a.w3-margin-right#login-window(href='#login-box') Login | Sign Up
+        header.w3-display-container.w3-content.w3-wide(style='max-width:1500px;')
+            img.w3-image(src='/public/images/index_img.jpg', alt='PubCal', width='1500', height='800')
+            .w3-display-middle.w3-margin-top.w3-center
+                h1.w3-xxlarge
+                    span.w3-border.w3-border-black.w3-padding Public
+                    span.w3-hide-small Calendars
+                include ./calendars/search-bar
         .content-section
             block content
             include ./component/login

@@ -215,7 +215,7 @@ router.get('/search', (req, res) => {
 });
 
 // Handle logout requests
-router.post('/logout', (req, res) => {
+router.get('/logout', (req, res) => {
     // should reset session first
     if (req.session) {
         req.session.reset();
