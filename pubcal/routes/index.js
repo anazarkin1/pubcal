@@ -73,6 +73,19 @@ router.get('/profile', (req, res) => {
     }
 });
 
+router.get('/loadSettings', (req, res)=>{
+    if (!(req.session && req.session.user)) {
+        res.render('index', {title: 'Express'});
+    } else {
+        res.render('acctSettings', {
+            // passing current user's email address for testing
+            email: req.session.user.email
+        });
+    }
+
+
+});
+
 // Handle login requests
 router.post('/login', (req, res) => {
     let email = req.body.email;

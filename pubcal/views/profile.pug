@@ -8,12 +8,6 @@ block content
                 div(id="mycalendars" class="main-nav-button selected")
                     a(id="nav1" href="#")
                         span(class="nav-title") My Calendar &nbsp;
-                div(id="createcalendar" class="main-nav-button m_l_r_10")
-                    a(id="nav2" href="#")
-                        span(class="nav-title") Create a Calendar &nbsp;
-                div(id="accountsettings" class="main-nav-button")
-                    a(id="nav3" href="#")
-                        span(class="nav-title") Account Settings
 
         ul(id="friends" class="profile-info selected")
             li(class="profile-contents")
@@ -25,59 +19,15 @@ block content
                             div(id="resultWrap")
                                 div(id="resultField")
 
-        ul(id="viewReq" class="profile-info")
-            li(class="profile-contents")
-                section(class="container-content bdb-lg")
-                    section(class="content-key")
-                        span(class="sub-title") Create Calendar
-
         ul(id="account-settings" class="profile-info")
             li(id="profile-manage" class="bdb-lg profile-contents")
                 section(class="container-content")
                     section(class="content-key")
-                        span(class="sub-title") Account Settings
-
                     section(class="content-value")
                         div(class="acc-info")
                             div(class="perma")
                                 label(class="profile-label") Username
                                 div(class="username-container")
                                     span(class="username-field")=email
-                            div(class="edit-profile")
-                                div(class="email mt10")
-                                    form
-                                        div(class="edite-zone")
-                                            label(class="profile-label") Email Address
-                                            section(class="edit-box e1")
-                                                div(class="edit-disable" id="ed1")
-                                                    span(class="email-value edit-line" id="email-attr")=email
-                                                    span(class="edit-icon")
-                                                        img(src="/public/img/edit_icon.png" class="edit-img" id="edit-button1")
 
-            li(id="password-manage" class="bdb-lg profile-contents")
-                section(class="container-content")
-                    section(class="content-key")
-                        span(class="sub-title") Password
-                        span(class="sub-description") change your password
-
-                    section(class="content-value")
-                        div(class="edit-password")
-                            form(action="updatePassword" method="post")
-                                section(class="m_b_15")
-                                    label(class="profile-label") Current Password
-                                    div(class="edit-box")
-                                        input(type="password" name="cpassword" id="cpw")
-
-                                section(class="m_b_15")
-                                    label(class="profile-label") New Password
-                                    div(class="edit-box")
-                                        input(type="password" name="npassword" id="npw")
-
-                                section(class="confirm-pw m_b_15")
-                                    label(class="profile-label") Confirm New Password
-                                    div(class="edit-box")
-                                        input(type="password" name="ncpassword" id="ncpw")
-
-                                div(class="mt10")
-                                    input(id="updatePW" class="button" type="submit" disabled = "true" value="UPDATE")
     script(src='/public/js/profile.js', defer)
