@@ -1,8 +1,8 @@
 block login
     .container
         #login-box.login-popup
-            button.buttonFonts(class="button" id="login") login
-            button.buttonFonts(class="button" id="signup") signup
+            button.btn.btn-info(class="button" id="login") login
+            button.btn.btn-info(class="button" id="signup") signup
             button.buttonFonts(class="close" id="close") x
             section
                 form(id="loginForm" class="form" action="/login" method="post")
@@ -15,7 +15,7 @@ block login
                             input(id="passwordEx" class="inputField" type="password" name="password" placeholder="Password")
                             br
                             br
-                            input.submit(type="submit" value="Login")
+                            input.btn.btn-success.submit(type="submit" value="Login")
                 form(id="signupForm" class="form" action="/signup" method="post" hidden="")
                     section(class="span12 text-center")
                         h2(class="formTitle") Sign Up
@@ -32,4 +32,4 @@ block login
                             input(id="passwordNewConfirm" class="inputField" type="password"  name="confirmPassword" placeholder="Confirm Password")
                             br
                             br
-                            input.submit(type="submit" value="Sign Up")
+                            input.btn.btn-success.submit(type="submit" value="Sign Up")

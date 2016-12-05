@@ -3,12 +3,12 @@
 }
 
 a:link{
-	color:black;
+	/*color:black;*/
 	text-decoration:none;
 }
 a:visited{
 	text-decoration: none;
-	color:black;
+	/*color:black;*/
 }
 
 a.underlined:hover{
@@ -22,7 +22,6 @@ input#logoutButton{
 	font-size:13px;
 	color:white;
 	border:none;
-	background-color: #00766a;
 	-webkit-appearance:none;
 }
 
@@ -287,15 +286,9 @@ li.fr-pro-wrap{
 .button{
 	height: 30px;
 	width: 100px;
-	color: #009688;
+	/*color: #009688;*/
 }
 
-.logoutButton{
-	width: 8
-	0px;
-	height: 40px;
-	color:black;
-}
 .username-container{
 	margin-top:10px;
 }
