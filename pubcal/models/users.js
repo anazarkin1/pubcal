@@ -1,5 +1,5 @@
 const BaseClient = require('./base');
-
+const ObjectID = require('mongodb').ObjectID;
 class UserClient {
     static updateUser(filter, update) {
         let database = null;
@@ -23,7 +23,7 @@ class UserClient {
     static addUser(user) {
         let database = null;
         return BaseClient.connectToDB()
-            .then((db)=> {
+            .then((db) => {
                 database = db;
                 return db.collection('users');
             })
@@ -42,12 +42,11 @@ class UserClient {
     static getCalendars(email) {
         let database = null;
         return BaseClient.connectToDB()
-            .then((db)=> {
+            .then((db) => {
                 database = db;
                 return db.collection('users');
             })
             .then((users) => {
-                console.log("hehe"+email);
                 return users.findOne({'email': email});
             })
             .then((result) => {
@@ -59,14 +58,14 @@ class UserClient {
     static subscribe(username, id) {
         let database = null;
         return BaseClient.connectToDB()
-            .then((db)=> {
+            .then((db) => {
                 database = db;
                 return db.collection('users');
             })
             .then((users) => {
                 return users.update(
                     {username: username},
-                    {$push: {subscribed_to: id}});
+                    {$push: {subscribed_to: ObjectID(id)}});
             })
             .then((result) => {
                 database.close();
@@ -77,14 +76,14 @@ class UserClient {
     static unSubscribe(username, id) {
         let database = null;
         return BaseClient.connectToDB()
-            .then((db)=> {
+            .then((db) => {
                 database = db;
                 return db.collection('users');
             })
             .then((users) => {
                 return users.update(
                     {username: username},
-                    {$pull: {subscribed_to: id}});
+                    {$pull: {subscribed_to: ObjectID(id)}});
             })
             .then((result) => {
                 database.close();
@@ -99,11 +98,11 @@ class UserClient {
                 database = db;
                 return db.collection('users');
             }).then((calendars) => {
-                return calendars.aggregate(
-                    {$project: {calendarSize: {$size:'subscribed_to'}}},
-                    {$sort: {calendarSize:-1}},
-                    {$limit: 5});
-            })
+            return calendars.aggregate(
+                {$project: {calendarSize: {$size: 'subscribed_to'}}},
+                {$sort: {calendarSize: -1}},
+                {$limit: 5});
+        })
             .then((result) => {
                 result.toArray((err, documents) => {
                     callback(documents);
