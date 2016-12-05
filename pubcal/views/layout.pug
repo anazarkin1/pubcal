@@ -23,7 +23,7 @@ html
                 if email
                     form(class="anchor-wrap" action="/logout" method="post")
                         a(href="/profile" class="flt_r m_l_5" id="profileButton") PROFILE
-                        input(type="submit" class="flt_r m_l_5" id="logoutButton" value="SIGN OUT")
+                        input.btn.btn-danger#logoutButton(type="submit" value="Sign out")
                 else
                     a.login-window.btn.btn-info(href='#login-box') Login | Sign Up
 
