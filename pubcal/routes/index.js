@@ -40,10 +40,11 @@ function index(req, res) {
     if (!(req.session && req.session.user)) {
         res.render('index', {title: 'Express'});
     } else {
-        res.render('profile_sample', {
-            // passing current user's email address for testing
-            email: req.session.user.email
-        });
+        res.render('index', {title: 'Express', email: req.session.user.email});
+        // res.render('profile_sample', {
+        //     // passing current user's email address for testing
+        //     email: req.session.user.email
+        // });
     }
 }
 
@@ -61,11 +62,15 @@ router.get('/', (req, res) => {
 });
 
 // Handles profile requests. (host/profile)
-router.get('/profile', requireLogin, (req, res) => {
-    res.render('profile_sample', {
-        // passing current user's email address for testing
-        email: req.session.user.email
-    });
+router.get('/profile', (req, res) => {
+    if (!(req.session && req.session.user)) {
+        res.render('index', {title: 'Express'});
+    } else {
+        res.render('profile_sample', {
+            // passing current user's email address for testing
+            email: req.session.user.email
+        });
+    }
 });
 
 // Handle login requests
@@ -140,7 +145,7 @@ router.post('/signup', (req, res) => {
                     email: email,
                     subscribed_to: []
                 };
-                IndexClient.addUser(user)
+                UserClient.addUser(user)
                     .then((result) => {
                         req.user = result;
                         delete req.user.password;
@@ -167,7 +172,18 @@ router.get('/search', (req, res) => {
     CalendarClient.searchForCalendars(query, skip, (result) => {
         if (result != null) {
             console.log(result);
-            res.render('result', {'result': result, 'hostname': req.hostname});
+            try {
+                if (typeof req.session.user.email != 'undefined' || req.session.user.email != null){
+                    res.render('result', {'result': result, 'hostname': req.hostname, 'email': req.session.user.email});    
+                }
+                else{
+                    res.render('result', {'result': result, 'hostname': req.hostname});
+                }    
+            }
+            catch(err){
+                res.render('result', {'result': result, 'hostname': req.hostname});
+            }
+            
         } else {
             res.render('result', {'errors': 'No calendar matched your search'});
         }

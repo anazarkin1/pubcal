@@ -23,6 +23,7 @@ html.no-js
             .top-header
                 if email
                     form(class="anchor-wrap" action="/logout" method="post")
+                        a(href="/profile" class="flt_r m_l_5" id="profileButton") PROFILE
                         input(type="submit" class="flt_r m_l_5" id="logoutButton" value="SIGN OUT")
                 else
                     a.login-window.btn.btn-info(href='#login-box') Login | Sign Up

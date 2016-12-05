@@ -181,8 +181,11 @@ router.get('/:id', (req, res) => {
                 let subscribed = users.includes(req.session.user.username);
                 res.render("calendar", {
                     username: req.session.user.username,
-                    subscribed: subscribed
+                    subscribed: subscribed,
+                    email: req.session.user.email
                 });
+
+                
             });
     } else {
         res.redirect('/');
