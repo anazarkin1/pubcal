@@ -92,10 +92,6 @@
     font-size: 16px;
 }
 
-.submit {
-    width: 30%;
-}
-
 .centreForm {
     margin-top: 20px;
     text-align: center;
@@ -147,4 +143,9 @@
 
 #signup:hover, #login:hover {
     color: white !important;
+}
+
+.wider {
+    width: 80%;
+    height: 50px;
 }
