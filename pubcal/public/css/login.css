@@ -36,6 +36,36 @@
     /* Safari, Chrome */;
     width: 500px;
 }
+#no-bottom-border{
+    border-bottom:none !important;
+}
+#logoutButton:hover, #profileButton:hover, #pubcalButton:hover, #login-window:hover{
+    background: black !important;
+    color: white !important;
+}
+#search-button-index{
+    border: solid 2px white !important;
+    background: transparent !important;
+}
+
+#search-button-index:hover{
+    background: white !important;
+    border: solid 1px white !important;
+}
+
+.white-letter{
+    color: white !important;
+    font-size: 20px !important;
+}
+.white-letter:hover{
+    background:white;
+    font-size: 20px !important;
+    color: black !important;
+
+}
+.black-letter{
+    color: black;
+}
 
 .formFonts {
     font-size: 16px;
