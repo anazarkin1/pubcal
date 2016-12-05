@@ -19,26 +19,23 @@ html
         script(src='/public/js/login.js')
     body
         header.site-header
-            .top-header
-                if email
-                    form(class="anchor-wrap" action="/logout" method="post")
-                        a(href="/profile" class="flt_r m_l_5" id="profileButton") PROFILE
-                        input.btn.btn-danger#logoutButton(type="submit" value="Sign out")
-                else
-                    a.login-window.btn.btn-info(href='#login-box') Login | Sign Up
+            //.top-header
+            if email
+                form(class="anchor-wrap" action="/logout" method="post")
+                    input.btn.btn-danger#logoutButton(type="submit" value="Sign out")
+                a.btn.btn-info#profileButton(href="/profile") Profile
+            else
+                a.login-window.btn.btn-info(href='#login-box') Login | Sign Up
+        //.main-header
+        .container
+            .row
+                .col-md-4.col-sm-6.col-xs-8
+                    .logo
+                        h1
+                            a(href='/') PubCal
+        footer
+            .bottom-footer
 
-
-        .main-header
-            .container
-                .row
-                    .col-md-4.col-sm-6.col-xs-8
-                        .logo
-                            h1
-                                a(href='/') PubCal
-            footer
-                .bottom-footer
-
-        hr
         include ./calendars/search-bar
 
         .content-section
