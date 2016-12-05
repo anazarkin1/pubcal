@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/createCalendar', (req, res) => {
-	res.render('createCalendar', {email: req.session.user.email});
+	res.render('createCalendar', {email: req.session.user.email, username: req.session.user.username});
 });
 
 router.get('/getCalendarName/:id', (req, res) => {

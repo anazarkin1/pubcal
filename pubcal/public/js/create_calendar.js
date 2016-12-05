@@ -210,7 +210,7 @@ $(document).ready(function () {
         }
         var data_to_send = {
             calendar: {
-                created_by: "userid1",
+                created_by: '',
                 description: $('#cal_description').val(),
                 name: $('#cal_title').val(),
                 events: output_events

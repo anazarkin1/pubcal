@@ -85,7 +85,7 @@ router.post('/login', (req, res) => {
                 // res.render('profile', { // when matching user is found, load profile page.
                 //     email: req.session.user.email
                 // });
-                res.redirect('/');
+                res.redirect('/profile');
             } else { // no matching user is found, load index page
                 res.redirect('/');
             }
