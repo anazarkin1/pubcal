@@ -113,7 +113,7 @@ router.post('/new', (req, res) => {
                         res.json({"status": "success", "id": result.insertedId});
                     } else {
                         console.error("Failed inserting new calendar into db");
-                        res.json({"status": "failed"});
+                        res.json({"status": "failed", "userid": req.session.usernames});
                     }
                 });
         });
