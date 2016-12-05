@@ -1,9 +1,4 @@
 $(document).ready(function() {
-    $('#close').click((event) => {
-        $('#mask').hide();
-        $('#login-box').hide();
-    });
-
     $(document).keydown((e) => {
         if (e.keyCode == 27) {
             $('#mask').hide();
@@ -18,16 +13,20 @@ $(document).ready(function() {
 
     $('#login-box').click((e) => {
         e.stopPropagation();
-    })
-
-    $('#signup').click((event) => {
-        $('#loginForm').hide();
-        $('#signupForm').show();
     });
 
-    $('#login').click((event) => {
+    $('#signup').click(() => {
+        $('#loginForm').hide();
+        $('#signupForm').show();
+        $('#login').addClass('w3-grey');
+        $('#signup').removeClass('w3-grey');
+    });
+
+    $('#login').click(() => {
         $('#signupForm').hide();
         $('#loginForm').show();
+        $('#signup').addClass('w3-grey');
+        $('#login').removeClass('w3-grey');
     });
 
     $('a#login-window').click(function() {

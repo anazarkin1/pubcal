@@ -22,15 +22,15 @@ html
             ul.w3-navbar.w3-white.w3-wide.w3-padding-8.w3-card-2
                 li
                     a.w3-margin-left#pubcalButton(href='/')
-                        b Pub
-                        |  Cal
+                        b.w3-large Pub
+                        b Cal
                 // float to right
                 li.w3-right.w3-hide-small
                     if email
                         a.w3-left#profileButton(href="/profile") Profile
                         a.w3-left.w3-margin-right#logoutButton(href="/logout") Sign out
                     else
-                        a.w3-margin-right#login-window(href='#login-box') Login | Sign Up
+                        a.w3-margin-right#login-window(href='#login-box') Log in | Sign up
         .content-section#no-bottom-border
             block content
             include ./component/login
