@@ -1,37 +1,32 @@
 $(document).ready(function() {
+    $('#close').click((event) => {
+        $('#mask').hide();
+    $('#menu-box').hide();
+});
+
     $(document).keydown((e) => {
         if (e.keyCode == 27) {
-            $('#mask').hide();
-            $('#login-box').hide();
-        }
-    });
+        $('#mask').hide();
+        $('#menu-box').hide();
+    }
+});
 
     $("body").click(() => {
         $('#mask').hide();
-        $('#login-box').hide();
-    });
+    $('#menu-box').hide();
+});
 
-    $('#login-box').click((e) => {
+    $('#menu-box').click((e) => {
         e.stopPropagation();
+})
+
+    $('#search-value').click(()=>{
+        $("#search-value").val("");
     });
 
-    $('#signup').click(() => {
-        $('#loginForm').hide();
-        $('#signupForm').show();
-        $('#login').addClass('w3-grey');
-        $('#signup').removeClass('w3-grey');
-    });
+    $('a#menu-window').click(function() {
 
-    $('#login').click(() => {
-        $('#signupForm').hide();
-        $('#loginForm').show();
-        $('#signup').addClass('w3-grey');
-        $('#login').removeClass('w3-grey');
-    });
-
-    $('a#login-window').click(function() {
-
-                //Getting the variable's value from a link
+        //Getting the variable's value from a link
         var loginBox = $(this).attr('href');
 
         //Fade in the Popup
@@ -48,8 +43,11 @@ $(document).ready(function() {
 
         // Add the mask to body
         $('body').append('<div id="mask"></div>');
+        $("#search-value").val("Click here to search...");
         $('#mask').fadeIn(300);
+
 
         return false;
     });
 });
+

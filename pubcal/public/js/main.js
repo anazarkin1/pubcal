@@ -11,11 +11,11 @@
 
 
     var owl = $("#owl-demo");
- 
+
 		owl.owlCarousel({
 	    	items : 6
 		});
-	 
+
 		// Custom Navigation Events
 		$(".next").click(function(){
 	    	owl.trigger('owl.next');

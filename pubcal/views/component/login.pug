@@ -1,35 +1,23 @@
-block login
-    .container
-        #login-box.login-popup
-            button.btn.btn-info(class="button" id="login") login
-            button.btn.btn-info(class="button" id="signup") signup
-            button.buttonFonts(class="close" id="close") x
-            section
-                form(id="loginForm" class="form" action="/login" method="post")
-                    section(class="span12 text-center")
-                        h2(class="formTitle") Login
-                        section.formFonts
-                            input(id="emailEx" class="inputField" type="email" name ="email" placeholder="Email")
-                            br
-                            br
-                            input(id="passwordEx" class="inputField" type="password" name="password" placeholder="Password")
-                            br
-                            br
-                            input.btn.btn-success.submit(type="submit" value="Login")
-                form(id="signupForm" class="form" action="/signup" method="post" hidden="")
-                    section(class="span12 text-center")
-                        h2(class="formTitle") Sign Up
-                        section.formFonts
-                            input(id="usernameNew" class="inputField" type="text" name ="username" placeholder="Choose a Username")
-                            br
-                            br
-                            input(id="emailNew" class="inputField" type="email" name ="emailNew" placeholder="Enter your email")
-                            br
-                            br
-                            input(class="inputField" id="passwordNew" type="password" name="passwordNew" placeholder="Choose a Password")
-                            br
-                            br
-                            input(id="passwordNewConfirm" class="inputField" type="password"  name="confirmPassword" placeholder="Confirm Password")
-                            br
-                            br
-                            input.btn.btn-success.submit(type="submit" value="Sign Up")
+//block login
+.container
+    #login-box.login-popup
+        ul.w3-navbar.taller
+            li.left-half
+                a#login Log in
+            li.right-half
+                a#signup.w3-grey Sign up
+        section.w3-margin-top.w3-margin-bottom
+            form(id="loginForm" class="form" action="/login" method="post")
+                section(class="span12 text-center")
+                    section.formFonts
+                        input.w3-section(id="emailEx" class="inputField" type="email" name ="email" placeholder="Email")
+                        input.w3-section(id="passwordEx" class="inputField" type="password" name="password" placeholder="Password")
+                        input.w3-margin.w3-btn.w3-xxLarge.wider.w3-teal(type="submit" value="Login")
+            form(id="signupForm" class="form" action="/signup" method="post" hidden="")
+                section(class="span12 text-center")
+                    section.formFonts
+                        input.w3-section(id="usernameNew" class="inputField" type="text" name ="username" placeholder="Choose a Username")
+                        input.w3-section(id="emailNew" class="inputField" type="email" name ="emailNew" placeholder="Enter your email")
+                        input.w3-section(class="inputField" id="passwordNew" type="password" name="passwordNew" placeholder="Choose a Password")
+                        input.w3-section(id="passwordNewConfirm" class="inputField" type="password"  name="confirmPassword" placeholder="Confirm Password")
+                        input.w3-margin.w3-btn.w3-xxLarge.wider.w3-teal(type="submit" value="Sign Up")

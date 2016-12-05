@@ -9,33 +9,24 @@
     width: 100%;
     height: 100%;
     opacity: 0.8;
-    z-index: 999;
 }
 
 /* You can customize to your needs  */
 .login-popup {
-    display: none;
-    background: #ffffff;
-    padding: 10px;
-    border: 2px solid #ddd;
-    float: left;
-    position: fixed;
-    top: 50%;
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 99999; /* Sit on top */
+    /*padding: 10px;*/
     left: 50%;
-    z-index: 99999;
-    box-shadow: 0px 0px 20px #999;
-    /* CSS3 */
-        -moz-box-shadow: 0px 0px 20px #999;
-    /* Firefox */
-        -webkit-box-shadow: 0px 0px 20px #999;
-    /* Safari, Chrome */
-	border-radius: 3px 3px 3px 3px;
-    -moz-border-radius: 3px;
-    /* Firefox */
-        -webkit-border-radius: 3px;
-    /* Safari, Chrome */;
-    width: 500px;
+    top: 40%;
+    width: 500px; /* Full width */
+    overflow: auto; /* Enable scroll if needed */
+    background: #ffffff;
+    box-shadow: 0 0 10px #111;
+    border-radius: 3px 3px 3px 3px;
 }
+
+
 #no-bottom-border{
     border-bottom:none !important;
 }
@@ -44,8 +35,20 @@
     color: white !important;
 }
 #search-button-index{
+
     border: solid 1px white !important;
     background: transparent !important;
+}
+#search-container{
+    text-align:center;
+}
+#menu-btn{
+    margin-top:10px;
+    float:right;
+    height:75px;
+    top: 0 !important;
+    position: absolute;
+
 }
 
 #search-button-index:hover{
@@ -63,6 +66,22 @@
     color: black !important;
 
 }
+.trans{
+    background:transparent!important;
+
+    box-shadow: none !important;
+    opacity: 0.9;
+    color:white;
+}
+
+.pop-white{
+    color:white;
+    background:transparent!important;
+    margin-bottom: 10px;
+    box-shadow: none !important;
+    border: none !important;
+}
+
 .black-letter{
     color: black;
 }
@@ -75,13 +94,6 @@
     font-size: 16px;
 }
 
-.submit {
-    width: 30%;
-}
-#close {
-    margin-left: 40%;
-}
-
 .centreForm {
     margin-top: 20px;
     text-align: center;
@@ -92,22 +104,52 @@
     margin: 0 auto;
 }
 
-.toRight {
-    position: absolute;
-    right: 30px;
+
+.short-box{
+
+    /*border-bottom: solid 3px white !important;*/
+    /*border-top: solid 3px white !important;*/
+    border-bottom: none!important;
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-radius: 0;
+    height: 55px;
+    color: white;
+    font-size:27px;
+    width:400px !important;
+    background-color: transparent !important;
+    margin-left: 80px !important;
+
 }
 
-.relative {
-    top: 20px;
-    margin-bottom: 20px;
-    position: relative;
-}
 
-.large {
-    font-size: 50px;
-}
-
-.login-window {
+.login-window, .menu-window{
     margin-top: 4px;
 }
 
+.left-half {
+    /*background-color: #ff9e2c;*/
+    float: left;
+    width: 50%;
+}
+.right-half {
+    /*background-color: #b6701e;*/
+    float: left;
+    width: 50%;
+}
+
+#signup, #login {
+    padding-left: 40%;
+    padding-top: 9%;
+    padding-bottom: 10%;
+}
+
+#signup:hover, #login:hover {
+    color: white !important;
+}
+
+.wider {
+    width: 80%;
+    height: 50px;
+}
