@@ -40,18 +40,11 @@ function index(req, res) {
     if (!(req.session && req.session.user)) {
         res.render('index', {title: 'Express'});
     } else {
-<<<<<<< HEAD
         res.render('index', {title: 'Express', email: req.session.user.email});
         // res.render('profile_sample', {
         //     // passing current user's email address for testing
         //     email: req.session.user.email
         // });
-=======
-        res.render('profile', {
-            // passing current user's email address for testing
-            email: req.session.user.email
-        });
->>>>>>> 54a7946765cd133120babf76bf08a346a6de3ec3
     }
 }
 
@@ -69,7 +62,6 @@ router.get('/', (req, res) => {
 });
 
 // Handles profile requests. (host/profile)
-<<<<<<< HEAD
 router.get('/profile', (req, res) => {
     if (!(req.session && req.session.user)) {
         res.render('index', {title: 'Express'});
@@ -79,14 +71,7 @@ router.get('/profile', (req, res) => {
             email: req.session.user.email
         });
     }
-=======
-router.get('/profile', requireLogin, (req, res) => {
-    res.render('profile', {
-        // passing current user's email address for testing
-        email: req.session.user.email
-    });
->>>>>>> 54a7946765cd133120babf76bf08a346a6de3ec3
-});
+
 
 // Handle login requests
 router.post('/login', (req, res) => {
