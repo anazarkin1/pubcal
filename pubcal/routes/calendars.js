@@ -110,10 +110,10 @@ router.post('/new', (req, res) => {
             CalendarClient.addCalendar(calendar)
                 .then((result) => {
                     if (result.result.ok == 1) {
-                        res.json({"status": "success", "id": result.insertedId});
+                        res.json({"status": "success", "id": result.insertedId, "userid": req.session.usernames});
                     } else {
                         console.error("Failed inserting new calendar into db");
-                        res.json({"status": "failed"});
+                        res.json({"status": "failed", "userid": req.session.usernames});
                     }
                 });
         });
