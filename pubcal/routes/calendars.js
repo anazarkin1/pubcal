@@ -1,6 +1,7 @@
 "use strict";
 const express = require('express');
 const router = express.Router();
+const UserClient = require('../models/users');
 const CalendarClient = require('../models/calendars');
 const Helper = require('../libs/icalGeneratorHelper');
 
@@ -101,6 +102,8 @@ router.post('/new', (req, res) => {
     });
     createCalendarFile
         .then((filePath) => {
+            // Set created_by
+            calendar.created_by = req.session.user.username;
             //Construct list of subscribed users
             calendar.users_subscribed = [];
             //Add creator as a subscriber
@@ -117,7 +120,7 @@ router.post('/new', (req, res) => {
                         
                     } else {
                         console.error("Failed inserting new calendar into db");
-                        res.json({"status": "failed"});
+                        res.json({"status": "failed", "userid": req.session.usernames});
                     }
                 });
         });

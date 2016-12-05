@@ -66,7 +66,7 @@ router.get('/profile', (req, res) => {
     if (!(req.session && req.session.user)) {
         res.render('index', {title: 'Express'});
     } else {
-        res.render('profile_sample', {
+        res.render('profile', {
             // passing current user's email address for testing
             email: req.session.user.email
         });
