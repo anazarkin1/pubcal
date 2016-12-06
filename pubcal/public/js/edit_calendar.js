@@ -63,16 +63,14 @@ $(document).ready(function () {
         $('#calendar').fullCalendar({
             eventClick: function (calEvent, jsEvent, view) {
                 modal.style.display = "block";
-                // Clear previous info
-                $('.eventInfo').html('&nbsp')
-                // Add new info
-                $('#eventTitle').append(calEvent.title);
-                $('#eventStart').append(calEvent.start._d.yyyymmdd());
-                $('#eventStartTime').append(calEvent.start._d.hhmm());
-                $('#eventDescription').append(calEvent.description);
-                $('#eventEnd').append(calEvent.end._d.yyyymmdd());
-                $('#eventEndTime').append(calEvent.end._d.hhmm());
-
+                $('#selectedTitle').val(calEvent.title);
+                $('#selectedStart').val(calEvent.start._d.yyyymmdd());
+                $('#selectedStartTime').val(calEvent.start._d.hhmm());
+                $('#selectedID').val(calEvent.id);
+                $('#selectedDescription').val(calEvent.description);
+                $('#selectedEnd').val(calEvent.end._d.yyyymmdd());
+                $('#selectedEndTime').val(calEvent.end._d.hhmm());
+                modifyBox.style.display = "block";
 
             },
             header: {
@@ -85,7 +83,18 @@ $(document).ready(function () {
             eventLimit: true, // allow "more" link when too many events
             events: events,
             selectable: true,
-            selectHelper: true
+            selectHelper: true,
+            select: function (start, end, allDay) {
+
+                modal.style.display = "block";
+                addBox.style.display = "block";
+                $('#newStart').val(start._d.yyyymmdd());
+                $('#newEnd').val(end._d.yyyymmdd());
+                // Reset the field
+                $('#newTitle').val('');
+                $('#newDescription').val('');
+
+            }
         });
     });
 
