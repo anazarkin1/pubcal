@@ -1,24 +1,19 @@
 $(document).ready(function() {
-    $('#close').click((event) => {
-        $('#mask').hide();
-    $('#menu-box').hide();
-});
-
     $(document).keydown((e) => {
         if (e.keyCode == 27) {
-        $('#mask').hide();
-        $('#menu-box').hide();
-    }
-});
+            $('#mask').hide();
+            $('#menu-box').hide();
+        }
+    });
 
     $("body").click(() => {
         $('#mask').hide();
     $('#menu-box').hide();
-});
+    });
 
     $('#menu-box').click((e) => {
         e.stopPropagation();
-})
+    });
 
     $('#search-value').click(()=>{
         $("#search-value").val("");

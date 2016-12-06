@@ -1,41 +1,14 @@
-block menu
-    .container
-        #menu-box.login-popup.trans
-
-            form(action="/search" method="get")
-                    br
-                    br
-                    br
-                    input.form-control.centreInput.input-lg.short-box(id="search-value" name="q" type="text" placeholder="Click here to search...")
-                    br
-                    br
-                    br
-
-            section
-                form(id="profile-btn" class="form" action="/profile" method="get")
-                    section(class="span12 text-center")
-                        section.formFonts
-                            input.pop-white(type="submit" value="My Calendars")
-                            br
-                            br
-                            br
-
-                form(id="settings-btn" class="form" action="/loadSettings" method="get")
-                    section(class="span12 text-center")
-                        section.formFonts
-                            input.pop-white(type="submit" value="Account Settings")
-                            br
-                            br
-                            br
-
-                form(id="create-btn" class="form" action="/users/createCalendar" method="get")
-                    section(class="span12 text-center")
-                        section.formFonts
-                            input.pop-white(type="submit" value="Create A Calendar")
-                            br
-                            br
-                //form(id="acct-btn" class="form" action="/profile" method="get")
-                //    input#profileButton.submit(type="submit" value="Account Settings")
-
-
-
+.container
+    //#menu-box.sidenav
+    #menu-box.trans.sidenav
+        form(action="/search" method="get")
+            input.form-control.centreInput.input-lg.short-box.w3-section(id="search-value" name="q" type="text" placeholder="Click here to search...")
+        form(id="profile-btn" class="form" action="/profile" method="get")
+            .w3-section.w3-xlarge.centreInput(class="span12 text-center")
+                input.pop-white(type="submit" value="My Calendars")
+        form(id="settings-btn" class="form" action="/loadSettings" method="get")
+            .w3-xlarge.w3-section(class="span12 text-center")
+                input.pop-white(type="submit" value="Account Settings")
+        form(id="create-btn" class="form" action="/users/createCalendar" method="get")
+            .w3-xlarge.w3-section(class="span12 text-center")
+                input.pop-white(type="submit" value="Create A Calendar")
