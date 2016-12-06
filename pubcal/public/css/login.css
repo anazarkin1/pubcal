@@ -164,6 +164,38 @@ a#signup:hover, a#login:hover {
     transition: width 0.4s ease-in-out, margin-left 0.4s ease-in-out;
 }
 
+/* snackbar styles */
+#snackbar {
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    background-color: #69b4ff;
+    color: #fff;
+    text-align: center;
+    border-radius: 4px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 50px;
+    font-size: 1rem;
+}
+
+.show {
+    visibility: visible !important;
+    animation: fadein 1s, fadeout 1s 2.5s;
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
+/* end snackbar styles */
 
 /*=========== footer ===========*/
 /*reference http://tutorialzine.com/2015/01/freebie-5-responsive-footer-templates/*/

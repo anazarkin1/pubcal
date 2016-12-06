@@ -3,6 +3,11 @@
  */
 
 $(document).ready(function(){
+    let email = $(".username-field").html();
+    $('#snackbar').text("Hello " + email + ", you just logged in!").addClass('show');
+    setTimeout(() => {
+        $('#snackbar').removeClass('show');
+    }, 2000);
 
 	var navs = document.getElementsByClassName("main-nav-button");
 	var info = document.getElementsByClassName("profile-info");

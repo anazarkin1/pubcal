@@ -27,7 +27,14 @@ $(document).ready(function() {
         $('#loginForm').show();
         $('#signup').addClass('w3-grey');
         $('#login').removeClass('w3-grey');
+        setTimeout(() => {
+            $('#snackbar').removeClass('show');
+        }, 2000);
     });
+
+    // $('body').click(() => {
+    //
+    // });
 
     $('a#login-window').click(function() {
 
