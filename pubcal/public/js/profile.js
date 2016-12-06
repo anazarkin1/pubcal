@@ -3,8 +3,10 @@
  */
 
 $(document).ready(function(){
-    let email = $(".username-field").html();
-    $('#snackbar').text("Hello " + email + ", you just logged in!").addClass('show');
+    let email = $(".email-field").html();
+    let username = $(".username-field").html();
+    
+    $('#snackbar').text("Hello " + username + ", you just logged in!").addClass('show');
     setTimeout(() => {
         $('#snackbar').removeClass('show');
     }, 2000);
@@ -13,7 +15,7 @@ $(document).ready(function(){
 	var info = document.getElementsByClassName("profile-info");
 	var disabledBox = document.getElementsByClassName("edit-disable");
 	var editButtons =document.getElementsByClassName("edit-img");
-	getMyCalendars();
+	// getMyCalendars();
    
 	for (i=0; i < editButtons.length+1; i++) {
 
@@ -305,7 +307,7 @@ function getMyCalendars(){
 		"id":"left_column"
 	}).appendTo("#resultField");
 
-	var email = $(".username-field").html();
+	var email = $(".email-field").html();
 
 	$.get("/users/getMyCalendars/" + email, function(result){
 
