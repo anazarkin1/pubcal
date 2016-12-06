@@ -6,16 +6,16 @@
                 a#login Log in
             li.right-half
                 a#signup.w3-grey Sign up
-        section.w3-margin-top.w3-margin-bottom
+        .w3-margin-top.w3-margin-bottom
             form(id="loginForm" class="form" action="/login" method="post")
                 section(class="span12 text-center")
-                    section.formFonts
+                    section
                         input.w3-section(id="emailEx" class="inputField" type="email" name ="email" placeholder="Email")
                         input.w3-section(id="passwordEx" class="inputField" type="password" name="password" placeholder="Password")
                         input.w3-margin.w3-btn.w3-xxLarge.wider.w3-teal(type="submit" value="Login")
             form(id="signupForm" class="form" action="/signup" method="post" hidden="")
                 section(class="span12 text-center")
-                    section.formFonts
+                    section
                         input.w3-section(id="usernameNew" class="inputField" type="text" name ="username" placeholder="Choose a Username")
                         input.w3-section(id="emailNew" class="inputField" type="email" name ="emailNew" placeholder="Enter your email")
                         input.w3-section(class="inputField" id="passwordNew" type="password" name="passwordNew" placeholder="Choose a Password")
