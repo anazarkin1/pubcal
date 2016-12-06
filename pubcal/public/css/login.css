@@ -86,10 +86,6 @@
     color: black;
 }
 
-.formFonts {
-    font-size: 16px;
-}
-
 .buttonFonts {
     font-size: 16px;
 }
@@ -100,8 +96,8 @@
 }
 
 .centreInput {
-    width: 70%;
-    margin: 0 auto;
+    width: 50px; !important;
+    /*margin: 0 auto;*/
 }
 
 
@@ -147,9 +143,23 @@
 
 #signup:hover, #login:hover {
     color: white !important;
+    background: black !important;
 }
 
 .wider {
     width: 80%;
     height: 50px;
+}
+
+.short-search {
+    border-bottom: none!important;
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-radius: 3px;
+    height: 45px;
+    font-size:20px;
+    width:500px !important;
+    margin-left: 28% !important;
+    transition: width 0.4s ease-in-out, margin-left 0.4s ease-in-out;
 }
