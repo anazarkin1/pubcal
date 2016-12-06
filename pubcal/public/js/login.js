@@ -32,6 +32,11 @@ $(document).ready(function() {
         }, 2000);
     });
 
+    $('#search-window').click(()=>{
+        $('.nav-search-contain').show();
+
+    });
+
     $('a#login-window').click(function() {
 
                 //Getting the variable's value from a link

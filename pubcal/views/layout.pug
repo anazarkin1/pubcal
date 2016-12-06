@@ -27,12 +27,23 @@ html
                 // float to right
                 li.w3-right.w3-hide-small
                     if email
+                        section.nav-search-contain
+                            form(action="/search" method="get")
+                                input.nav-search-box(name="q" type="text" placeholder='Search Calendars')
+                        a.w3-left#search-window(href="#search-box")
+                            span(class="glyphicon glyphicon-search")
                         a.w3-left#menu-window(href="#menu-box")
                             span(class="glyphicon glyphicon-list")
                         a.w3-left.w3-margin-right#logoutButton(href="/logout")
                             span(class="glyphicon glyphicon-log-out")
                     else
-                        a.w3-margin-right#login-window(href='#login-box') Log in | Sign up
+                        section.nav-search-contain
+                            form(action="/search" method="get")
+                                input.nav-search-box(name="q" type="text" placeholder='Search Calendars')
+                        a.w3-left#search-window(href="#search-box")
+                            span(class="glyphicon glyphicon-search")
+                        a.w3-left.w3-margin-right#login-window(href='#login-box') Log in | Sign up
+
         .content-section.no-bottom-border
             block content
             include ./component/login
