@@ -141,7 +141,7 @@
     padding-bottom: 10%;
 }
 
-#signup:hover, #login:hover {
+a#signup:hover, a#login:hover {
     color: white !important;
     background: black !important;
 }

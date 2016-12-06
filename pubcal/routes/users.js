@@ -6,31 +6,31 @@ const CalendarClient = require('../models/calendars');
 
 // GET users listing.
 router.get('/', (req, res) => {
-  	res.send('respond with a resource');
+    res.send('respond with a resource');
 });
 
 router.get('/createCalendar', (req, res) => {
-	res.render('createCalendar', {email: req.session.user.email, username: req.session.user.username});
+    res.render('createCalendar', {email: req.session.user.email, username: req.session.user.username});
 });
 
 router.get('/getCalendarName/:id', (req, res) => {
-	CalendarClient.getCalendarById(req.params.id)
+    CalendarClient.getCalendarById(req.params.id)
         .then((result) => {
-		    res.send(result.name);
-	    });
+            res.send(result.name);
+        });
 });
 
 router.get('/getMyCalendars/:userEmail', (req, res) => {
-	let userEmail = req.params.userEmail;
-	
-	return UserClient.getCalendars(userEmail)
-		.then((result) => {
-			console.log(result);
-			CalendarClient.getCalendarsByIds(result, (documents) => {
-				console.log(documents);
-				res.send(documents);
-			});
-	});
+    let userEmail = req.params.userEmail;
+
+    return UserClient.getCalendars(userEmail)
+        .then((result) => {
+            console.log(result);
+            CalendarClient.getCalendarsByIds(result, (documents) => {
+                console.log(documents);
+                res.send(documents);
+            });
+        });
 });
 
 router.post('/subscribe/:id', (req, res) => {
@@ -38,10 +38,10 @@ router.post('/subscribe/:id', (req, res) => {
     let id = req.params.id;
     return UserClient.subscribe(username, id)
         .then((result) => {
-            if (result.nModified) {
+            if (result.result.nModified) {
                 CalendarClient.beSubscribed(id, username)
                     .then((result2) => {
-                        res.send('subscribed');
+                        res.json({status: 'subscribed'});
                     });
             }
         });
@@ -52,10 +52,10 @@ router.post('/unSubscribe/:id', (req, res) => {
     let id = req.params.id;
     return UserClient.unSubscribe(username, id)
         .then((result) => {
-            if (result.nModified) {
+            if (result.result.nModified) {
                 CalendarClient.beUnSubscribed(id, username)
                     .then((result2) => {
-                        res.send('subscribed');
+                        res.json({status: 'unsubscribed'});
                     });
             }
         });

@@ -41,7 +41,16 @@ body .fc { /* extra precedence to overcome jqui */
 .fc-unthemed .fc-popover {
 	background-color: #fff;
 }
-
+.create-cal{
+	background: black;
+	color: white;
+	border: none;
+}
+.create-cal:hover{
+	background: white;
+	color: black;
+	border: solid 1px black;
+}
 .fc-unthemed .fc-divider,
 .fc-unthemed .fc-popover .fc-header,
 .fc-unthemed .fc-list-heading td {

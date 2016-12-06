@@ -26,7 +26,7 @@ $(document).ready(function(){
 		$("a#nav" + i).click(function(event){
 
 			var curr = this.id.substring(3);
-			
+
 			processMenu(curr, navs);
 			// TODO: gotta change names in CSS for these ID's
 
@@ -35,14 +35,11 @@ $(document).ready(function(){
 				listInfo(curr, info);
 				getMyCalendars();
 
-			} else if (navs[curr-1].id === 'createcalendar'){ // redirect to create calendar page
+			} else if (navs[curr-1].id === 'accountsettings'){ // redirect to create calendar page
 				
 				listInfo(curr, info);
-				loadCreateCalendarPage();
 
-			} else if (navs[curr-1].id === 'accountsettings'){ // show account setting page by changing contents
-				
-				listInfo(curr, info);
+
 			}
 			
 		});
@@ -282,9 +279,7 @@ function listInfo(n, info){
 	} else if (n==2){
 		info[1].className += " selected";
 
-	} else if (n==3){
-		info[2].className += " selected";
-	} 
+	}
 }
 
 function loadCreateCalendarPage(){
@@ -306,7 +301,6 @@ function getMyCalendars(){
 	}).appendTo("#resultField");
 
 	var email = $(".username-field").html();
-
 
 	$.get("/users/getMyCalendars/" + email, function(result){
 

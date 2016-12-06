@@ -3,22 +3,27 @@ block menu
         #menu-box.login-popup.trans
 
             form(action="/search" method="get")
-                section(class="span12 text-center")
                     br
                     br
                     br
-                    section.search-container
-                        input.form-control.centreInput.input-lg.short-box(id="search-value" name="q" type="text" placeholder="Click here to search...")
-
-                        br
-                        br
-                        br
+                    input.form-control.centreInput.input-lg.short-box(id="search-value" name="q" type="text" placeholder="Click here to search...")
+                    br
+                    br
+                    br
 
             section
                 form(id="profile-btn" class="form" action="/profile" method="get")
                     section(class="span12 text-center")
                         section.formFonts
-                            input.pop-white(type="submit" value="My Account")
+                            input.pop-white(type="submit" value="My Calendars")
+                            br
+                            br
+                            br
+
+                form(id="settings-btn" class="form" action="/loadSettings" method="get")
+                    section(class="span12 text-center")
+                        section.formFonts
+                            input.pop-white(type="submit" value="Account Settings")
                             br
                             br
                             br
