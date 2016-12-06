@@ -3,18 +3,21 @@ block content
     include ./calendars/search-bar
     .result-section
         section(id="popular")
-            h3.text-center Search Results
-            .text-primary
-                ul(class="list-group")
-                    each calendar in result
-                        li
-                            ul
+            .w3-content.w3-padding(style='max-width:1564px')
+                .w3-container.w3-padding-16
+                    h3.w3-border-bottom.w3-border-light-grey.w3-padding-12 These are what you have been looking for ...
+                each calendar in result
+                    .w3-row-padding
+                        .w3-col.l3.m6.w3-margin-bottom
+                            .w3-display-container.w3-card-4
                                 each obj, key in calendar
                                     if key == "_id"
                                         - var link = '/calendars/' + obj
                                     if key == "name"
-                                        li(class="list-group-item")
-                                            a(href=link)=obj
+                                        a(href=link)
+                                            img(src='/public/images/calendar_1.jpg', alt='Calendar', style='width:100%')
+                                        w3-container.w3-center.w3-margin
+                                            p=obj
                                     if key == "tags"
                                         li(class="list-group-item")
                                             p="TAGS:  " + obj

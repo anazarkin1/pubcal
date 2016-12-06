@@ -32,10 +32,6 @@ $(document).ready(function() {
         }, 2000);
     });
 
-    // $('body').click(() => {
-    //
-    // });
-
     $('a#login-window').click(function() {
 
                 //Getting the variable's value from a link

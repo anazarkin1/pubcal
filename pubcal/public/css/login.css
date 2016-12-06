@@ -38,7 +38,7 @@
     margin-left:15px !important;
 }
 #search-button-index{
-    display: none;
+    /*display: none;*/
     border: solid 1px white !important;
     background: transparent !important;
 }
