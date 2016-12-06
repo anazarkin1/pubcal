@@ -30,7 +30,7 @@
 .no-bottom-border{
     border-bottom:none !important;
 }
-#logoutButton:hover, #profileButton:hover, #pubcalButton:hover, #login-window:hover{
+#logoutButton:hover, #profileButton:hover, #pubcalButton:hover, #login-window:hover, #menu-window:hover{
     background: black !important;
     color: white !important;
 }
