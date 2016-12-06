@@ -19,8 +19,23 @@ input.submitButton, input.decisionButton{
 	font-size:20px;
 	border:none;
     -webkit-appearance:none;
+}
+
+.resultcontain{
+
 
 }
+#updatePW{
+	color: black;
+	background: white;
+	border: solid 1px black;
+}
+
+#updatePW:hover{
+	color: white;
+	background: black;
+}
+
 
 input.submitButton:hover, input.decisionButton:hover{
 	cursor:pointer;
@@ -256,6 +271,13 @@ li.fr-pro-wrap{
 
 .bdb-lg {
 	border-bottom: 1px #cfd7e6 solid;
+}
+
+.nav-menu{
+	background-color: #080808;
+}
+.nav-title{
+	color:white;
 }
 
 .bp10{

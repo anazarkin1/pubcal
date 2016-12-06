@@ -21,9 +21,12 @@ $(document).ready(function () {
     }
     var calendarURL = url + 'json';
     var downloadURL = url + 'download';
+    var editURL = url + 'edit';
 
     $('#download-btn').attr('href', downloadURL);
-    $('#remove-btn').click(function () {
+    $('#edit-btn').attr('href', editURL);
+    $('#remove-btn').click(function (e) {
+        e.preventDefault();
         $.ajax({
             url: url,
             method: 'delete',
