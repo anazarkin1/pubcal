@@ -320,6 +320,11 @@ function getMyCalendars(){
 				"class": "acc-info" ,
 				"id": "acc" + i
 			}).appendTo("#prof_" + i);
+            //
+			// $('<div>', {
+			// 	"class": "resultcontain" ,
+			// 	"id": "resultwrap" + i
+			// }).appendTo("#acc" + i);
 
 			$('<input>', {
 				"class": "submitButton",

@@ -3,7 +3,7 @@ block content
 
 
     section(class="main-wrap")
-        section(class="main-nav-pro bdb-lg h100")
+        section(class="main-nav-pro bdb-lg h100 nav-menu")
             div(class="main-nav-button-wrap vert-cent")
                 div(id="accountsettings" class="main-nav-button")
                     a(id="nav2" href="#")
@@ -13,7 +13,7 @@ block content
             li(id="profile-manage" class="bdb-lg profile-contents")
                 section(class="container-content")
                     section(class="content-key")
-                        span(class="sub-title") Account Settings
+                        span(class="sub-title") Username and e-mail
 
                     section(class="content-value")
                         div(class="acc-info")
@@ -30,17 +30,17 @@ block content
                                                 div(class="edit-disable" id="ed1")
                                                     span(class="email-value edit-line" id="email-attr")=email
                                                     span(class="edit-icon")
-                                                        img(src="/public/img/edit_icon.png" class="edit-img" id="edit-button1")
+                                                        img(src="/public/images/edit_icon.png" class="edit-img" id="edit-button1")
 
             li(id="password-manage" class="bdb-lg profile-contents")
                 section(class="container-content")
                     section(class="content-key")
                         span(class="sub-title") Password
-                        span(class="sub-description") change your password
+                        span(class="sub-description")
 
                     section(class="content-value")
                         div(class="edit-password")
-                            form(action="updatePassword" method="post")
+                            form(action="/updatePassword" method="post")
                                 section(class="m_b_15")
                                     label(class="profile-label") Current Password
                                     div(class="edit-box")
@@ -57,7 +57,7 @@ block content
                                         input(type="password" name="ncpassword" id="ncpw")
 
                                 div(class="mt10")
-                                    input(id="updatePW" class="button" type="submit" disabled = "true" value="UPDATE")
+                                    input(id="updatePW" class="button" type="submit" value="UPDATE")
     script(src='/public/js/profile.js', defer)
 
 
