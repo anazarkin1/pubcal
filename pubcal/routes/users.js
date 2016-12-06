@@ -1,3 +1,5 @@
+"use strict";
+
 const express = require('express');
 const router = express.Router();
 const UserClient = require('../models/users');
@@ -59,6 +61,27 @@ router.post('/unSubscribe/:id', (req, res) => {
                     });
             }
         });
+});
+
+router.get('/:username/subscribed/:calid', (req, res) => {
+    let username = req.params.username;
+    let calID = req.params.calid;
+    return UserClient.isSubscribed(username, calID)
+        .then((isSubed) => {
+            if (isSubed) {
+                res.json({username: username, calendar: calID, status: "true"});
+            }
+            else {
+                res.json({username: username, calendar: calID, status: "false"});
+            }
+        })
+        .catch((err) => {
+            if (err) {
+                console.error(err);
+                res.json({status: "Error"})
+            }
+        })
+
 });
 
 module.exports = router;

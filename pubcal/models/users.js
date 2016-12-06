@@ -91,6 +91,28 @@ class UserClient {
             });
     }
 
+    static isSubscribed(username, calID) {
+        let database = null;
+        return BaseClient.connectToDB()
+            .then((db) => {
+                database = db;
+                return db.collection('users').findOne({username: username});
+            })
+            .then((user) => {
+                let isSubed = false;
+                if (!Object.keys(user).includes("subscribed_to")) {
+                    return false;
+                }
+                for (let id of user.subscribed_to) {
+                    if (id.toString() === calID) {
+                        isSubed = true;
+                        break;
+                    }
+                }
+                return isSubed;
+            })
+    }
+
     static getTopFiveUsers() {
         let database = null;
         BaseClient.connectToDB(callback)
