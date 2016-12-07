@@ -84,4 +84,18 @@ router.get('/:username/subscribed/:calid', (req, res) => {
 
 });
 
+router.post('/getPendingNotification', (req, res) => {
+    let username = req.params.username;
+    return UserClient.getPendingNotification(username)
+        .then((result) => {
+            res.json(result);
+        })
+        .catch((err) => {
+            if (err){
+                console.error(err);
+                res.json({status: "Error"})
+            }
+        })
+});
+
 module.exports = router;
