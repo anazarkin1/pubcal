@@ -141,6 +141,20 @@ class UserClient {
                 console.log(err);
             });
     }
+
+    static getPendingNotification(username){
+        let database = null;
+        BaseClient.connectToDB(callback)
+            .then((db) => {
+                database = db;
+                return db.collection('users').findOne({username: username}).pending_notification;
+            })
+            .then((result) => {
+                database.close();
+                return result;
+            });
+                
+    }
 }
 
 module.exports = UserClient;
