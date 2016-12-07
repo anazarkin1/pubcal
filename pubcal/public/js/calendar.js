@@ -119,8 +119,8 @@ $(document).ready(function () {
         return [hh, mm].join(':'); // padding
     };
 
-    if ($("#username").val() != null){
-        checkNotification($("#username").val(), "../../users/getPendingNotification");
+    if ($("#username").text() != null){
+        checkNotification($("#username").text(), "../../users/getPendingNotification");
     }
 
 

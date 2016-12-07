@@ -4,6 +4,7 @@ const router = express.Router();
 const UserClient = require('../models/users');
 const CalendarClient = require('../models/calendars');
 const Helper = require('../libs/icalGeneratorHelper');
+const emailNotification = require('../libs/emailNotification');
 
 router.get('/:id/subscribers', (req, res) => {
     let calID = req.params.id;
@@ -154,7 +155,7 @@ router.put('/:id', (req, res) => {
         let user_list = (oldCalendar.users_subscribed.slice());
         var i;
         for (i = 0; i<user_list.length; i++){
-            CalendarClient.addUpdatedCalendarsToUser(user_list[i], id, 0);
+            CalendarClient.addUpdatedCalendarsToUser(user_list[i], id);
         }
 
         calendar.filepath = oldCalendar.filepath;
@@ -239,7 +240,7 @@ router.delete('/:id', (req, res) => {
         let user_list = (calendar.users_subscribed.slice());
         var i;
         for (i = 0; i<user_list.length; i++){
-            CalendarClient.addUpdatedCalendarsToUser(user_list[i], id, 0);
+            CalendarClient.addUpdatedCalendarsToUser(user_list[i], id);
         }
 
         tmpCalendar = calendar;

@@ -40,7 +40,7 @@ function index(req, res) {
     if (!(req.session && req.session.user)) {
         res.render('index', {title: 'Express'});
     } else {
-        res.render('index', {title: 'Express', email: req.session.user.email});
+        res.render('index', {title: 'Express', email: req.session.user.email, username: req.session.user.username});
         // res.render('profile_sample', {
         //     // passing current user's email address for testing
         //     email: req.session.user.email
@@ -216,7 +216,7 @@ router.get('/search', (req, res) => {
             console.log(result);
             try {
                 if (typeof req.session.user.email != 'undefined' || req.session.user.email != null){
-                    res.render('result', {'result': result, 'hostname': req.hostname, 'email': req.session.user.email});    
+                    res.render('result', {'result': result, 'hostname': req.hostname, 'email': req.session.user.email, 'username': req.session.user.username});    
                 }
                 else{
                     res.render('result', {'result': result, 'hostname': req.hostname});

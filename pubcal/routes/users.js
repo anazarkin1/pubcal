@@ -27,9 +27,7 @@ router.get('/getMyCalendars/:userEmail', (req, res) => {
 
     return UserClient.getCalendars(userEmail)
         .then((result) => {
-            console.log(result);
             CalendarClient.getCalendarsByIds(result, (documents) => {
-                console.log(documents);
                 res.send(documents);
             });
         });
@@ -88,7 +86,12 @@ router.post('/getPendingNotification', (req, res) => {
     let username = req.body.username;
     return UserClient.getPendingNotification(username)
         .then((result) => {
-            res.json(result);
+            return result;
+        })
+        .then((result2) => {
+            CalendarClient.getCalendarsByIds(result2, (result3) => {
+                res.json(result3);
+            });
         })
         .catch((err) => {
             if (err){
