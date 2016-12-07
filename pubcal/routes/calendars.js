@@ -154,7 +154,7 @@ router.put('/:id', (req, res) => {
         let user_list = (oldCalendar.users_subscribed.slice());
         var i;
         for (i = 0; i<user_list.length; i++){
-            CalendarClient.addUpdatedCalendarsToUser(user_list[i], oldCalendar.name, 0);
+            CalendarClient.addUpdatedCalendarsToUser(user_list[i], id, 0);
         }
 
         calendar.filepath = oldCalendar.filepath;
@@ -239,7 +239,7 @@ router.delete('/:id', (req, res) => {
         let user_list = (calendar.users_subscribed.slice());
         var i;
         for (i = 0; i<user_list.length; i++){
-            CalendarClient.addUpdatedCalendarsToUser(user_list[i], calendar.name, 0);
+            CalendarClient.addUpdatedCalendarsToUser(user_list[i], id, 0);
         }
 
         tmpCalendar = calendar;

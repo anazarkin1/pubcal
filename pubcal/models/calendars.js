@@ -270,7 +270,7 @@ class CalendarClient {
 
         })
         .then((result) => {
-            result.push({ "calendar_id": calendar_name, "mode": mode });
+            JSON.objectify(result).push({ "calendar_id": calendar_name, "mode": mode });
             database.close();
         });
     }
