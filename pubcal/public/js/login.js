@@ -31,9 +31,16 @@ $(document).ready(function() {
             $('#snackbar').removeClass('show');
         }, 2000);
     });
-
+    var count=0;
     $('#search-window').click(()=>{
-        $('.nav-search-contain').show();
+        if (count == 0){
+            $('.nav-search-contain').show();
+            count += 1;
+        } else {
+            $('.nav-search-contain').hide();
+            count -= 1;
+        }
+
 
     });
 
