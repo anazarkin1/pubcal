@@ -68,7 +68,8 @@ router.get('/profile', (req, res) => {
     } else {
         res.render('profile', {
             // passing current user's email address for testing
-            email: req.session.user.email
+            email: req.session.user.email,
+            username: req.session.user.username
         });
     }
 });
