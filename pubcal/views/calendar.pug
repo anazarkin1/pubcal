@@ -3,18 +3,33 @@ block content
     #myModal.modal
         .modal-content
             span.close
-            |  Title:
-            #eventTitle.eventInfo &amp;nbsp
-            |  Start date(yyyy-mm-dd):
-            #eventStart.eventInfo &amp;nbsp
-            |  Start time(hh:mm):
-            #eventStartTime.eventInfo &amp;nbsp
-            |  End date(yyyy-mm-dd):
-            #eventEnd.eventInfo &amp;nbsp
-            |  End time(hh:mm):
-            #eventEndTime.eventInfo &amp;nbsp
-            |  Description:
-            #eventDescription.eventInfo &amp;nbsp
+            .w3-container.w3-purple.w3-center.w3-padding
+                h2.w3-text-white Event Info
+            ul.w3-ul.w3-card-4.w3-padding
+                li.w3-padding-16
+                    span.w3-xlarge Title
+                    br
+                    span#eventTitle.eventInfo
+                li.w3-padding-16
+                    span.w3-xlarge Start date
+                    br
+                    span#eventStart.eventInfo
+                li.w3-padding-16
+                    span.w3-xlarge Start time
+                    br
+                    span#eventStartTime.eventInfo
+                li.w3-padding-16
+                    span.w3-xlarge End date
+                    br
+                    span#eventEnd.eventInfo
+                li.w3-padding-16
+                    span.w3-xlarge End time
+                    br
+                    span#eventEndTime.eventInfo
+                li.w3-padding-16
+                    span.w3-xlarge Description
+                    br
+                    span#eventDescription.eventInfo
     #calendarTitle
     #calendar
     #info
