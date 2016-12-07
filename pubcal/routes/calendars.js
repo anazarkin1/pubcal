@@ -4,7 +4,15 @@ const router = express.Router();
 const UserClient = require('../models/users');
 const CalendarClient = require('../models/calendars');
 const Helper = require('../libs/icalGeneratorHelper');
+const emailNotification = require('../libs/emailNotification');
 
+router.get('/:id/subscribers', (req, res) => {
+    let calID = req.params.id;
+    CalendarClient.getSubscribers(calID)
+        .then((results) => {
+            res.json(results);
+        })
+});
 
 //Download iCal file for a calendar with id = :id
 //GET /calendars/:id/download
@@ -115,9 +123,9 @@ router.post('/new', (req, res) => {
                     if (result.result.ok == 1) {
                         UserClient.subscribe(calendar.created_by, result.insertedId)
                             .then((result2) => {
-                                res.json({"status": "success", "id": result.insertedId});        
+                                res.json({"status": "success", "id": result.insertedId});
                             });
-                        
+
                     } else {
                         console.error("Failed inserting new calendar into db");
                         res.json({"status": "failed", "userid": req.session.username});
@@ -136,6 +144,8 @@ router.put('/:id', (req, res) => {
     }
     let id = req.params.id;
     let calendar = req.body.calendar;
+    var url = req.protocol + '://' + req.get('host') + req.originalUrl;
+
 
     CalendarClient.getCalendarById(id).then((oldCalendar) => {
         //Get old calendar, copy its users and filePath, since we want to preserve this information
@@ -156,8 +166,18 @@ router.put('/:id', (req, res) => {
                         let filePath = Helper.createCalendar(newCalendar, newCalendar.filepath);
                         resolve(filePath);
                     }).then((filePath) => {
-                        if (filePath === newCalendar.filepath)
-                            res.json({"status": "success", "id": id});
+                        if (filePath === newCalendar.filepath) {
+                            //Send email notifications:
+                            CalendarClient.getSubscribers(id)
+                                .then((results) => {
+                                    emailNotification(results, url, newCalendar, (isSuccess, msg) => {
+                                        if (isSuccess)
+                                            res.json({status: "success", "id": id});
+                                        else
+                                            res.json({status: "failed", message: msg});
+                                    });
+                                });
+                        }
                         else {
                             //Something went horribly wrong
                             console.error("Promise returned a different filepath than expected");
@@ -192,7 +212,7 @@ router.get('/:id', (req, res) => {
                     email: req.session.user.email
                 });
 
-                
+
             });
     } else {
         res.redirect('/');

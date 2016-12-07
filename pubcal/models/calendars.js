@@ -11,16 +11,58 @@ class CalendarClient {
     static getRandomCalendar() {
         let database = null;
         return BaseClient.connectToDB()
-            .then((db)=> {
+            .then((db) => {
                 database = db;
                 return db.collection('calendars');
             })
-            .then((calendars)=> {
+            .then((calendars) => {
                 return calendars.findOne();
             })
-            .then((result)=> {
+            .then((result) => {
                 database.close();
                 return result;
+            });
+    }
+
+    static getSubscribers(calID) {
+        let database = null;
+        let filter = {"_id": ObjectID(calID)};
+        return BaseClient.connectToDB()
+            .then((db) => {
+                database = db;
+                return db.collection('calendars').aggregate([
+                    {"$match": {"_id": ObjectID(calID)}},
+                    {"$unwind": "$users_subscribed"},
+                    {
+                        "$lookup": {
+                            from: "users",
+                            localField: "users_subscribed",
+                            foreignField: "username",
+                            as: "user_info"
+                        }
+                    },
+                    {
+                        "$match": {"user_info": {"$ne": []}}
+                    },
+                    {
+                        "$project": {
+                            "_id": 1,
+                            "name": 1,
+                            "created_by": 1,
+                            "user_info": 1
+                        }
+                    }
+                ]);
+            })
+            .then((info) => {
+                return info.toArray();
+            })
+            .then((arr) => {
+                let subscribers = [];
+                for (let el of arr) {
+                    subscribers.push(el.user_info[0]);
+                }
+                return subscribers;
             });
     }
 
@@ -108,17 +150,17 @@ class CalendarClient {
     static getCalendarById(id) {
         let database = null;
         return BaseClient.connectToDB()
-            .then((db)=> {
+            .then((db) => {
                 database = db;
                 return db.collection('calendars');
-            }).then((calendars)=> {
+            }).then((calendars) => {
                 return calendars.findOne({"_id": ObjectID(id)});
             })
-            .then((result)=> {
+            .then((result) => {
                 database.close();
                 return result;
             })
-            .catch((err)=> {
+            .catch((err) => {
                 console.log(err);
             });
     }
@@ -194,11 +236,11 @@ class CalendarClient {
                 database = db;
                 return db.collection('calendars');
             }).then((calendars) => {
-                return calendars.aggregate(
-                    {$project: {userSize: {$size:'$users_subscribed'}}},
-                    {$sort: {userSize:-1}},
-                    {$limit: 5});
-            })
+            return calendars.aggregate(
+                {$project: {userSize: {$size: '$users_subscribed'}}},
+                {$sort: {userSize: -1}},
+                {$limit: 5});
+        })
             .then((result) => {
                 result.toArray((err, documents) => {
                     callback(documents);

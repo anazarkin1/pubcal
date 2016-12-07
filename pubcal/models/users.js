@@ -50,8 +50,14 @@ class UserClient {
                 return users.findOne({'email': email});
             })
             .then((result) => {
-                database.close();
                 return result.subscribed_to;
+            })
+            .then((ids) => {
+                return database.collection('calendars').find({_id: {$in: ids}}).toArray();
+            })
+            .then((result2) => {
+                database.close();
+                return result2;
             });
     }
 
