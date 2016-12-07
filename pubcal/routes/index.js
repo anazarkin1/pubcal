@@ -116,7 +116,6 @@ router.get('/login', (req, res) => {
 });
 
 
-
 // Handle signup requests
 router.post('/signup', (req, res) => {
     // take email address -> check if it already exists

@@ -251,6 +251,24 @@ class CalendarClient {
                 console.log(err);
             });
     }
+
+    static addUpdatedCalendarsToUser(username, calendar_name, mode){
+
+        let database = null;
+        return BaseClient.connectToDB()
+                .then((db) => {
+            database = db;
+            return db.collection('users');
+        })
+        .then((users) => {
+            return users.findOne({'username': username});
+        })
+        .then((result) => {
+            result.pending_notification.push({ "calendar_id": calendar_name, "mode": mode });
+            database.close();
+            return result;
+        });
+    }
 }
 
 module.exports = CalendarClient;

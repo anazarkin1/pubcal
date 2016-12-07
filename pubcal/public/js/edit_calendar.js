@@ -16,6 +16,7 @@ $(document).ready(function () {
     var calendarEditURL;
     var calendarURL;
 
+
     if (window.location.href.substr(-1) === '/') {
         calendarEditURL = window.location.href;
     } else {
@@ -23,6 +24,7 @@ $(document).ready(function () {
     }
     //:id/edit/../ redirects to :id/
     calendarURL = calendarEditURL + '../';
+    var modified_events = [];
 
     //swap :id/edit/ to :id/json
     var calendarJsonURL = calendarEditURL + '../json';
@@ -107,16 +109,33 @@ $(document).ready(function () {
             var end_date = $('#selectedEnd').val();
             var start_time = $('#selectedStartTime').val();
             var end_time = $('#selectedEndTime').val();
-
+            event.mode = 1;
             event.title = $('#selectedTitle').val();
             event.start = start_time ? start_date + 'T' + start_time + ':00' : start_date;
             event.end = end_time ? end_date + 'T' + end_time + ':00' : end_date;
             event.description = $('#selectedDescription').val();
             event.allDay = ((start_time == '00:00' || start_time == '') && (end_time == '00:00' || end_time == '')) ? true : false;
+            var exists = 0;
+            for (i = 0; modified_events.length; i++){
+                if (event.id == modified_events[i].id){
+                    modified_events[i] = event;
+                    exists = 1;
+                }
+            }
+            if (!exists) modified_events.push(event);
             $('#calendar').fullCalendar('updateEvent', event);
 
         }
         else if (val == 'remove event') {
+            var tmp_event ={};
+            tmp_event.mode = 2;
+            tmp_event.description = $('#selectedDescription').val();
+            tmp_event.start_date = $('#selectedStart').val();
+            tmp_event.end_date = $('#selectedEnd').val();
+            tmp_event.start_time = $('#selectedStartTime').val();
+            tmp_event.end_time = $('#selectedEndTime').val();
+            modified_events.push(tmp_event);
+
             $('#calendar').fullCalendar('removeEvents', $('#selectedID').val());
         }
         else {
@@ -152,7 +171,16 @@ $(document).ready(function () {
         modifyBox.style.display = "none";
         addBox.style.display = "none";
 
+        var tmp_event ={};
+        tmp_event.mode = 0;
+        tmp_event.description = $('#newDescription').val();
+        tmp_event.start_date = $('#newStart').val();
+        tmp_event.end_date = $('#newEnd').val();
+        tmp_event.start_time = $('#newStartTime').val();
+        tmp_event.end_time = $('#newEndTime').val();
+        modified_events.push(tmp_event);
     });
+
     $('#submitButton').click('submit', function (e) {
         e.preventDefault();
         var output_events = [];
@@ -167,6 +195,8 @@ $(document).ready(function () {
             tmp_event.allDay = obj.allDay;
             output_events.push(tmp_event);
         }
+        alert(window.location.href.substring(0, 32));
+
         var data_to_send = {
             calendar: {
                 description: $('#cal_description').val(),
@@ -186,10 +216,9 @@ $(document).ready(function () {
             dataType: "json",
             contentType: 'application/json',
             success: function (result) {
-                window.location.href = calendarURL;
+
             }
         });
-
         // var events = $('#calendar').fullCalendar('clientEvents');
         console.log(data_to_send);
 
