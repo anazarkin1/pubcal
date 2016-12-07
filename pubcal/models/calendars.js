@@ -264,10 +264,15 @@ class CalendarClient {
             return users.findOne({'username': username});
         })
         .then((result) => {
-            result.pending_notification.push({ "calendar_id": calendar_name, "mode": mode });
+
+            return result.pending_notification;
+
+
+        })
+        .then((result) => {
+            result.push({ "calendar_id": calendar_name, "mode": mode });
             database.close();
-            return result;
-        });
+        }
     }
 }
 
