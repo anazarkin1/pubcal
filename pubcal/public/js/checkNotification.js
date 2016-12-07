@@ -17,8 +17,8 @@ function checkNotification(username, url){
 	    		$.each(result, function(i, v){
 	    			targetUrl = url + "/../../calendars/" + v._id;
 	    			$("#notificationsBox").append("<a href = '" + targetUrl + "'> <div class='w3-panel w3-blue w3-round w3-card-4'> <h3>"+ "Updated" + "</h3> <p>" + v.name + "</p></div></a>" );
-	    		})
-	    		$("#notificationsBox").append("<button type='button' onclick='clearNotification()'>Clear All </button>");
+	    		});
+	    		$("#notificationsBox").append("<button class='w3-btn w3-white w3-border w3-border-red w3-round-xlarge w3-hover-red w3-text-red w3-margin' type='button' onclick='clearNotification()'>Clear All </button>");
 	    	}
 
 	    }
