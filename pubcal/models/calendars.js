@@ -261,6 +261,7 @@ class CalendarClient {
         })
         .then((users) => {
             return users.update({username: username}, {$push: {pending_notification: ObjectID(id)}});
+
         })
         .then((result) => {
             database.close();

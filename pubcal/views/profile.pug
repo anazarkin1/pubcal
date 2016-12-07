@@ -17,9 +17,11 @@ block content
                         .w3-display-container.w3-card-4
                             if calendar.created_by == username
                                 div(class="resultField")
-                                    a(href='calendars/'+ calendar._id)=calendar.name
-                                        img(src='/public/images/calendar_1.jpg', alt='Calendar', style='width:100%')
-                                    w3-container.w3-center.w3-margin
+                                    .w3-container.w3-blue.w3-center.w3-padding
+                                        a.w3-padding.w3-text-white.w3-xlarge(href='calendars/'+ calendar._id)=calendar.name
+                                    .w3-container.w3-margin
+                                        p Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.
+                                    .w3-container.w3-center.w3-blue
                                         a.w3-btn.w3-white.w3-border.w3-border-indigo.w3-round-xlarge.w3-hover-indigo.w3-text-indigo.w3-margin#edit-btn(href='calendars/'+ calendar._id + '/edit') Edit
                                         a.w3-btn.w3-white.w3-border.w3-border-red.w3-round-xlarge.w3-hover-red.w3-text-red.w3-margin#remove-btn(href='') Remove
             .w3-container.w3-padding-32
@@ -30,14 +32,12 @@ block content
                         .w3-display-container.w3-card-4
                             if calendar.created_by != username
                                 div(class="resultField")
-                                    a(href='calendars/'+ calendar._id)=calendar.name
-                                        img(src='/public/images/calendar_1.jpg', alt='Calendar', style='width:100%')
-                                    w3-container.w3-center.w3-margin
+                                    .w3-container.w3-blue.w3-center.w3-padding
+                                        a.w3-padding.w3-text-white.w3-xlarge(href='calendars/' + calendar._id)=calendar.name
+                                    .w3-container.w3-margin
+                                        p Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.
+                                    .w3-container.w3-center.w3-blue
                                         a.w3-btn.w3-white.w3-border.w3-border-teal.w3-round-xlarge.w3-hover-teal.w3-text-teal.w3-margin#unsubscribe-btn(href='') Unsubscribe
                                         a.w3-btn.w3-white.w3-border.w3-border-green.w3-round-xlarge.w3-hover-green.w3-text-green.w3-margin#subscribe-btn(href='') Subscribe
-
-            
-
-
     script(src='/public/js/profile.js', defer)
     script(src='/public/js/sub-unsub.js', defer)

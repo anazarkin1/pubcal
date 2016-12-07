@@ -3,33 +3,57 @@ block content
     #myModal.modal
         .modal-content
             span.close
-            |  Title:
-            #eventTitle.eventInfo &amp;nbsp
-            |  Start date(yyyy-mm-dd):
-            #eventStart.eventInfo &amp;nbsp
-            |  Start time(hh:mm):
-            #eventStartTime.eventInfo &amp;nbsp
-            |  End date(yyyy-mm-dd):
-            #eventEnd.eventInfo &amp;nbsp
-            |  End time(hh:mm):
-            #eventEndTime.eventInfo &amp;nbsp
-            |  Description:
-            #eventDescription.eventInfo &amp;nbsp
+            .w3-container.w3-purple.w3-center.w3-padding
+                h2.w3-text-white Event Info
+            ul.w3-ul.w3-card-4.w3-padding
+                li.w3-padding-16
+                    span.w3-xlarge Title
+                    br
+                    span#eventTitle.eventInfo
+                li.w3-padding-16
+                    span.w3-xlarge Start date
+                    br
+                    span#eventStart.eventInfo
+                li.w3-padding-16
+                    span.w3-xlarge Start time
+                    br
+                    span#eventStartTime.eventInfo
+                li.w3-padding-16
+                    span.w3-xlarge End date
+                    br
+                    span#eventEnd.eventInfo
+                li.w3-padding-16
+                    span.w3-xlarge End time
+                    br
+                    span#eventEndTime.eventInfo
+                li.w3-padding-16
+                    span.w3-xlarge Description
+                    br
+                    span#eventDescription.eventInfo
     #calendarTitle
     #calendar
     #info
-        h3 Owner:
-        #owner.info
-        h3 Description
-        #descriptionBox.w3-margin-right
+        ul.w3-ul.w3-card-4.w3-margin.righter
+            li.w3-padding-16
+                span.w3-xlarge Owner:
+                br
+                span.w3-large#owner
+            li.w3-padding-16
+                span.w3-xlarge Description:
+                br
+                span.w3-large#descriptionBox
+        br
+        br
         a.w3-btn.w3-white.w3-border.w3-border-indigo.w3-round-xlarge.w3-hover-indigo.w3-text-indigo.w3-margin#edit-btn(href='') Edit
+        br
         a.w3-btn.w3-white.w3-border.w3-border-green.w3-round-xlarge.w3-hover-green.w3-text-green.w3-margin#subscribe-btn(href='') Subscribe
         a.w3-btn.w3-white.w3-border.w3-border-teal.w3-round-xlarge.w3-hover-teal.w3-text-teal.w3-margin#unsubscribe-btn(href='') Unsubscribe
+        br
         a.w3-btn.w3-white.w3-border.w3-border-blue.w3-round-xlarge.w3-hover-blue.w3-text-blue.w3-margin#download-btn(href='') Download
+        br
         a.w3-btn.w3-white.w3-border.w3-border-red.w3-round-xlarge.w3-hover-red.w3-text-red.w3-margin#remove-btn(href='') Remove
     #username.hidden #{username}
     #subscribed.hidden #{subscribed}
-
 
     link(href='/public/css/calendar_library/fullcalendar.css', rel='stylesheet')
     link(href='/public/css/calendar_library/modal.css', rel='stylesheet')
