@@ -257,4 +257,8 @@ $(document).ready(function () {
         return [hh, mm].join(':'); // padding
     };
 
+    if ($(".username-field")[0].val() != null){
+        checkNotification($(".username-field")[0].val(), "../../users/getPendingNotification");
+    }
+
 });

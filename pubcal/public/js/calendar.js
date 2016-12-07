@@ -118,5 +118,10 @@ $(document).ready(function () {
 
         return [hh, mm].join(':'); // padding
     };
-    
+
+    if ($("#username").val() != null){
+        checkNotification($("#username").val(), "../../users/getPendingNotification");
+    }
+
+
 });
