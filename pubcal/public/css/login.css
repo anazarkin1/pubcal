@@ -51,9 +51,19 @@
 .no-bottom-border{
     border-bottom:none !important;
 }
-#logoutButton:hover, #profileButton:hover, #pubcalButton:hover, #login-window:hover, #menu-window:hover, #updated-window:hover, #search-window:hover{
+#logoutButton:hover, #profileButton:hover, #pubcalButton:hover, #login-window:hover, #menu-window:hover, #updated-window:hover{
     background: black !important;
     color: white !important;
+}
+
+#search-window{
+    margin-top: 3px;
+    margin-left: -10px;
+}
+#search-window:hover{
+    background: white!important;
+    color: #ce8483;
+
 }
 #pubcalButton{
     margin-left:15px !important;
@@ -181,10 +191,11 @@ a#signup:hover, a#login:hover {
 
 
 .nav-search-contain{
+    margin-top:5px;
     float:left;
     /*margin-right: 50%;*/
     height:33px;
-    width: 350px !important;
+    width: 220px !important;
     /*visibility: hidden;*/
     display: none;
 
@@ -194,10 +205,10 @@ a#signup:hover, a#login:hover {
     float:right;
     color:black;
     background:transparent;
-    height:30px;
+    height:35px;
     margin-right: 40px;
     border:white;
-    margin-top: 5px;
+    margin-top: 10px;
 }
 
 
@@ -213,10 +224,10 @@ a#signup:hover, a#login:hover {
     /*border-left: none !important;*/
     /*border-right: none !important;*/
     border-radius: 20px;
-    height: 40px;
-    font-size:20px;
+    height: 30px;
+    font-size:15px;
     float: left;
-    width:275px !important;
+    width:220px !important;
     /*margin-right: 200px;*/
     /*margin-right: 28% !important;*/
     transition: width 0.4s ease-in-out, margin-left 0.4s ease-in-out;
