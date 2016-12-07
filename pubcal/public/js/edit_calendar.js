@@ -195,7 +195,6 @@ $(document).ready(function () {
             tmp_event.allDay = obj.allDay;
             output_events.push(tmp_event);
         }
-        alert(window.location.href.substring(0, 32));
 
         var data_to_send = {
             calendar: {
@@ -216,7 +215,7 @@ $(document).ready(function () {
             dataType: "json",
             contentType: 'application/json',
             success: function (result) {
-
+                window.location.href = calendarURL;
             }
         });
         // var events = $('#calendar').fullCalendar('clientEvents');
