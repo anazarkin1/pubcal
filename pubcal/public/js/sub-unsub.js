@@ -4,14 +4,14 @@ $(document).ready(function () {
     var subscribed = $('#subscribed').text();
     var calID = window.location.href.substr(window.location.href.lastIndexOf('/') + 1)
 
-    if (subscribed == 'true') {
-        $('#unsubscribe-btn').show();
-        $('#subscribe-btn').hide();
+    if (subscribed == 'false') {
+        $('#unsubscribe-btn').hide();
+        $('#subscribe-btn').show();
 
     }
     else {
-        $('#unsubscribe-btn').hide();
-        $('#subscribe-btn').show();
+        $('#unsubscribe-btn').show();
+        $('#subscribe-btn').hide();
     }
     ;
 

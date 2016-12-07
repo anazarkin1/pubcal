@@ -1,7 +1,7 @@
 extends layout
 block content
     section(class="main-wrap")
-        section(class="main-nav-pro nav-menu bdb-lg h100")
+        section(class="nav-menu bdb-lg h100")
             div(class="main-nav-button-wrap vert-cent")
                 div(id="mycalendars" class="main-nav-button selected")
                     a(id="nav1" href="#")
@@ -10,25 +10,31 @@ block content
                     div(id="mycalendars" class="main-nav-button")
                         a(id="nav1" href="#")
                             span(class="nav-title") Notifications &nbsp;
+        span(class="email-field").hidden=email
+        span(class="username-field").hidden=username
+        div(id="resultWrap")
+            h3 Owned
+            div(id="ownedField")
+            each calendar in calendars
+                if calendar.created_by == username
+                    div(class="resultField")
+                        a(href='calendars/'+ calendar._id)=calendar.name
+                        a#edit-btn.button(href='calendars/'+ calendar._id + '/edit') Edit
+                        a#remove-btn.button(href='', target='_blank') Remove
+                    br
+            h3 Subscribed
+            each calendar in calendars
+                if calendar.created_by != username
+                    div(class="resultField")
+                        a(href='calendars/'+ calendar._id)=calendar.name
+                        a#unsubscribe-btn.button(href='', target='_blank') Unsubscribe
+                        a#subscribe-btn.button(href='', target='_blank') Subscribe
+                    br
 
-        ul(id="friends" class="profile-info selected")
-            li(class="profile-contents")
-                section(class="container-content")
-                    section(class="content-key")
-                    section(class="content-value")
-                        div(class="info-content")
-                            div(id="resultWrap")
-                                div(id="resultField")
+            div(id="subscribedField")
+            
 
-        ul(id="account-settings" class="profile-info")
-            li(id="profile-manage" class="bdb-lg profile-contents")
-                section(class="container-content")
-                    section(class="content-key")
-                    section(class="content-value")
-                        div(class="acc-info")
-                            div(class="perma")
-                                div(class="username-container")
-                                    span(class="email-field")=email
-                                    span(class="username-field")=username
 
     script(src='/public/js/profile.js', defer)
+    script(src='/public/js/sub-unsub.js', defer)
+    link(href='/public/css/button.css', rel='stylesheet')
