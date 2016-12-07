@@ -252,22 +252,23 @@ class CalendarClient {
             });
     }
 
-    static addUpdatedCalendarsToUser(username, calendar_name, mode){
+    static addUpdatedCalendarsToUser(username, id, mode){
 
         let database = null;
+        let new_id = ObjectID(id);
         return BaseClient.connectToDB()
                 .then((db) => {
             database = db;
             return db.collection('users');
         })
         .then((users) => {
-            return users.findOne({'username': username});
+            return users.update({"username: username"}, {$push: {"pending_notification": {new_id: mode}}});
         })
         .then((result) => {
-            result.pending_notification.push({ "calendar_id": calendar_name, "mode": mode });
             database.close();
-            return result;
+            return result
         });
+
     }
 }
 

@@ -195,7 +195,6 @@ $(document).ready(function () {
             tmp_event.allDay = obj.allDay;
             output_events.push(tmp_event);
         }
-        alert(window.location.href.substring(0, 32));
 
         var data_to_send = {
             calendar: {
@@ -216,7 +215,7 @@ $(document).ready(function () {
             dataType: "json",
             contentType: 'application/json',
             success: function (result) {
-
+                window.location.href = calendarURL;
             }
         });
         // var events = $('#calendar').fullCalendar('clientEvents');
@@ -257,8 +256,8 @@ $(document).ready(function () {
         return [hh, mm].join(':'); // padding
     };
 
-    if ($(".username-field")[0].val() != null){
-        checkNotification($(".username-field")[0].val(), "../../users/getPendingNotification");
+    if ($(".username-field").first().text() != null){
+        checkNotification($(".username-field").first().text(), "../../users/getPendingNotification");
     }
 
 });

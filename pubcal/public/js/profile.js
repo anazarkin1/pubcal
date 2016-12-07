@@ -15,7 +15,6 @@ $(document).ready(function(){
 	var info = document.getElementsByClassName("profile-info");
 	var disabledBox = document.getElementsByClassName("edit-disable");
 	var editButtons =document.getElementsByClassName("edit-img");
-	// getMyCalendars();
    
 	for (i=0; i < editButtons.length+1; i++) {
 
@@ -91,6 +90,9 @@ $(document).ready(function(){
 		}
 	});
 
+    if ($(".username-field").first().text() != null){
+        checkNotification($(".username-field").first().text(), "../../users/getPendingNotification");
+    }	
 
 });
 
@@ -266,6 +268,7 @@ function enableEdit(disabledBox, i){
 	
 }
 
+
 function processMenu(n, menu){
 	for (i=0; i < menu.length; i++){
 		menu[i].className = "main-nav-button";
@@ -292,74 +295,3 @@ function listInfo(n, info){
 function loadCreateCalendarPage(){
 	window.location.href = "users/createCalendar";
 }
-var name;
-
-function getMyCalendars(){
-
-	$("#resultField").remove();
-	$('<div>', {
-		"id":"resultField"
-
-	}).appendTo("#resultWrap");
-
-	$('<ul>', {
-		"class":"flt_l w50p",
-		"id":"left_column"
-	}).appendTo("#resultField");
-
-	var email = $(".email-field").html();
-
-	$.get("/users/getMyCalendars/" + email, function(result){
-
-		for (i=0; i < result.length; i++){
-
-			$('<li>', {
-				"class": "fr-pro-wrap b_p_50",
-				"id": "usr_" + i
-			}).appendTo("#left_column");
-
-			$('<form>', {
-				"action": "calendars/" + result[i]._id,
-				"id": "prof_" + i
-			}).appendTo("#usr_" + i);
-
-			$('<div>', {
-				"class": "acc-info" ,
-				"id": "acc" + i
-			}).appendTo("#prof_" + i);
-            //
-			// $('<div>', {
-			// 	"class": "resultcontain" ,
-			// 	"id": "resultwrap" + i
-			// }).appendTo("#acc" + i);
-
-			$('<input>', {
-				"class": "submitButton",
-				"id": "submitButton_" + result[i]._id,
-				// TODO: Find a way to display name of the calendar rather than the actual ID.
-				"value": result[i].name
-
-			}).appendTo("#acc" + i);
-		}
-
-		var submitButtons = document.getElementsByClassName("submitButton");
-
-		for (i=0; i < submitButtons.length; i++){
-
-			$("#submitButton_" + result[i]._id).click(function(event){
-				
-				window.location.href="/calendars/" + event.target.id.substring(13);
-			});
-
-		}
-
-
-	});
-
-    if ($(".username-field")[0].val() != null){
-        checkNotification($(".username-field")[0].val(), "../../users/getPendingNotification");
-    }
-
-}
-
-
