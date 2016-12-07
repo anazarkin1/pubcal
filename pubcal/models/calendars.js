@@ -262,7 +262,7 @@ class CalendarClient {
             return db.collection('users');
         })
         .then((users) => {
-            return users.update({"username: username"}, {$push: {"pending_notification": {new_id: mode}}});
+            return users.update({"username": username}, {$push: {"pending_notification": {new_id: mode}}});
         })
         .then((result) => {
             database.close();
