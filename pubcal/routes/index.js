@@ -247,4 +247,8 @@ router.get('/topFivePopular', (req, res) => {
     })
 });
 
+// router.get('/updatedCalendars', (req, res) => {
+//     res.render('updatedCalendars', {});
+// });
+
 module.exports = router;

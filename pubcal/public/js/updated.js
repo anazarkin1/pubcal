@@ -2,46 +2,24 @@ $(document).ready(function() {
     $(document).keydown((e) => {
         if (e.keyCode == 27) {
             $('#mask').hide();
-            $('#login-box').hide();
+            $('#updated-box').hide();
         }
     });
 
     $("body").click(() => {
         $('#mask').hide();
-        $('#login-box').hide();
+        $('#updated-box').hide();
     });
 
-    $('#login-box').click((e) => {
+    $('#updated-box').click((e) => {
         e.stopPropagation();
     });
 
-    $('#signup').click(() => {
-        $('#loginForm').hide();
-        $('#signupForm').show();
-        $('#login').addClass('w3-grey');
-        $('#signup').removeClass('w3-grey');
-    });
+    $('a#updated-window').click(function() {
 
-    $('#login').click(() => {
-        $('#signupForm').hide();
-        $('#loginForm').show();
-        $('#signup').addClass('w3-grey');
-        $('#login').removeClass('w3-grey');
-        setTimeout(() => {
-            $('#snackbar').removeClass('show');
-        }, 2000);
-    });
-
-    $('#search-window').click(()=>{
-        $('.nav-search-contain').show();
-
-    });
-
-    $('a#login-window').click(function() {
-
-                //Getting the variable's value from a link
+        //Getting the variable's value from a link
         var loginBox = $(this).attr('href');
-        // alert(loginBox);
+
         //Fade in the Popup
         $(loginBox).fadeIn(300);
 
