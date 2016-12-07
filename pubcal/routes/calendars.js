@@ -72,6 +72,7 @@ router.get('/:id/edit', (req, res) => {
                 let users = calendar.users_subscribed;
                 let subscribed = users.includes(req.session.user.username);
                 res.render("editCalendar", {
+                    email: req.session.user.email,
                     username: req.session.user.username,
                     subscribed: subscribed
                 });

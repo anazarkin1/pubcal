@@ -266,6 +266,7 @@ function enableEdit(disabledBox, i){
 	
 }
 
+
 function processMenu(n, menu){
 	for (i=0; i < menu.length; i++){
 		menu[i].className = "main-nav-button";
@@ -356,9 +357,7 @@ function getMyCalendars(){
 
 	});
 
-    if ($(".username-field")[0].val() != null){
-        checkNotification($(".username-field")[0].val(), "../../users/getPendingNotification");
-    }
+
 
 }
 
