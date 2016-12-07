@@ -144,16 +144,22 @@ class UserClient {
 
     static getPendingNotification(username){
         let database = null;
-        BaseClient.connectToDB(callback)
+        return BaseClient.connectToDB()
             .then((db) => {
                 database = db;
-                return db.collection('users').findOne({username: username}).pending_notification;
+                return db.collection('users').findOne({username: username});
+            })
+            .then((user)=> {
+                return user.pending_notification;
             })
             .then((result) => {
                 database.close();
                 return result;
+            })
+            .catch((err) => {
+                console.error(err);
             });
-                
+        
     }
 }
 
