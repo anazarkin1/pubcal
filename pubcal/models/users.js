@@ -161,6 +161,24 @@ class UserClient {
             });
         
     }
+    static clearNotification(username){
+        let database = null;
+        console.log('this is clearNotification, '+ username);
+        return BaseClient.connectToDB()
+            .then((db) => {
+                database = db;
+                return db.collection('users');
+            })
+            .then((users) => {
+                return users.update(
+                    {username: username},
+                    {$set: {pending_notification: []}});
+            })
+            .then((result) => {
+                database.close();
+                return result;
+            });
+    }
 }
 
 module.exports = UserClient;

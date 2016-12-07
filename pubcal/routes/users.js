@@ -101,4 +101,13 @@ router.post('/getPendingNotification', (req, res) => {
         })
 });
 
+router.post('/clearNotification', (req, res) => {
+    console.log(req.body);
+    let username = req.body.username;
+    return UserClient.clearNotification(username)
+        .then((result) => {
+            res.json({status: 'cleared'});
+        });
+});
+
 module.exports = router;
