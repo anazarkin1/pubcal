@@ -118,5 +118,5 @@ $(document).ready(function () {
 
         return [hh, mm].join(':'); // padding
     };
-
+    
 });
