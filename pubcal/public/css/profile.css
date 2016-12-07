@@ -63,10 +63,7 @@ input.removeButton:hover{
 input.removeButton:focus{
 	outline: none;
 }
-textarea{
-	width: 300px;
-	height: 400px;
-}
+
 .b_p_50{
 	padding-bottom: 80px;
 }

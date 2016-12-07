@@ -11,6 +11,9 @@
     opacity: 0.9;
 }
 
+.main-style {
+    margin: 60px 0;
+}
 /* You can customize to your needs  */
 .login-popup {
     display: none; /* Hidden by default */
