@@ -4,7 +4,6 @@ const router = express.Router();
 const UserClient = require('../models/users');
 const CalendarClient = require('../models/calendars');
 const Helper = require('../libs/icalGeneratorHelper');
-const emailNotification = require('../libs/emailNotification');
 
 router.get('/:id/subscribers', (req, res) => {
     let calID = req.params.id;
@@ -151,6 +150,12 @@ router.put('/:id', (req, res) => {
         //Get old calendar, copy its users and filePath, since we want to preserve this information
         //and frontend doesn't send this to us(for security)
         calendar.users_subscribed = oldCalendar.users_subscribed.slice();
+        let user_list = (oldCalendar.users_subscribed.slice());
+        var i;
+        for (i = 0; i<user_list.length; i++){
+            addUpdatedCalendarsToUser(user_list[i], oldCalendar.name, 0);
+        }
+
         calendar.filepath = oldCalendar.filepath;
         calendar.created_by = oldCalendar.created_by;
         return calendar;
@@ -212,7 +217,7 @@ router.get('/:id', (req, res) => {
                     email: req.session.user.email
                 });
 
-
+                
             });
     } else {
         res.redirect('/');
@@ -228,7 +233,15 @@ router.delete('/:id', (req, res) => {
     let tmpCalendar;
     CalendarClient.getCalendarById(id)
         .then((calendar) => {
-            tmpCalendar = calendar;
+
+
+        let user_list = (calendar.users_subscribed.slice());
+        var i;
+        for (i = 0; i<user_list.length; i++){
+            addUpdatedCalendarsToUser(user_list[i], calendar.name, 0);
+        }
+
+        tmpCalendar = calendar;
         }).then(() => {
         //Remove database object
         CalendarClient.removeCalendarById(id)
