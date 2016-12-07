@@ -13,10 +13,11 @@ block content
                                     if key == "_id"
                                         - var link = '/calendars/' + obj
                                     if key == "name"
-                                        a(href=link)
-                                            img(src='/public/images/calendar_1.jpg', alt='Calendar', style='width:100%')
-                                        w3-container.w3-center.w3-margin
-                                            p=obj
+                                        .w3-container.w3-blue.w3-center.w3-padding
+                                            a.w3-padding.w3-text-white.w3-xlarge(href=link)=obj
+                                        .w3-container.w3-margin
+                                            p Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.
+                                        .w3-container.w3-center.w3-blue
                                     if key == "tags"
                                         li(class="list-group-item")
                                             p="TAGS:  " + obj
