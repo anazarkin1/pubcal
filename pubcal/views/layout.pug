@@ -1,7 +1,55 @@
 doctype html
 html
-  head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
-  body
-    block content
+    head
+        meta(charset='utf-8')
+        title PubCal
+        meta(name='description', content='Public repository of calendars')
+        meta(name='viewport', content='width=device-width')
+        link(href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800', rel='stylesheet')
+        link(rel='stylesheet', href='/public/css/bootstrap.css')
+        link(rel='stylesheet', href='/public/css/profile.css')
+        link(rel='stylesheet', href='/public/css/templatemo-style.css')
+        link(rel='stylesheet', href='/public/css/login.css')
+        link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css')
+        link(rel='stylesheet', href='http://www.w3schools.com/lib/w3.css')
+        script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js")
+        script(src='/public/js/login.js')
+        script(src="/public/js/menu.js")
+        script(src="/public/js/updated.js")
+        script(src="/public/js/checkNotification.js")
+    body
+        span(class="username-field").hidden=username
+        .w3-top
+            ul.w3-navbar.w3-white.w3-wide.w3-padding-8.w3-card-2
+                li
+                    a.w3-margin-left#pubcalButton(href='/')
+                        b.w3-large PubCal
+                // float to right
+                li.w3-right.w3-hide-small
+                    if email
+                        section.nav-search-contain
+                            form(action="/search" method="get")
+                                input.nav-search-box(name="q" type="text" placeholder='Search Calendars')
+                        a.w3-left#search-window(href="#search-box")
+                            span(class="glyphicon glyphicon-search")
+                        a.w3-left#updated-window(href="#updated-box")
+                            span(class="glyphicon glyphicon-info-sign")
+                        a.w3-left#menu-window(href="#menu-box")
+                            span(class="glyphicon glyphicon-list")
+                        a.w3-left.w3-margin-right#logoutButton(href="/logout")
+                            span(class="glyphicon glyphicon-log-out")
+                    else
+                        section.nav-search-contain
+                            form(action="/search" method="get")
+                                input.nav-search-box(name="q" type="text" placeholder='Search Calendars')
+                        a.w3-left#search-window(href="#search-box")
+                            span(class="glyphicon glyphicon-search")
+                        a.w3-left.w3-margin-right#login-window(href='#login-box') Log in | Sign up
+
+        .main-style
+            block content
+            include ./component/login
+            include menu
+            include updated
+        include footer
+        #snackbar

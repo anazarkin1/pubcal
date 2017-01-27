@@ -1,5 +1,80 @@
 extends layout
-
 block content
-  h1= title
-  p Welcome to #{title}
+    header.w3-display-container.w3-content.w3-wide(style='max-width:1500px;')
+        img.w3-image.w3-hover-grayscale(src='/public/images/index_img.jpg', alt='PubCal', width='1500', height='200')
+        .w3-display-middle.w3-center
+            h1.w3-xxlarge
+                span.w3-border.w3-border-white.w3-padding.w3-text-white Public
+                span.w3-hide-small.w3-text-white.w3-margin-left Calendars
+            include ./calendars/search-bar
+    .w3-content.w3-padding(style='max-width:1564px')
+        // Calendar Section
+        #projects.w3-container.w3-padding-32
+            h3.w3-border-bottom.w3-border-light-grey.w3-padding-12 Featured Calendars
+        .w3-row-padding
+            .w3-col.l3.m6.w3-margin-bottom
+                .w3-display-container.w3-card-4
+                    .w3-container.w3-blue.w3-center
+                        h1.w3-text-white Header
+                    .w3-container.w3-margin
+                        p Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.
+                    .w3-container.w3-center.w3-blue.w3-text-white
+                        h5.w3-text-white Summerlicious
+            .w3-col.l3.m6.w3-margin-bottom
+                .w3-display-container.w3-card-4
+                    .w3-container.w3-green.w3-center
+                        h1.w3-text-white Header
+                    .w3-container.w3-margin
+                        p Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.
+                    .w3-container.w3-center.w3-green.w3-text-white
+                        h5.w3-text-white Winterlicious
+            .w3-col.l3.m6.w3-margin-bottom
+                .w3-display-container.w3-card-4
+                    .w3-container.w3-purple.w3-center
+                        h1.w3-text-white Header
+                    .w3-container.w3-margin
+                        p Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.
+                    .w3-container.w3-center.w3-purple.w3-text-white
+                        h5.w3-text-white Christmas Shopping
+            .w3-col.l3.m6.w3-margin-bottom
+                .w3-display-container.w3-card-4
+                    .w3-container.w3-gray.w3-center
+                        h1.w3-text-white Header
+                    .w3-container.w3-margin
+                        p Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.
+                    .w3-container.w3-center.w3-gray.w3-text-white
+                        h5.w3-text-white Thanksgiving North
+        .w3-row-padding.w3-margin-top
+            .w3-col.l3.m6.w3-margin-bottom
+                .w3-display-container.w3-card-4
+                    .w3-container.w3-yellow.w3-center
+                        h1.w3-text-white Header
+                    .w3-container.w3-margin
+                        p Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.
+                    .w3-container.w3-center.w3-yellow.w3-text-white
+                        h5.w3-text-white Oktoberfest
+            .w3-col.l3.m6.w3-margin-bottom
+                .w3-display-container.w3-card-4
+                    .w3-container.w3-red.w3-center
+                        h1.w3-text-white Header
+                    .w3-container.w3-margin
+                        p Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.
+                    .w3-container.w3-center.w3-red.w3-text-white
+                        h5.w3-text-white Your Birthday
+            .w3-col.l3.m6.w3-margin-bottom
+                .w3-display-container.w3-card-4
+                    .w3-container.w3-indigo.w3-center
+                        h1.w3-text-white Header
+                    .w3-container.w3-margin
+                        p Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.
+                    .w3-container.w3-center.w3-indigo.w3-text-white
+                        h5.w3-text-white Cuba Week
+            .w3-col.l3.m6.w3-margin-bottom
+                .w3-display-container.w3-card-4
+                    .w3-container.w3-teal.w3-center
+                        h1.w3-text-white Header
+                    .w3-container.w3-margin
+                        p Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.
+                    .w3-container.w3-center.w3-teal.w3-text-white
+                        h5.w3-text-white Science Fair
+    script(src='/public/js/index.js')

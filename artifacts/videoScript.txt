@@ -1,0 +1,40 @@
+Talking points:
+
+1. Login/out, sign up
+The users can sign up with their desired username, email, and password. Users do not need to sign up to search for calendars in our app, but they have to if they try to subscribe a calendar. (10 seconds)
+
+2. Profile page, display user’s calendars, create calendars
+After users sign up, they will be redirected to their profile page. Users can look up calendars they created previously and calendars they subscribed to. Now you see empty space but we will come back to this later. (20 seconds)
+We can try to create our first custom calendar. Let’s give it a fancy name and description. (50 seconds)
+
+3. Import calendars in Google calendars
+After users create calendar, they will receive an URL for this very calendar. They will be able to import the calendar in google calendar with this URL. (30 seconds)
+
+4. Search for and download calendars
+Users can search for calendars in our app, and subscribe to those calendars they like. Let’s try this keyword. Let’s try a different keyword. Let’s take a took at the second calendar in the result. This calendar is interesting. Let’s subscribe. (40 seconds)
+Now let’s go back to the profile page. We can see the calendar we created and the calendar we subscribe to. We can also download a calendar in ical format. (30 seconds)
+
+Total time: (10 + 20 + 50 + 30 + 40 + 30) seconds = 3 minutes
+
+Talking points:
+
+Intro
+The app we are going to present is called "PubCal". It is a central repository of calendars which can be created or imported by any users to our app.
+With this app, it is easy to create a calendar, add events to it and share it to whoever needs it. Users can also search for calendars and subscribe to them. In this video, we are going to demonstrate how to create, import, download, subscribed, and search for calendars, and how each calendar is displayed on a user's profile page.
+
+1. Profile page, display user?s calendars, create calendars
+After users sign up or log in to their accounts, they will be redirected to their profile page. Users can look up calendars they created previously and calendars they subscribed to. Now you see empty space but we will come back to this later. (20 seconds)
+We can try to create our first custom calendar. Let?s give it a fancy name and description. (50 seconds)
+
+2. Import calendars in Google calendars
+After users create calendar, they will receive an URL for this very calendar. They will be able to import the calendar in google calendar with this URL. (30 seconds)
+
+3. Search for and download calendars
+Users can search for calendars in our app, and subscribe to those calendars they like. Let?s try this keyword. Let?s try a different keyword. Let?s take a took at the second calendar in the result. This calendar is interesting. Let?s subscribe. (40 seconds)
+Now let?s go back to the profile page. We can see the calendar we created and the calendar we subscribe to. We can also download a calendar in ical format. (30 seconds)
+ZS
+
+From this video, you watched how to create, import, download, subscribed to, and search for calendars, and how each calendar is displayed on a user's profile page.  For the next part, improve frontend design and make edit calendar, messaging, some social network functionalities such as follows between users, and add different previlege levels
+
+
+Total time: (10 + 20 + 50 + 30 + 40 + 30) seconds = 3 minutes

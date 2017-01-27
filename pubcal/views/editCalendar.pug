@@ -1,0 +1,43 @@
+extends layout
+block content
+    #myModal.modal
+        .modal-content
+            span.close
+            form#addEvent(action='').w3-center
+                .w3-container.w3-green.w3-padding
+                    h2.w3-text-white New Event
+                input.w3-section#newTitle(type="text" name ="newTitle" placeholder="Title")
+                input.w3-section#newStart(type="text" name ="newStart" placeholder="Start date(yyyy-mm-dd)")
+                input.w3-section#newStartTime(type="text" name ="newStartTime" placeholder="Start time(hh:mm)")
+                input.w3-section#newEnd(type="text" name ="newEnd" placeholder="End date(yyyy-mm-dd)")
+                input.w3-section#newEndTime(type="text" name ="newEndTime" placeholder="End time(hh:mm)")
+                textarea.w3-section#newDescription(name ="newDescription" placeholder="Description", cols='39', rows='4')
+                input.w3-section.w3-btn.w3-white.w3-border.w3-border-green.w3-round-xlarge.w3-hover-green.w3-text-green.w3-margin(type="submit" name ="submit" value='add event')
+            form#modifyEvent(action='').w3-center
+                .w3-container.w3-blue.w3-padding
+                    h2.w3-text-white Edit Event
+                input.w3-section#selectedTitle(type="text" name ="selectedTitle" placeholder="Title")
+                input.w3-section#selectedStart(type="text" name ="selectedStart" placeholder="Start date(yyyy-mm-dd)")
+                input.w3-section#selectedStartTime(type="text" name ="selectedStartTime" placeholder="Start time(hh:mm)")
+                input.w3-section#selectedEnd(type="text" name ="selectedEnd" placeholder="End date(yyyy-mm-dd)")
+                input.w3-section#selectedEndTime(type="text" name ="selectedEndTime" placeholder="End time(hh:mm)")
+                textarea.w3-section#selectedDescription(name ="selectedDescription" placeholder="Description", cols='39', rows='4')
+                input#selectedID(type='hidden', name='selectedID')
+                input.w3-btn.w3-white.w3-border.w3-border-blue.w3-round-xlarge.w3-hover-blue.w3-text-blue.w3-margin(type="submit" name ="update_button" value='update event')
+                input.w3-btn.w3-white.w3-border.w3-border-red.w3-round-xlarge.w3-hover-red.w3-text-red.w3-margin(type="submit" name ="delete_button" value='remove event')
+    #calendar
+    #info
+        form#calendar_form(action='')
+            h3 Title:
+            input.w3-section.w3-large#cal_title(type='text', name='cal_title')
+            h3 Description:
+            textarea.w3-section#cal_description(name='description', cols='46', rows='13')
+            input#submitButton.w3-margin.create-cal.w3-btn.w3-white.w3-border.w3-border-blue.w3-round-xlarge.w3-hover-blue.w3-text-blue.w3-margin(type='submit', name='submit', value='update')
+    span(class="username-field").hidden=username
+    link(href='/public/css/calendar_library/fullcalendar.css', rel='stylesheet')
+    link(href='/public/css/calendar_library/modal.css', rel='stylesheet')
+    link(href='/public/css/calendar_library/fullcalendar.print.css', rel='stylesheet', media='print')
+    script(src='/public/js/calendar_library/moment.min.js')
+    script(src='/public/js/calendar_library/jquery.min.js')
+    script(src='/public/js/calendar_library/fullcalendar.min.js')
+    script(src='/public/js/edit_calendar.js')

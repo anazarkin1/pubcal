@@ -2,80 +2,70 @@
 
 ## What we are going to build
 
-We are going to build a responsive web app, where people can share their calendars with the public using both desktops and cellphones.
-A group of people with the same agenda (e.g. students taking the same class, people going to the same social gatherings) may find themselves checking dates all the time or forgetting something important. Or they don't realize the time and location for an event have been changed.Or people want to know certain event's date and time. (eg. Users want to know when and where the Olympic events are. They can search for Olympic calendar on PubCal)
-
-
-Our app will have the following features:
-
-  * Users can publish their calendars by uploading files or creating them directly on our web app.
-  * Users can search for calendars published by other people based on dates, calendar name, location.
-  * Users can recommend fixes and updates if they believe the existing calendars can be improved.
-  * Users can log in and update their personal information and look up other user's profiles.
-  * Users can follow people they like.
-  * Users can rate and comment on existing calendars, and information generated from these will be processed to improve the search and recommendation system.
-  * Users can choose to import a particular calendar from PubCal to their own Google Calendar account.
-  * When the PubCal calendar gets updated, calendars that were imported via URL are going to get new updates too.
-  * Users can keep receiving updates from the publisher via browser-notifications or emails.
-  * Users will be able to set their calendars public or private (to certain individuals).
-  * Owners can give permission of the calendar so that other user can edit the calendar.
+We are going to build a web app as a public repository of calendars. 
+Users can publish their calendars by uploading files, importing from Google Calendar or creating them directly on our web app.
+Users can search for calendars published by other users based on dates, calendar names, and locations.
+Users can also rate existing calendars, and information generated from these ratings will be processed to help us recommend calendars to these users.
+Users can receive browser-notifications or emails when their subscribed calendars get updated.
 
 ## Who are our target users
 
-### User 1: Bogdan
-  * Age: 38
-  * Occupation: special advisor for NGO
-  * Status: Married
-  * Tech: network and security
-  * Bio: Bogdan graduated with BSc in Computer Science and Master of Public Policy at the University of Toronto.
-         He worked as an advisor for an European humanitarian organization in Geneva for almost two decades and then joined the Maidan People's Union to support the civil demonstrations in 2013. A part of his duties was to organize and manage the protests.
-
-
-### User 2: Ivan
+### User 1: Ivan (Publisher)
   * Age: 21
   * Occupation: Student at UCSD
   * Status: Single
   * Tech: VB.NET
   * Bio: Ivan is in his senior year with double majors in Political Science and Cognitive Science.
     He is also the president of the history and philosophy club, and he organizes public events regularly.
-    He sometimes finds out he's in a situation that he needs to delay the event since the university building management
-    needs the room for another event. He has to email all the club members about the changes in location and time,
-    but some members don't read emails regularly and still show up.
-  * Goals: He wants to inform club members of the latest time and location for events
+    He sometimes finds himself in a situation where he needs to delay an event because the original 
+    location of the event becomes unavailable, or he needs to change the time of the event due to emergencies. 
+    He has to notify all the club members about the location and time changes via emails, but some members will 
+    miss those emails.
+  * Goals: He wants to inform club members of the latest time and location of events
 
-### User 3: Cristina
-  * Age: 42
-  * Occupation: Factory worker
-  * Status: Widow
-  * Tech: social network
-  * Bio: Cristina live in the rural area, Pamplona Alta surrounding the capital Lima of Peru.
-    People build their houses on the hills. She is the leader of this community and she often needs to broadcast some news to people living there.
-    The living standard is low but almost everyone has a cheap cell phone.
-    Several times a year, some medical teams would come to town and people can receive medical consultation for free.
-    It is hard for Cristina to talk to each one of them since she has daytime job and she has to take care of two babies.
-
-### User 4: Alex
-  * Age: 26
-  * Occupation: Office job
-  * Bio: Alex works in an office which he requires to attend meetings very often. It is hard for him to keep track with the meeting times. Even though he can add the meeting times one by one into his agenda, sometimes he is too busy with other things that he forget to add them. Leading to absense to meetings.
-  * Goals: He wants his agenda to show all of the meetings that he needs to attend.
-  * Solution: His coworker, or boss can create a calendar of meeting times on PubCal so that other coworkers can add it into their own calendar.
-
-### User 5: Amanda
+### User 2: Amanda (Subscriber)
   * Age: 22
   * Occupation: Nomad
   * Status: Single
   * Tech: Web Design
-  * Bio: Amanda made a life-long decision to visit all countries in the world. Usually she changes her place of residence every 6 months. It's important for her to keep track of all public holidays in her new country, last time she had to stay hungry for the whole day because it was a special holiday in Spain and the shops were closed. Also, it's nice to see different festivals and art galleries that are happening in her new city of residence. She wants a simple way to organize all that in her personal calendar which she also uses for work.
-  * Goals: Easy way to find recurring events that are happening at some location and keep track of them.
+  * Bio: Amanda made a life-long decision to visit all countries in the world. 
+    Usually she changes her place of residence every 6 months. It's important for her to keep track of all public
+    holidays in the new country. Last time she had to stay hungry for the whole day because it 
+    was a special holiday in Spain and all the shops were closed. Also, it's nice to see different festivals 
+    and art galleries in the new city. 
+  * Goals: She wants an easy way to find recurring events that are happening at some locations and keep track of them. 
+    She also wants a simple way to organize all events in her personal calendar which she also uses for work.
 
-
+### User 3: Kira (Subscriber)
+  * Age: 22
+  * Occupation: Student
+  * Status: Single
+  * Bio: A big NHL fan, who follows Maple Leafs team.
+  * Goals: Kira wants to monitor schedules of all the games with Maple Leafs inside her own Google Calendar. 
+  She doesn't want to manually update her NHL calendar if some changes in the game schedule occur such as a certain 
+  game being cancelled or moving to another date.  
+  
 ## Why users should choose our product
-In the modern society, it is easy for people to forget what they are going to do next. World became very fast,
-and people started utilizing calendars to keep up with their life. Be it your favourite team's play-off series,
-school schedule, company's events we use calendars to track all of it. All of us spend hours duplicating entries in our calendars
-for events that people already created. Our solution is to provide a centralized database of calendars for all kind of events: sports, holidays,
-import days between your friends. One calendar that is used by everyone. Benefits are enormous: not only you save hours of typing, you don't
-have to worry about making sure the calendar is up-to-date. With an easy way to categorize calendars, users can also check for something new happening around them at some specific time.
+In our modern society, people often forget or don’t know what events are happening simply 
+because there are just so much going on around them. People stared to utilize their 
+electronic calendars to remind them what their schedule is like and what they need to do next.
 
-Product decision: (internationalization would be key)
+However it is often irritating to add events to their calendars. Our 
+PubCal comes to rescue. PubCal allows organizations, communities, and various groups to 
+add their own calendars to a centralized repository so that users can save their time of manually typing them up. 
+Users can also create their own personal calendars to share them to their friends and families, or even strangers. 
+
+Users don’t have to worry about changes in the calendars they subscribe to because of our update system.
+Moreover our app not only allows users to keep track of what is going on in life, but also allows them to explore 
+different events going on in their local communities. PubCal connects communities and bring people closer 
+more than ever.
+
+Decision designs we made:
+
+1. An alternative we considered was implementing our application on the Google calendar or the Apple calendar. 
+However it would be really hard to implement some of the features we have, and we cannot assure the privacy 
+of our users. Therefore we have decided to set up PulCal by creating our own website rather than on a third party platform.
+
+2. We also decided that calendar owners can give permission to certain people to edit their calendars.  
+This would make it convenient for businesses to have more than one person in the marketing team to edit the 
+calendar.

@@ -1,0 +1,16 @@
+extends layout
+block content
+    .result-section
+        section(id="popular")
+            .w3-content.w3-padding(style='max-width:1564px')
+                .w3-container.w3-padding-16
+                    h3.w3-border-bottom.w3-border-light-grey.w3-padding-12 These are what you have been looking for ...
+                each calendar in result
+                    .w3-row-padding
+                        .w3-col.l3.m6.w3-margin-bottom
+                            .w3-display-container.w3-card-4
+                                .w3-container.w3-blue.w3-center.w3-padding
+                                    a.w3-padding.w3-text-white.w3-xlarge(href='/calendars/' + calendar._id)=calendar.name
+                                .w3-container.w3-margin
+                                    p=calendar.description
+    script(src='/public/js/result.js')

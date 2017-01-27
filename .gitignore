@@ -248,6 +248,6 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-#Alex's specific rules
-server_instructions.txt
-git-pull-to-fork
+#Don't track calendars
+pubcal/calendars/*
+deliverables/#iteration-01.review.md#

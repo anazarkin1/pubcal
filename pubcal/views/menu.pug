@@ -1,0 +1,14 @@
+.container
+    //#menu-box.sidenav
+    #menu-box.trans.sidenav
+        form(action="/search" method="get")
+            input.form-control.centreInput.input-lg.short-box.w3-section(id="search-value" name="q" type="text" placeholder="Click here to search...")
+        form(id="profile-btn" class="form" action="/profile" method="get")
+            .w3-section.w3-xlarge.centreInput(class="span12 text-center")
+                input.pop-white(type="submit" value="My Calendars")
+        form(id="settings-btn" class="form" action="/loadSettings" method="get")
+            .w3-xlarge.w3-section(class="span12 text-center")
+                input.pop-white(type="submit" value="Account Settings")
+        form(id="create-btn" class="form" action="/users/createCalendar" method="get")
+            .w3-xlarge.w3-section(class="span12 text-center")
+                input.pop-white(type="submit" value="Create A Calendar")
