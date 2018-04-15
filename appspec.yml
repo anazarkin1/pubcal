@@ -12,17 +12,17 @@ permissions:
 
 hooks:
   ApplicationStop:
-     - location: bin/stop
+     - location: pubcal/bin/stop
        timeout: 10
        runas: bitnami
 
   AfterInstall:
-     - location: bin/install-pkg
+     - location: pubcal/bin/install-pkg
        timeout: 120
        runas: bitnami
 
   ApplicationStart:
-     - location: bin/start
+     - location: pubcal/bin/start
        timeout: 30
        runas: bitnami
 
