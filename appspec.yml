@@ -1,0 +1,32 @@
+version: 0.0
+os: linux
+files:
+- source: /pubcal/
+ destination: /home/bitnami/pubcal
+
+permissions:
+- object: /
+   pattern: "**"
+   owner: bitnami
+   group: bitnami
+
+hooks:
+ApplicationStop:
+   - location: bin/stop
+     timeout: 10
+     runas: bitnami
+
+AfterInstall:
+   - location: bin/install-pkg
+     timeout: 120
+     runas: bitnami
+
+ApplicationStart:
+   - location: bin/start
+     timeout: 30
+     runas: bitnami
+
+# ValidateService:
+#    - location: bin/app-validate
+#      timeout: 10
+#      runas: ec2-user
