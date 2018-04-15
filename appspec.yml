@@ -1,20 +1,20 @@
 version: 0.0
 os: linux
 files:
-- source: /pubcal/
- destination: /home/bitnami/pubcal
+  - source: /pubcal/
+    destination: /home/bitnami/pubcal
 
 permissions:
-- object: /
-   pattern: "**"
-   owner: bitnami
-   group: bitnami
+  - object: /
+    pattern: "**"
+    owner: bitnami
+    group: bitnami
 
 hooks:
-ApplicationStop:
-   - location: bin/stop
-     timeout: 10
-     runas: bitnami
+  ApplicationStop:
+     - location: bin/stop
+       timeout: 10
+       runas: bitnami
 
 AfterInstall:
    - location: bin/install-pkg
