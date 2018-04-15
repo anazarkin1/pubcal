@@ -1,1 +1,3 @@
-pm2 start app.js --name pubcal
+#!/bin/sh
+cd pubcal
+pm2 start app.js --name pubcal --watch
