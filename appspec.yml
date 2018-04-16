@@ -1,7 +1,7 @@
 version: 0.0
 os: linux
 files:
-  - source: /pubcal/
+  - source: /
     destination: /home/bitnami/pubcal
 
 permissions:
