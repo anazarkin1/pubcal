@@ -1,1 +1,3 @@
+#!/bin/sh
+cd ../
 pm2 stop all
