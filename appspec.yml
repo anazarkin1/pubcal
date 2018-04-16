@@ -13,7 +13,7 @@ permissions:
 hooks:
   ApplicationStop:
      - location: pubcal/bin/stop
-       timeout: 10
+       timeout: 120
        runas: root
 
   AfterInstall:
