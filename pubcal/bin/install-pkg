@@ -4,4 +4,4 @@ echo $PWD
 npm install pm2 -g
 cd /home/bitnami/pubcal/
 echo $PWD
-npm install --prefix /home/bitnami/pubcal/pubcal
+npm install --prefix /home/bitnami/pubcal

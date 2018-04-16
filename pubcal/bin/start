@@ -1,4 +1,4 @@
 #!/bin/sh
 echo "************************ start ************************"
 echo $PWD
-pm2 start /home/bitnami/pubcal/pubcal/app.js --name pubcal --watch
+pm2 start /home/bitnami/pubcal/app.js --name pubcal --watch

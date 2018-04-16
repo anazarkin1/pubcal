@@ -2,5 +2,5 @@
 echo "************************ stop ************************"
 echo $PWD
 npm install pm2 -g
-pm2 stop pubcal
-pm2 delete pubcal
+pm2 stop pubcal || true
+pm2 delete pubcal || true
