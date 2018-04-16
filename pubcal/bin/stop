@@ -1,5 +1,4 @@
 #!/bin/sh
-cd ../
 echo $PWD
 npm install pm2 -g
 pm2 stop pubcal

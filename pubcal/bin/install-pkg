@@ -1,5 +1,6 @@
 #!/bin/sh
 npm install pm2 -g
-cd ..
+echo $PWD
+cd pubcal
 echo $PWD
 npm install
